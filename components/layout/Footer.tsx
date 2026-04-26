@@ -26,9 +26,9 @@ export default function Footer() {
             >
               {SITE_CONFIG.siteName}
             </Link>
-            <div className="flex flex-col gap-1">
-              <p className="text-[#0a0a0a] text-sm copy-ja">{SITE_CONFIG.taglineJa}</p>
-              <p className="text-[#8a8a8a] text-xs tracking-[0.12em]">{SITE_CONFIG.taglineEn}</p>
+            <div className="flex flex-col gap-0.5">
+              <p className="text-[#757575] text-xs copy-ja">{SITE_CONFIG.taglineJa}</p>
+              <p className="text-[#aaaaaa] text-xs tracking-[0.12em]">{SITE_CONFIG.taglineEn}</p>
             </div>
           </div>
 
