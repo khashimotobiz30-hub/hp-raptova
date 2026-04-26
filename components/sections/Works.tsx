@@ -10,7 +10,7 @@ export default function Works() {
   return (
     <section
       id="works"
-      className="bg-white py-32 md:py-48 border-t border-[#e5e5e5]"
+      className="bg-white py-24 md:py-36 border-t border-[#e5e5e5]"
       aria-labelledby="works-heading"
     >
       <div className="max-w-[1280px] mx-auto px-5 md:px-12 lg:px-20">
@@ -18,14 +18,14 @@ export default function Works() {
         <RevealAnimation>
           <h2
             id="works-heading"
-            className="text-[#0a0a0a] tracking-[0.22em] text-xs font-medium mb-20 md:mb-28"
+            className="text-[#0a0a0a] tracking-[0.22em] text-xs font-medium mb-14 md:mb-20"
           >
             SELECTED WORKS
           </h2>
         </RevealAnimation>
 
         {/* 1カラム縦並び */}
-        <div className="flex flex-col gap-28 md:gap-40">
+        <div className="flex flex-col gap-20 md:gap-28">
           {WORKS_ITEMS.map((work, i) => (
             <RevealAnimation key={work.id} delay={0.1}>
               <article aria-label={work.titleEn}>
@@ -39,7 +39,7 @@ export default function Works() {
                   <motion.div
                     whileHover={{ scale: 1.02 }}
                     transition={{ duration: 0.3, ease: 'easeOut' }}
-                    className="relative w-full aspect-video overflow-hidden"
+                    className="relative w-full aspect-[16/8.5] overflow-hidden"
                   >
                     <Image
                       src={work.thumbnail}
@@ -55,7 +55,7 @@ export default function Works() {
                 </Link>
 
                 {/* テキスト */}
-                <div className="mt-8 md:mt-10">
+                <div className="mt-5 md:mt-6">
                   <div className="flex items-start gap-4 mb-4">
                     <span className="text-[#8a8a8a] text-xs tracking-[0.16em] mt-1 flex-shrink-0">
                       {work.number}
@@ -95,7 +95,7 @@ export default function Works() {
                   {/* View Project */}
                   <Link
                     href={work.href}
-                    className="inline-flex items-center gap-2 mt-6 text-[#0a0a0a] text-sm tracking-[0.1em] hover:opacity-50 transition-opacity duration-200 group"
+                    className="inline-flex items-center gap-2 mt-6 text-[#0a0a0a] text-sm font-medium tracking-[0.14em] border-b border-transparent hover:border-[#0a0a0a] transition-[border-color,opacity] duration-200 pb-px group"
                     aria-label={`${work.titleEn} のプロジェクトを見る`}
                   >
                     View Project{' '}
