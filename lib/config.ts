@@ -1,5 +1,5 @@
 export const SITE_CONFIG = {
-  url: 'https://raptova.com', // 公開ドメイン確定後に更新
+  url: 'https://hp-raptova.vercel.app',
   email: 'k.hashimoto.biz30@gmail.com',
   twitter: '@hako_freework30',
   twitterUrl: 'https://x.com/hako_freework30',
