@@ -20,7 +20,7 @@ export const WORKS_ITEMS = [
     id: 'questoria',
     number: '01',
     titleEn: 'QUESTORIA',
-    titleJa: 'AIスキル診断アプリ',
+    titleJa: 'AI Diagnosis Application',
     description:
       'AI活用力をタイプ別に可視化し、\nユーザーごとに次の行動を提示する診断プロダクト。',
     tags: ['#AI Diagnosis', '#Web App', '#UX Design'],
@@ -31,7 +31,7 @@ export const WORKS_ITEMS = [
     id: 'raptova-website',
     number: '02',
     titleEn: 'RAPTOVA OFFICIAL WEBSITE',
-    titleJa: 'ブランドサイト / インタラクティブWebサイト',
+    titleJa: 'Brand Site / Interactive Web Experience',
     description:
       '粒子によるインタラクション、NOVAによる対話型Contact UIを備えた、\nRAPTOVAの思想と技術力を体現する公式Webサイト。',
     tags: ['#Brand Site', '#Interaction Design', '#Web Experience'],
@@ -54,23 +54,32 @@ export const WORKS_ITEMS = [
 export const SERVICES_ITEMS = [
   {
     number: '01',
+    transformCopy: ['IDEA', 'TO PRODUCT'],
     titleEn: 'AI PRODUCT DEVELOPMENT',
     titleJa: 'AIプロダクト開発支援',
     description:
       '診断アプリ、チャットボット、業務支援ツール、Webアプリなど、\nアイデアを実際に使えるプロダクトへと落とし込みます。',
+    tags: 'WEB APP / DIAGNOSIS / UX DESIGN / BUILD',
+    iconSrc: '/images/services/service-product-abstract.png',
   },
   {
     number: '02',
+    transformCopy: ['CONCEPT', 'TO SYSTEM'],
     titleEn: 'AI CONSULTING & DESIGN',
     titleJa: 'AI活用設計・コンサルティング',
     description:
       '事業、業務、発信、サービス設計の中に、\nAIをどのように組み込むべきかを整理し、実行可能な形へ導きます。',
+    tags: 'STRATEGY / WORKFLOW / AI DESIGN / PLANNING',
+    iconSrc: '/images/services/service-system-abstract.png',
   },
   {
     number: '03',
+    transformCopy: ['SKILL', 'TO MOTION'],
     titleEn: 'AI SKILL EXPANSION',
     titleJa: 'AIスキル拡張・講座',
     description:
       '個人やチームがAIを使いこなし、\n自分たちの思考やアイデアを形にできる状態をつくります。',
+    tags: 'TRAINING / LEARNING / ENABLEMENT / SKILL',
+    iconSrc: '/images/services/service-motion-abstract.png',
   },
 ] as const;

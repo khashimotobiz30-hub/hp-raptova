@@ -10,23 +10,23 @@ export default function About() {
       className="bg-white py-24 md:py-36 border-t border-[#e5e5e5]"
       aria-labelledby="about-heading"
     >
-      <div className="max-w-[1280px] mx-auto px-5 md:px-12 lg:px-20">
+      <div className="max-w-[1440px] mx-auto px-5 md:px-12 lg:px-20">
 
         {/* 1. 上段：大見出し + 導入本文 */}
         <div className="grid grid-cols-1 md:grid-cols-[260px_1fr] lg:grid-cols-[300px_1fr] md:gap-14 lg:gap-20 md:items-start">
           <RevealAnimation>
             <h2
               id="about-heading"
-              className="text-[#0a0a0a] tracking-[0.14em] leading-[1.2] mb-10 md:mb-0"
-              style={{ fontSize: 'clamp(36px, 3.6vw, 56px)', fontWeight: 300 }}
+              className="text-[#0a0a0a] tracking-[0.16em] leading-[1.1] mb-10 md:mb-0"
+              style={{ fontSize: 'clamp(38px, 4.1vw, 68px)', fontWeight: 400 }}
             >
-              ABOUT<br />RAPTOVA
+              ABOUT
             </h2>
           </RevealAnimation>
 
           <RevealAnimation delay={0.1}>
             <p
-              className="text-[#0a0a0a] copy-ja"
+              className="text-[#0a0a0a] copy-ja max-w-[720px]"
               style={{ fontSize: 'clamp(16px, 1.3vw, 20px)', fontWeight: 300, lineHeight: 2.0 }}
             >
               RAPTOVAは、AIを活用して、
@@ -57,7 +57,7 @@ export default function About() {
           <div className="hidden md:block" aria-hidden="true" />
           <RevealAnimation delay={0.12}>
             <div
-              className="text-[#0a0a0a] copy-ja"
+              className="text-[#0a0a0a] copy-ja max-w-[720px]"
               style={{ fontSize: 'clamp(16px, 1.3vw, 20px)', fontWeight: 300, lineHeight: 2.0 }}
             >
               <p>
