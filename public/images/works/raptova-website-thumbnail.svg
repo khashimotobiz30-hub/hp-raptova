@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <rect width="1200" height="675" fill="#ffffff"/>
+  <rect x="1" y="1" width="1198" height="673" fill="none" stroke="#e5e5e5" stroke-width="1"/>
+
+  <!-- Grid dots -->
+  <g opacity="0.3">
+    <pattern id="dots2" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+      <circle cx="20" cy="20" r="0.8" fill="#bbbbbb"/>
+    </pattern>
+    <rect width="1200" height="675" fill="url(#dots2)"/>
+  </g>
+
+  <!-- Particle scatter (decorative) -->
+  <g opacity="0.25">
+    <circle cx="700" cy="180" r="1.2" fill="#999999"/>
+    <circle cx="750" cy="240" r="0.8" fill="#bbbbbb"/>
+    <circle cx="820" cy="190" r="1.5" fill="#999999"/>
+    <circle cx="680" cy="300" r="0.9" fill="#cccccc"/>
+    <circle cx="900" cy="250" r="1.1" fill="#999999"/>
+    <circle cx="960" cy="190" r="0.7" fill="#bbbbbb"/>
+    <circle cx="1020" cy="280" r="1.3" fill="#aaaaaa"/>
+    <circle cx="850" cy="340" r="0.8" fill="#cccccc"/>
+    <circle cx="760" cy="380" r="1.0" fill="#999999"/>
+    <circle cx="1080" cy="230" r="0.9" fill="#bbbbbb"/>
+    <circle cx="940" cy="380" r="1.2" fill="#aaaaaa"/>
+    <circle cx="1100" cy="320" r="0.7" fill="#cccccc"/>
+    <circle cx="720" cy="430" r="0.9" fill="#999999"/>
+    <circle cx="860" cy="460" r="1.1" fill="#bbbbbb"/>
+    <circle cx="1000" cy="420" r="0.8" fill="#aaaaaa"/>
+  </g>
+
+  <!-- Number -->
+  <text x="80" y="160" font-family="Inter, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="400" letter-spacing="3" fill="#aaaaaa">02</text>
+
+  <!-- Title -->
+  <text x="80" y="300" font-family="Inter, Helvetica Neue, Arial, sans-serif" font-size="36" font-weight="500" letter-spacing="4" fill="#0a0a0a">RAPTOVA OFFICIAL WEBSITE</text>
+
+  <!-- Subtitle -->
+  <text x="80" y="342" font-family="Inter, Helvetica Neue, Arial, sans-serif" font-size="14" font-weight="300" letter-spacing="2" fill="#8a8a8a">Brand Site / Interactive Web Experience</text>
+
+  <!-- Tags -->
+  <text x="80" y="420" font-family="Inter, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="300" letter-spacing="1" fill="#bbbbbb">#Brand Site  #Interaction Design  #Web Experience</text>
+
+  <!-- Decorative line -->
+  <line x1="80" y1="468" x2="480" y2="468" stroke="#e5e5e5" stroke-width="1"/>
+</svg>
