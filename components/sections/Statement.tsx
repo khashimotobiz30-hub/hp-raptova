@@ -14,22 +14,38 @@ export default function Statement() {
   return (
     <section
       id="statement"
-      className="bg-white py-20 md:py-32"
+      className="bg-white py-24 md:py-40"
       aria-label="ステートメント"
     >
       <div className="max-w-[1280px] mx-auto px-5 md:px-12 lg:px-20">
-        {/* SP/MD: mx-auto 中央寄せ / LG+: 14% 左オフセット（中央より左） */}
-        <div className="max-w-[660px] mx-auto lg:mx-0 lg:ml-[14%]">
-          {PARAGRAPHS.map((para, i) => (
-            <RevealAnimation key={i} delay={i * 0.12} className={i > 0 ? 'mt-7 md:mt-9' : ''}>
-              <p
-                className="text-[#0a0a0a] leading-[1.9] copy-ja whitespace-pre-line"
-                style={{ fontSize: 'clamp(17px, 1.5vw, 22px)', fontWeight: 300 }}
+        <div className="max-w-[820px] mx-auto lg:mx-0 lg:ml-[10%]">
+          {PARAGRAPHS.map((para, i) => {
+            const isLast = i === PARAGRAPHS.length - 1;
+            return (
+              <RevealAnimation
+                key={i}
+                delay={i * 0.10}
+                className={
+                  isLast
+                    ? 'mt-14 md:mt-20'
+                    : i > 0
+                    ? 'mt-10 md:mt-14'
+                    : ''
+                }
               >
-                {para}
-              </p>
-            </RevealAnimation>
-          ))}
+                <p
+                  className="text-[#0a0a0a] copy-ja whitespace-pre-line"
+                  style={{
+                    fontSize: 'clamp(19px, 1.9vw, 28px)',
+                    fontWeight: 300,
+                    lineHeight: 2.0,
+                  }}
+                >
+                  {para}
+                </p>
+              </RevealAnimation>
+            );
+          })}
         </div>
       </div>
     </section>
