@@ -39,7 +39,7 @@ export default function About() {
                 <br />
                 改善までを一貫して支援し、
               </p>
-              <p className="mt-6">
+              <p className="mt-6" style={{ wordBreak: 'break-all' }}>
                 個人や組織が、自分たちの構想を現実に動かせる状態をつくります。
               </p>
               <p className="mt-8">
