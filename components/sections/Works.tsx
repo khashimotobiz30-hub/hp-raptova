@@ -7,7 +7,9 @@ import { WORKS_ITEMS } from '@/lib/config';
 
 export default function Works() {
   // NOTE: ビジュアル未作成のため、Works上では一旦非表示（後で戻せるようデータは残す）
-  const visibleWorks = WORKS_ITEMS.filter((work) => work.id !== 'ai-sns-operation');
+  const visibleWorks = WORKS_ITEMS.filter(
+    (work): work is (typeof WORKS_ITEMS)[number] => work.id !== 'ai-sns-operation',
+  );
 
   return (
     <section
