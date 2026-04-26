@@ -15,7 +15,7 @@ export default function Statement() {
     <section
       id="statement"
       className="bg-white py-20 md:py-32"
-      aria-labelledby="statement-heading"
+      aria-label="ステートメント"
     >
       <div className="max-w-[1280px] mx-auto px-5 md:px-12 lg:px-20">
         {/* SP/MD: mx-auto 中央寄せ / LG+: 14% 左オフセット（中央より左） */}
