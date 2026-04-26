@@ -21,8 +21,7 @@ function renderDescription(text: string) {
         return (
           <Fragment key={idx}>
             {idx > 0 && <br />}
-            {line.substring(0, splitAt)}
-            <span style={{ whiteSpace: 'nowrap' }}>{line.substring(splitAt)}</span>
+            {line.substring(0, splitAt)}<span style={{ whiteSpace: 'nowrap' }}>{line.substring(splitAt)}</span>
           </Fragment>
         );
       }
