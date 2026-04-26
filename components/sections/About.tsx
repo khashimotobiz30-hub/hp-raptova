@@ -6,13 +6,13 @@ export default function About() {
   return (
     <section
       id="about"
-      className="bg-white py-32 md:py-48 border-t border-[#e5e5e5]"
+      className="bg-white py-20 md:py-28 border-t border-[#e5e5e5]"
       aria-labelledby="about-heading"
     >
       <div className="max-w-[1280px] mx-auto px-5 md:px-12 lg:px-20">
-        <div className="flex flex-col md:flex-row md:gap-20 lg:gap-32">
+        <div className="flex flex-col md:flex-row md:gap-12 lg:gap-16">
           {/* 左：タイトル */}
-          <RevealAnimation className="md:w-48 lg:w-56 flex-shrink-0 mb-10 md:mb-0">
+          <RevealAnimation className="md:w-48 lg:w-52 flex-shrink-0 mb-10 md:mb-0">
             <h2
               id="about-heading"
               className="text-[#0a0a0a] tracking-[0.22em] text-xs font-medium"
@@ -22,10 +22,10 @@ export default function About() {
           </RevealAnimation>
 
           {/* 右：本文 */}
-          <RevealAnimation delay={0.1} className="flex-1 max-w-[640px]">
+          <RevealAnimation delay={0.1} className="flex-1 max-w-[560px]">
             <div
               className="text-[#0a0a0a] leading-[1.9] copy-ja"
-              style={{ fontSize: 'clamp(16px, 1.5vw, 22px)', fontWeight: 300 }}
+              style={{ fontSize: 'clamp(15px, 1.3vw, 20px)', fontWeight: 300 }}
             >
               <p>RAPTOVAは、AIを活用して、</p>
               <p className="mt-6 leading-[2.2]">
