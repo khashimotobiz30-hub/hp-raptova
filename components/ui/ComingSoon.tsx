@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export default function ComingSoon() {
   return (
-    <div className="min-h-[calc(100svh-72px)] flex items-center justify-center bg-white px-5 py-32">
+    <div className="min-h-[calc(100svh-72px)] flex items-center justify-center bg-white px-5 py-24 md:py-32">
       <div className="text-center">
         <p className="text-[#0a0a0a] text-xs tracking-[0.28em] font-medium mb-8">
           COMING SOON
