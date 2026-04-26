@@ -7,7 +7,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="bg-white py-32 md:py-48 border-t border-[#e5e5e5]"
+      className="bg-white pt-32 pb-24 md:pt-48 md:pb-36 border-t border-[#e5e5e5]"
       aria-labelledby="contact-heading"
     >
       <div className="max-w-[1280px] mx-auto px-5 md:px-12 lg:px-20">
