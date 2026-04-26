@@ -24,30 +24,33 @@ async function svgToPng(svgStr, width, height) {
     .toBuffer();
 }
 
-// ICO ファイル生成（PNG を ICO コンテナに埋め込む方式）
-function wrapPngInIco(pngBuffer) {
-  const numImages = 1;
-  const dataOffset = 6 + 16 * numImages; // ICO header (6) + directory entry (16)
-  const pngSize = pngBuffer.length;
+// ICO ファイル生成（複数サイズの PNG を ICO コンテナに埋め込む）
+function buildIco(entries) {
+  // entries: [{ size, buffer }]
+  const n = entries.length;
+  const dataOffset = 6 + 16 * n;
+  const totalSize = dataOffset + entries.reduce((s, e) => s + e.buffer.length, 0);
+  const buf = Buffer.alloc(totalSize);
 
-  const buf = Buffer.alloc(dataOffset + pngSize);
+  buf.writeUInt16LE(0, 0);  // reserved
+  buf.writeUInt16LE(1, 2);  // type: ICO
+  buf.writeUInt16LE(n, 4);  // image count
 
-  // ICO Header
-  buf.writeUInt16LE(0, 0);        // reserved
-  buf.writeUInt16LE(1, 2);        // type: ICO
-  buf.writeUInt16LE(numImages, 4); // count
+  let offset = dataOffset;
+  entries.forEach(({ size, buffer }, i) => {
+    const base = 6 + 16 * i;
+    buf.writeUInt8(size >= 256 ? 0 : size, base);      // width
+    buf.writeUInt8(size >= 256 ? 0 : size, base + 1);  // height
+    buf.writeUInt8(0, base + 2);                        // color count
+    buf.writeUInt8(0, base + 3);                        // reserved
+    buf.writeUInt16LE(1, base + 4);                     // planes
+    buf.writeUInt16LE(32, base + 6);                    // bpp
+    buf.writeUInt32LE(buffer.length, base + 8);         // data size
+    buf.writeUInt32LE(offset, base + 12);               // data offset
+    buffer.copy(buf, offset);
+    offset += buffer.length;
+  });
 
-  // Directory entry (16 bytes)
-  buf.writeUInt8(32, 6);          // width (0 = 256)
-  buf.writeUInt8(32, 7);          // height
-  buf.writeUInt8(0, 8);           // color count (0 = 256+)
-  buf.writeUInt8(0, 9);           // reserved
-  buf.writeUInt16LE(1, 10);       // color planes
-  buf.writeUInt16LE(32, 12);      // bits per pixel
-  buf.writeUInt32LE(pngSize, 14); // image data size
-  buf.writeUInt32LE(dataOffset, 18); // offset
-
-  pngBuffer.copy(buf, dataOffset);
   return buf;
 }
 
@@ -81,19 +84,18 @@ const OGP_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="63
   <line x1="80" y1="475" x2="340" y2="475" stroke="#e5e5e5" stroke-width="1"/>
 </svg>`;
 
-// -------- Favicon / Icon SVG (32x32) --------
-const ICON_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
-  <rect width="32" height="32" fill="#0a0a0a"/>
-  <text x="16" y="22" font-family="Helvetica Neue, Arial, sans-serif"
-    font-size="18" font-weight="500" text-anchor="middle" fill="#ffffff">R</text>
+// -------- Icon SVG factory --------
+function iconSvg(size, fontSize) {
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 ${size} ${size}">
+  <rect width="${size}" height="${size}" fill="#0a0a0a"/>
+  <text x="50%" y="50%" font-family="Helvetica Neue, Arial, sans-serif"
+    font-size="${fontSize}" font-weight="500"
+    text-anchor="middle" dominant-baseline="middle" fill="#f5f5f5">R</text>
 </svg>`;
+}
 
 // -------- Apple Touch Icon SVG (180x180) --------
-const APPLE_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="180" height="180" viewBox="0 0 180 180">
-  <rect width="180" height="180" rx="40" fill="#0a0a0a"/>
-  <text x="90" y="118" font-family="Helvetica Neue, Arial, sans-serif"
-    font-size="100" font-weight="500" text-anchor="middle" fill="#ffffff">R</text>
-</svg>`;
+const APPLE_SVG = iconSvg(180, 80);
 
 async function main() {
   await ensureDir(path.join(ROOT, 'public/images/ogp'));
@@ -105,10 +107,18 @@ async function main() {
   await writeFile(path.join(ROOT, 'public/images/ogp/ogp-default.png'), ogpPng);
   console.log(`  -> ogp-default.png (${ogpPng.length} bytes)`);
 
-  // Favicon 32x32 PNG → ICO
-  console.log('Generating favicon.ico...');
-  const iconPng32 = await svgToPng(ICON_SVG, 32, 32);
-  const icoBuffer = wrapPngInIco(iconPng32);
+  // Favicon ICO (16x16 + 32x32 + 48x48)
+  console.log('Generating favicon.ico (16/32/48)...');
+  const [ico16, ico32, ico48] = await Promise.all([
+    svgToPng(iconSvg(16, 9),  16, 16),
+    svgToPng(iconSvg(32, 18), 32, 32),
+    svgToPng(iconSvg(48, 26), 48, 48),
+  ]);
+  const icoBuffer = buildIco([
+    { size: 16, buffer: ico16 },
+    { size: 32, buffer: ico32 },
+    { size: 48, buffer: ico48 },
+  ]);
   await writeFile(path.join(ROOT, 'public/favicon.ico'), icoBuffer);
   console.log(`  -> favicon.ico (${icoBuffer.length} bytes)`);
 
@@ -118,14 +128,9 @@ async function main() {
   await writeFile(path.join(ROOT, 'public/apple-touch-icon.png'), applePng);
   console.log(`  -> apple-touch-icon.png (${applePng.length} bytes)`);
 
-  // icon.png 512x512 (PWA)
+  // icon.png 512x512 (PWA / manifest)
   console.log('Generating icon.png (512x512)...');
-  const ICON_SVG_512 = `<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
-    <rect width="512" height="512" fill="#0a0a0a"/>
-    <text x="256" y="330" font-family="Helvetica Neue, Arial, sans-serif"
-      font-size="280" font-weight="500" text-anchor="middle" fill="#ffffff">R</text>
-  </svg>`;
-  const iconPng512 = await svgToPng(ICON_SVG_512, 512, 512);
+  const iconPng512 = await svgToPng(iconSvg(512, 230), 512, 512);
   await writeFile(path.join(ROOT, 'public/icon.png'), iconPng512);
   console.log(`  -> icon.png (${iconPng512.length} bytes)`);
 
