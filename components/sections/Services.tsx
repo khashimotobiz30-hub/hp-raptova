@@ -2,9 +2,39 @@
 
 import Link from 'next/link';
 import { motion, useInView, useReducedMotion } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, Fragment } from 'react';
 import RevealAnimation from '@/components/ui/RevealAnimation';
 import { SERVICES_ITEMS } from '@/lib/config';
+
+function renderDescription(text: string) {
+  const lines = text.split('\n');
+  return lines.map((line, idx) => {
+    const isLast = idx === lines.length - 1;
+    if (isLast) {
+      const dotIdx = line.lastIndexOf('。');
+      if (dotIdx !== -1) {
+        const lastCommaIdx = line.lastIndexOf('、', dotIdx - 1);
+        const splitAt =
+          lastCommaIdx !== -1 && lastCommaIdx > dotIdx - 15
+            ? lastCommaIdx + 1
+            : Math.max(0, dotIdx - 8);
+        return (
+          <Fragment key={idx}>
+            {idx > 0 && <br />}
+            {line.substring(0, splitAt)}
+            <span style={{ whiteSpace: 'nowrap' }}>{line.substring(splitAt)}</span>
+          </Fragment>
+        );
+      }
+    }
+    return (
+      <Fragment key={idx}>
+        {idx > 0 && <br />}
+        {line}
+      </Fragment>
+    );
+  });
+}
 
 function AnimatedRule({ index }: { index: number }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -89,10 +119,10 @@ export default function Services() {
                     </p>
                   </div>
                   <p
-                    className="text-[#555555] leading-[1.9] copy-ja whitespace-pre-line"
+                    className="text-[#555555] leading-[1.9] copy-ja"
                     style={{ fontSize: 'clamp(14px, 1.1vw, 15px)', fontWeight: 300 }}
                   >
-                    {item.description}
+                    {renderDescription(item.description)}
                   </p>
                 </div>
               </div>

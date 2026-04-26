@@ -28,7 +28,7 @@ export default function Contact() {
             >
               アイデア段階のご相談、AI活用に関するご相談、
               <br className="hidden md:inline" />
-              プロダクト開発・講座・コンサルティングのご依頼まで。
+              プロダクト開発・講座・コンサルティングの<span style={{ whiteSpace: 'nowrap' }}>ご依頼まで。</span>
             </p>
             <p
               className="text-[#555555] mt-6 leading-[1.9] copy-ja"
