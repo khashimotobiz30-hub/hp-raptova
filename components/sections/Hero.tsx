@@ -155,7 +155,9 @@ export default function Hero() {
           className="text-[#0a0a0a] leading-tight copy-ja"
           style={{ fontSize: 'clamp(36px, 6vw, 88px)', fontWeight: 500, letterSpacing: '-0.01em' }}
         >
-          {SITE_CONFIG.taglineJa}
+          <span className="whitespace-nowrap">思考を、</span>
+          <br className="md:hidden" />
+          <span className="whitespace-nowrap">次の現実へ。</span>
         </p>
         <p
           className="text-[#8a8a8a] mt-4 tracking-[0.18em]"
