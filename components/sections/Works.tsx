@@ -51,52 +51,80 @@ export default function Works() {
                   <div className="py-12 md:py-14">
                     <div className="flex flex-col md:grid md:items-stretch md:gap-x-10 lg:gap-x-12 md:grid-cols-[40px_minmax(0,2.4fr)_minmax(0,3.2fr)]">
                       {/* ビジュアル（SPは先頭） */}
-                      <Link
-                        href={work.href ?? '#'}
-                        className={[
-                          'order-1 md:order-3 block relative',
-                          work.id === 'questoria' || work.id === 'raptova-website'
-                            ? 'overflow-visible border-none bg-transparent'
-                            : 'overflow-hidden border border-[#e5e5e5] bg-white',
-                        ].join(' ')}
-                        aria-label={`${work.titleEn} のプロジェクトを見る`}
-                      >
-                        <div className="relative w-full aspect-[16/8.5] overflow-hidden">
-                          {work.id === 'questoria' ? (
-                            <div className="absolute inset-0">
+                      {work.externalHref ? (
+                        <a
+                          href={work.externalHref}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={[
+                            'order-1 md:order-3 block relative transition-opacity duration-200 hover:opacity-95',
+                            work.id === 'questoria' || work.id === 'raptova-website'
+                              ? 'overflow-visible border-none bg-transparent'
+                              : 'overflow-hidden border border-[#e5e5e5] bg-white',
+                          ].join(' ')}
+                          aria-label={`${work.titleEn} のプロジェクトを見る（外部サイト）`}
+                        >
+                          <div className="relative w-full aspect-[16/8.5] overflow-hidden">
+                            {work.id === 'questoria' ? (
+                              <div className="absolute inset-0">
+                                <Image
+                                  src="/images/works/questoria-work-visual.png"
+                                  alt="QUESTORIAのAIスキル診断アプリ画面"
+                                  fill
+                                  className="object-contain"
+                                  sizes="(max-width: 768px) 100vw, (max-width: 1280px) 52vw, 720px"
+                                  priority={i === 0}
+                                />
+                              </div>
+                            ) : (
                               <Image
-                                src="/images/works/questoria-work-visual.png"
-                                alt="QUESTORIAのAIスキル診断アプリ画面"
+                                src={work.thumbnail}
+                                alt=""
                                 fill
-                                className="object-contain"
+                                className="object-cover"
                                 sizes="(max-width: 768px) 100vw, (max-width: 1280px) 52vw, 720px"
                                 priority={i === 0}
                               />
-                            </div>
-                          ) : work.id === 'raptova-website' ? (
-                            <div className="absolute inset-0">
+                            )}
+                            <div className="absolute inset-0 bg-[#0a0a0a]/0 group-hover:bg-[#0a0a0a]/[0.03] transition-colors duration-300" />
+                          </div>
+                        </a>
+                      ) : (
+                        <div
+                          className={[
+                            'order-1 md:order-3 block relative',
+                            work.id === 'questoria' || work.id === 'raptova-website'
+                              ? 'overflow-visible border-none bg-transparent'
+                              : 'overflow-hidden border border-[#e5e5e5] bg-white',
+                          ].join(' ')}
+                          aria-hidden="true"
+                        >
+                          <div className="relative w-full aspect-[16/8.5] overflow-hidden">
+                            {work.id === 'raptova-website' ? (
+                              <div className="absolute inset-0">
+                                <Image
+                                  src="/images/works/raptova-website-work-visual.png"
+                                  alt="RAPTOVA公式サイトのPC/SPモックアップ"
+                                  fill
+                                  className="object-contain"
+                                  sizes="(max-width: 768px) 100vw, (max-width: 1280px) 52vw, 720px"
+                                  priority={i === 0}
+                                />
+                              </div>
+                            ) : (
                               <Image
-                                src="/images/works/raptova-website-work-visual.png"
-                                alt="RAPTOVA公式サイトのPC/SPモックアップ"
+                                src={work.thumbnail}
+                                alt=""
                                 fill
-                                className="object-contain"
+                                className="object-cover"
                                 sizes="(max-width: 768px) 100vw, (max-width: 1280px) 52vw, 720px"
                                 priority={i === 0}
                               />
-                            </div>
-                          ) : (
-                            <Image
-                              src={work.thumbnail}
-                              alt=""
-                              fill
-                              className="object-cover"
-                              sizes="(max-width: 768px) 100vw, (max-width: 1280px) 52vw, 720px"
-                              priority={i === 0}
-                            />
-                          )}
-                          <div className="absolute inset-0 bg-[#0a0a0a]/0 group-hover:bg-[#0a0a0a]/[0.03] transition-colors duration-300" />
+                            )}
+                            <div className="absolute inset-0 bg-[#0a0a0a]/0 group-hover:bg-[#0a0a0a]/[0.03] transition-colors duration-300" />
+                          </div>
                         </div>
-                      </Link>
+                      )}
 
                       {/* 番号 */}
                       <div className="order-2 md:order-1 mt-6 md:mt-0">

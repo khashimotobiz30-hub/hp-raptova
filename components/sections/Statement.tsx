@@ -1,6 +1,7 @@
 'use client';
 
 import RevealAnimation from '@/components/ui/RevealAnimation';
+import { Fragment } from 'react';
 
 const PARAGRAPHS = [
   '思考は、はじめから形を持っているわけではない。',
@@ -24,7 +25,7 @@ export default function Statement() {
             return (
               <RevealAnimation
                 key={i}
-                delay={i * 0.10}
+                delay={i * 0.1}
                 className={
                   isLast
                     ? 'mt-14 md:mt-20'
@@ -41,7 +42,12 @@ export default function Statement() {
                     lineHeight: 2.0,
                   }}
                 >
-                  {para}
+                  {para.split('\n').map((line, idx) => (
+                    <Fragment key={idx}>
+                      {idx > 0 && <br />}
+                      {line}
+                    </Fragment>
+                  ))}
                 </p>
               </RevealAnimation>
             );
