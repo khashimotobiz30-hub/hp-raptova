@@ -52,7 +52,7 @@ export default function Works() {
                     <div className="flex flex-col md:grid md:items-stretch md:gap-x-10 lg:gap-x-12 md:grid-cols-[40px_minmax(0,2.4fr)_minmax(0,3.2fr)]">
                       {/* ビジュアル（SPは先頭） */}
                       <Link
-                        href={work.href}
+                        href={work.href ?? '#'}
                         className={[
                           'order-1 md:order-3 block relative',
                           work.id === 'questoria' || work.id === 'raptova-website'
@@ -132,16 +132,38 @@ export default function Works() {
                           {work.tags.join(' / ')}
                         </p>
 
-                        <Link
-                          href={work.href}
-                          className="inline-flex items-center gap-2 mt-7 text-[#0a0a0a] text-sm tracking-[0.12em] hover:opacity-60 transition-opacity duration-200 group"
-                          aria-label={`${work.titleEn} のプロジェクトを見る`}
-                        >
-                          View Project{' '}
-                          <span className="transform group-hover:translate-x-1 transition-transform duration-200">
-                            →
+                        {work.externalHref ? (
+                          <a
+                            href={work.externalHref}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 mt-7 text-[#0a0a0a] text-sm tracking-[0.12em] hover:opacity-60 transition-opacity duration-200 group"
+                            aria-label={`${work.titleEn} のプロジェクトを見る（外部サイト）`}
+                          >
+                            View Project{' '}
+                            <span className="transform group-hover:translate-x-1 transition-transform duration-200">
+                              →
+                            </span>
+                          </a>
+                        ) : work.href ? (
+                          <Link
+                            href={work.href}
+                            className="inline-flex items-center gap-2 mt-7 text-[#0a0a0a] text-sm tracking-[0.12em] hover:opacity-60 transition-opacity duration-200 group"
+                            aria-label={`${work.titleEn} のプロジェクトを見る`}
+                          >
+                            View Project{' '}
+                            <span className="transform group-hover:translate-x-1 transition-transform duration-200">
+                              →
+                            </span>
+                          </Link>
+                        ) : (
+                          <span className="inline-flex items-center gap-2 mt-7 text-[#8a8a8a] text-sm tracking-[0.12em]">
+                            View Project{' '}
+                            <span aria-hidden="true">
+                              →
+                            </span>
                           </span>
-                        </Link>
+                        )}
                       </div>
                     </div>
                   </div>

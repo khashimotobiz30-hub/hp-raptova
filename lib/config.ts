@@ -15,7 +15,19 @@ export const SITE_CONFIG = {
 
 export const MAILTO_HREF = `mailto:${SITE_CONFIG.email}?subject=RAPTOVA%E3%81%B8%E3%81%AE%E3%81%8A%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B&body=%E3%81%8A%E5%90%8D%E5%89%8D%EF%BC%9A%0D%0A%0D%0A%E3%81%94%E7%9B%B8%E8%AB%87%E5%86%85%E5%AE%B9%EF%BC%9A%0D%0A`;
 
-export const WORKS_ITEMS = [
+export type WorkItem = {
+  id: string;
+  number: string;
+  titleEn: string;
+  titleJa: string;
+  description: string;
+  tags: readonly string[];
+  thumbnail: string;
+  href?: string;
+  externalHref?: string;
+};
+
+export const WORKS_ITEMS: readonly WorkItem[] = [
   {
     id: 'questoria',
     number: '01',
@@ -25,6 +37,7 @@ export const WORKS_ITEMS = [
       'AI活用力をタイプ別に可視化し、\nユーザーごとに次の行動を提示する診断プロダクト。',
     tags: ['#AI Diagnosis', '#Web App', '#UX Design'],
     href: '/works/questoria',
+    externalHref: 'https://questoria-liart.vercel.app/',
     thumbnail: '/images/works/questoria-thumbnail.svg',
   },
   {
