@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter, Noto_Sans_JP } from 'next/font/google';
+import { Inter, Noto_Sans_JP, Noto_Serif_JP } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
@@ -17,6 +17,14 @@ const notoSansJP = Noto_Sans_JP({
   weight: ['300', '400', '500', '600'],
   display: 'swap',
   variable: '--font-noto-sans-jp',
+  adjustFontFallback: true,
+});
+
+const notoSerifJP = Noto_Serif_JP({
+  subsets: ['latin'],
+  weight: ['300', '400', '500'],
+  display: 'swap',
+  variable: '--font-noto-serif-jp',
   adjustFontFallback: true,
 });
 
@@ -48,10 +56,6 @@ export const metadata: Metadata = {
     site: SITE_CONFIG.twitter,
   },
   icons: {
-    icon: [
-      { url: '/favicon.ico', sizes: 'any' },
-      { url: '/icon.png', type: 'image/png', sizes: '512x512' },
-    ],
     apple: { url: '/apple-touch-icon.png', sizes: '180x180' },
   },
 };
@@ -80,7 +84,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ja" className={`${inter.variable} ${notoSansJP.variable}`}>
+    <html lang="ja" className={`${inter.variable} ${notoSansJP.variable} ${notoSerifJP.variable}`}>
       <head>
         <script
           type="application/ld+json"

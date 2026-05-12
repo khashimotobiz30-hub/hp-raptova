@@ -7,54 +7,43 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="bg-white pt-28 pb-24 md:pt-40 md:pb-32 border-t border-[#e5e5e5]"
+      className="border-t border-white/10 bg-[#080808] px-7 py-16 text-white md:px-14 lg:px-20"
       aria-labelledby="contact-heading"
     >
-      <div className="max-w-[1440px] mx-auto px-5 md:px-12 lg:px-20">
-        <div className="grid grid-cols-1 md:grid-cols-[260px_1fr] lg:grid-cols-[300px_1fr] md:gap-20 lg:gap-24 md:items-start">
+      <div className="mx-auto grid max-w-[1240px] gap-10 xl:grid-cols-[360px_minmax(500px,1fr)_280px] xl:items-center xl:gap-16">
+        <div>
           <RevealAnimation>
+            <p className="mb-5 text-[10px] font-semibold tracking-[0.42em] text-white/34">
+              CONTACT
+            </p>
             <h2
               id="contact-heading"
-              className="text-[#0a0a0a] tracking-[0.12em] leading-[1.1]"
-              style={{ fontSize: 'clamp(40px, 3.8vw, 64px)', fontWeight: 500 }}
+              className="copy-ja font-serif text-[26px] leading-relaxed tracking-[0.03em] text-white min-[430px]:text-3xl min-[430px]:tracking-[0.12em] md:tracking-[0.18em] xl:whitespace-nowrap"
             >
-              CONTACT
+              目の前の仕事を、
+              <br />
+              前に進めるきっかけを。
             </h2>
           </RevealAnimation>
-
-          <RevealAnimation delay={0.1}>
-            <div className="max-w-[720px] mt-6 md:mt-1 md:pl-8 lg:pl-10">
-              <p
-                className="text-[#0a0a0a] leading-[2.0] copy-ja"
-                style={{ fontSize: 'clamp(15px, 1.3vw, 18px)', fontWeight: 300 }}
-              >
-                アイデア段階のご相談、AI活用に関するご相談、
-                <br className="hidden md:inline" />
-                プロダクト開発・講座・コンサルティングの<span style={{ whiteSpace: 'nowrap' }}>ご依頼まで。</span>
-              </p>
-
-              <p
-                className="text-[#555555] mt-8 leading-[2.0] copy-ja"
-                style={{ fontSize: 'clamp(14px, 1.1vw, 16px)', fontWeight: 300 }}
-              >
-                まだ言葉になりきっていなくても構いません。
-                <br className="hidden md:inline" />
-                RAPTOVAが、形にするための対話から始めます。
-              </p>
-
-              <button
-                onClick={handleContactClick}
-                className="mt-10 inline-flex items-center gap-2 text-[#0a0a0a] text-sm tracking-[0.12em] hover:opacity-60 transition-opacity duration-200 group cursor-pointer"
-                aria-label="メールで問い合わせる"
-              >
-                Contact{' '}
-                <span className="transform group-hover:translate-x-1 transition-transform duration-200">
-                  →
-                </span>
-              </button>
-            </div>
-          </RevealAnimation>
         </div>
+
+        <RevealAnimation delay={0.1}>
+          <p className="copy-ja max-w-none text-xs leading-[2.15] tracking-[0.14em] text-white/58">
+            採用活動の立ち上げ、Web・資料・文章の整理、
+            <br className="hidden md:inline" />
+            業務効率化など、まだ整理しきれていない段階からご相談ください。
+          </p>
+        </RevealAnimation>
+
+        <RevealAnimation delay={0.16}>
+          <button
+            onClick={handleContactClick}
+            className="flex w-full items-center justify-between border border-white/35 px-7 py-5 text-xs font-semibold tracking-[0.22em] text-white transition hover:bg-white hover:text-zinc-950"
+            aria-label="メールで問い合わせる"
+          >
+            お問い合わせする <span>→</span>
+          </button>
+        </RevealAnimation>
       </div>
     </section>
   );

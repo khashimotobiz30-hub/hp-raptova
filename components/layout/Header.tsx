@@ -2,13 +2,12 @@
 
 import Link from 'next/link';
 import { useEffect, useState, useCallback } from 'react';
-import { handleContactClick } from '@/lib/contact';
 import { SITE_CONFIG } from '@/lib/config';
 
 const NAV_LINKS = [
-  { label: 'ABOUT', href: '/about' },
-  { label: 'SERVICES', href: '/services' },
-  { label: 'WORKS', href: '/works' },
+  { label: 'ABOUT', href: '/#about' },
+  { label: 'BUSINESS', href: '/#business' },
+  { label: 'PROJECTS', href: '/#projects' },
 ] as const;
 
 export default function Header() {
@@ -52,15 +51,18 @@ export default function Header() {
           'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
           scrolled
             ? 'bg-white/95 backdrop-blur-sm border-b border-[#e5e5e5]'
-            : 'bg-white/0',
+            : 'bg-white/0 md:mix-blend-difference',
         ].join(' ')}
         style={{ height: '72px' }}
       >
-        <div className="max-w-[1280px] mx-auto px-16 h-full flex items-center justify-between">
+        <div className="h-full px-7 md:px-12 lg:px-16 flex items-center justify-between">
           {/* ロゴ */}
           <Link
             href="/"
-            className="text-[#0a0a0a] text-sm font-medium tracking-[0.2em] hover:opacity-60 transition-opacity duration-200"
+            className={[
+              'text-sm font-medium tracking-[0.38em] hover:opacity-60 transition-opacity duration-200',
+              scrolled ? 'text-[#0a0a0a]' : 'text-[#0a0a0a] md:text-white',
+            ].join(' ')}
             aria-label={`${SITE_CONFIG.siteName} ホームへ`}
           >
             {SITE_CONFIG.siteName}
@@ -72,20 +74,40 @@ export default function Header() {
               <Link
                 key={label}
                 href={href}
-                className="text-[#555555] text-xs font-normal tracking-[0.18em] hover:text-[#0a0a0a] transition-colors duration-200 relative group"
+                className={[
+                  'text-xs font-normal tracking-[0.18em] transition-colors duration-200 relative group',
+                  scrolled
+                    ? 'text-[#555555] hover:text-[#0a0a0a]'
+                    : 'text-[#555555] hover:text-[#0a0a0a] md:text-white/82 md:hover:text-white',
+                ].join(' ')}
               >
                 {label}
-                <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-[#0a0a0a] group-hover:w-full transition-all duration-300" />
+                <span
+                  className={[
+                    'absolute -bottom-0.5 left-0 w-0 h-px group-hover:w-full transition-all duration-300',
+                    scrolled ? 'bg-[#0a0a0a]' : 'bg-[#0a0a0a] md:bg-white',
+                  ].join(' ')}
+                />
               </Link>
             ))}
-            <button
-              onClick={handleContactClick}
-              className="text-[#555555] text-xs font-normal tracking-[0.18em] hover:text-[#0a0a0a] transition-colors duration-200 relative group cursor-pointer"
-              aria-label="メールで問い合わせる"
+            <Link
+              href="/#contact"
+              className={[
+                'text-xs font-normal tracking-[0.18em] transition-colors duration-200 relative group cursor-pointer',
+                scrolled
+                  ? 'text-[#555555] hover:text-[#0a0a0a]'
+                  : 'text-[#555555] hover:text-[#0a0a0a] md:text-white/82 md:hover:text-white',
+              ].join(' ')}
+              aria-label="CONTACTセクションへ移動"
             >
               CONTACT
-              <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-[#0a0a0a] group-hover:w-full transition-all duration-300" />
-            </button>
+              <span
+                className={[
+                  'absolute -bottom-0.5 left-0 w-0 h-px group-hover:w-full transition-all duration-300',
+                  scrolled ? 'bg-[#0a0a0a]' : 'bg-[#0a0a0a] md:bg-white',
+                ].join(' ')}
+              />
+            </Link>
           </nav>
 
           {/* ハンバーガーボタン（SP） */}
@@ -140,16 +162,14 @@ export default function Header() {
               {label}
             </Link>
           ))}
-          <button
-            onClick={() => {
-              closeMenu();
-              handleContactClick();
-            }}
+          <Link
+            href="/#contact"
+            onClick={closeMenu}
             className="text-[#0a0a0a] text-sm tracking-[0.2em] hover:opacity-50 transition-opacity duration-200 cursor-pointer"
-            aria-label="メールで問い合わせる"
+            aria-label="CONTACTセクションへ移動"
           >
             CONTACT
-          </button>
+          </Link>
         </nav>
       </div>
     </>

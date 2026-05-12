@@ -1,59 +1,84 @@
 'use client';
 
 import RevealAnimation from '@/components/ui/RevealAnimation';
-import { Fragment } from 'react';
+import Image from 'next/image';
 
-const PARAGRAPHS = [
-  '思考は、はじめから形を持っているわけではない。',
-  `まだ言葉にならない違和感。\n輪郭のないアイデア。\n誰にも見えていない、可能性の粒子。`,
-  `それらは、ただ頭の中にあるだけでは、\n現実を変える力にはならない。`,
-  `RAPTOVAは、AIの力を重ねながら、\n曖昧な思考に輪郭を与え、\nひとつの形へと導いていく。`,
-  `小さな着想を、動き出す仕組みへ。\n個人の可能性を、次の現実へ。`,
+const STATEMENT_LINES = [
+  'AIの変化を、',
+  '遠い未来の話にしない。',
+  'まだ手が届いていない力を、',
+  '目の前の仕事へ届ける。',
+];
+
+const BODY_LINES = [
+  '構想や課題、情報を整理し、',
+  'AIと人の思考を掛け合わせて、',
+  '実行できる形へ変えていく。',
+  'RAPTOVAは、仕事を前に進めるパートナーです。',
 ];
 
 export default function Statement() {
   return (
     <section
       id="statement"
-      className="bg-white py-24 md:py-40"
+      className="overflow-hidden bg-[#050505] text-white"
       aria-label="ステートメント"
     >
-      <div className="max-w-[1280px] mx-auto px-5 md:px-12 lg:px-20">
-        <div className="max-w-[820px] mx-auto lg:mx-0 lg:ml-[10%]">
-          {PARAGRAPHS.map((para, i) => {
-            const isLast = i === PARAGRAPHS.length - 1;
-            return (
-              <RevealAnimation
-                key={i}
-                delay={i * 0.1}
-                className={
-                  isLast
-                    ? 'mt-14 md:mt-20'
-                    : i > 0
-                    ? 'mt-10 md:mt-14'
-                    : ''
-                }
-              >
-                <p
-                  className="text-[#0a0a0a] copy-ja whitespace-pre-line"
-                  style={{
-                    fontSize: 'clamp(19px, 1.9vw, 28px)',
-                    fontWeight: 300,
-                    lineHeight: 2.0,
-                  }}
-                >
-                  {para.split('\n').map((line, idx) => (
-                    <Fragment key={idx}>
-                      {idx > 0 && <br />}
-                      {line}
-                    </Fragment>
-                  ))}
-                </p>
-              </RevealAnimation>
-            );
-          })}
+      <div className="mx-auto max-w-[1440px] px-7 py-24 md:px-14 md:py-32 lg:px-20 lg:py-40">
+        <div className="grid gap-14 border-t border-white/15 pt-10 md:grid-cols-[31%_1fr] md:gap-16 md:pt-14 lg:gap-24">
+          <RevealAnimation>
+            <div>
+              <p className="text-[10px] font-semibold tracking-[0.42em] text-white/38">
+                STATEMENT
+              </p>
+              <div className="mt-8 hidden h-24 w-px bg-white/20 md:block" aria-hidden="true" />
+            </div>
+          </RevealAnimation>
+
+          <div>
+            <RevealAnimation delay={0.08}>
+              <h2 className="copy-ja text-[clamp(28px,4.4vw,64px)] font-light leading-[1.45] tracking-[0.08em] text-white">
+                {STATEMENT_LINES.map((line) => (
+                  <span key={line} className="block">
+                    {line}
+                  </span>
+                ))}
+              </h2>
+            </RevealAnimation>
+
+            <RevealAnimation delay={0.18} className="mt-12 md:mt-16">
+              <p className="copy-ja max-w-[620px] text-[14px] font-light leading-[2.15] tracking-[0.16em] text-white/58 md:text-[15px]">
+                {BODY_LINES.map((line) => (
+                  <span key={line} className="block">
+                    {line}
+                  </span>
+                ))}
+              </p>
+            </RevealAnimation>
+          </div>
         </div>
       </div>
+
+      <RevealAnimation delay={0.12} className="relative mx-auto max-w-[1440px]">
+        <div className="relative h-[300px] overflow-hidden bg-black md:h-[460px] lg:h-[560px]">
+          <Image
+            src="/images/raptova-statement-visual.png"
+            alt=""
+            fill
+            priority={false}
+            sizes="100vw"
+            className="object-cover object-[50%_44%]"
+          />
+          <div
+            className="absolute inset-0 bg-gradient-to-b from-[#050505] via-transparent to-black/20"
+            aria-hidden="true"
+          />
+          <div
+            className="absolute inset-x-0 top-0 h-px bg-white/10"
+            aria-hidden="true"
+          />
+        </div>
+      </RevealAnimation>
     </section>
   );
 }
