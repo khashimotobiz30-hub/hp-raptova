@@ -7,10 +7,10 @@ export default function About() {
   return (
     <section
       id="about"
-      className="grid w-full grid-cols-1 bg-[#f4f3ef] min-[1440px]:grid-cols-[34%_66%]"
+      className="grid w-full min-w-0 max-w-full grid-cols-1 overflow-x-clip bg-[#f4f3ef] min-[1440px]:grid-cols-[34%_66%]"
       aria-labelledby="about-heading"
     >
-      <div className="px-7 py-20 md:px-14 lg:px-20">
+      <div className="min-w-0 px-7 py-20 md:px-14 lg:px-20">
         <RevealAnimation>
           <p className="mb-10 text-[10px] font-semibold tracking-[0.42em] text-zinc-500">
             ABOUT

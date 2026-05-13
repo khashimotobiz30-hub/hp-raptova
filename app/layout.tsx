@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Inter, Noto_Sans_JP, Noto_Serif_JP } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/layout/Header';
@@ -60,6 +60,12 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  interactiveWidget: 'resizes-visual',
+};
+
 const jsonLdOrganization = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
@@ -96,11 +102,11 @@ export default function RootLayout({
         />
       </head>
       <body
-        className="min-h-screen w-full bg-white text-[#0a0a0a] antialiased"
+        className="min-h-screen w-full max-w-full overflow-x-clip bg-white text-[#0a0a0a] antialiased"
         style={{ fontFamily: "var(--font-inter), var(--font-noto-sans-jp), 'Helvetica Neue', Arial, 'Hiragino Sans', sans-serif" }}
       >
         <Header />
-        <main className="w-full min-w-0 flex-1">{children}</main>
+        <main className="w-full min-w-0 max-w-full flex-1 overflow-x-clip">{children}</main>
         <Footer />
       </body>
     </html>

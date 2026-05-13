@@ -11,10 +11,10 @@ const FOOTER_LINKS = [
 
 export default function Footer() {
   return (
-    <footer id="footer" className="w-full border-t border-white/10 bg-[#080808] text-white">
-      <div className="px-7 py-9 md:px-14 lg:px-20">
-        <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
-          <div>
+    <footer id="footer" className="w-full min-w-0 max-w-full overflow-x-clip border-t border-white/10 bg-[#080808] text-white">
+      <div className="min-w-0 px-7 py-9 md:px-14 lg:px-20">
+        <div className="flex min-w-0 flex-col gap-8 md:flex-row md:items-center md:justify-between">
+          <div className="min-w-0">
             <Link
               href="/"
               className="text-sm font-medium tracking-[0.38em] text-white hover:opacity-60 transition-opacity duration-200"
@@ -25,7 +25,7 @@ export default function Footer() {
           </div>
 
           <nav
-            className="flex flex-wrap gap-x-8 gap-y-3 text-[10px] font-semibold tracking-[0.26em] text-white/42"
+            className="flex min-w-0 flex-wrap gap-x-8 gap-y-3 text-[10px] font-semibold tracking-[0.26em] text-white/42"
             aria-label="フッターナビゲーション"
           >
             {FOOTER_LINKS.map(({ label, href }) => (
@@ -46,7 +46,7 @@ export default function Footer() {
             </Link>
           </nav>
 
-          <p className="text-[10px] tracking-[0.18em] text-white/32">
+          <p className="min-w-0 text-[10px] tracking-[0.18em] text-white/32">
             © {new Date().getFullYear()} {SITE_CONFIG.siteName}
           </p>
 

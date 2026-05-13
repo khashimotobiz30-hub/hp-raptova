@@ -48,14 +48,14 @@ export default function Header() {
     <>
       <header
         className={[
-          'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+          'fixed left-0 right-0 top-0 z-50 w-full max-w-full overflow-x-clip transition-all duration-300',
           scrolled
             ? 'bg-white/95 backdrop-blur-sm border-b border-[#e5e5e5]'
             : 'bg-white/0 md:mix-blend-difference',
         ].join(' ')}
         style={{ height: '72px' }}
       >
-        <div className="h-full px-7 md:px-12 lg:px-20 min-[1440px]:px-24 flex items-center justify-between">
+        <div className="flex h-full w-full min-w-0 items-center justify-between px-7 md:px-12 lg:px-20 min-[1440px]:px-24">
           {/* ロゴ */}
           <Link
             href="/"
@@ -112,7 +112,7 @@ export default function Header() {
 
           {/* ハンバーガーボタン（SP） */}
           <button
-            className="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5"
+            className="flex h-10 w-10 shrink-0 flex-col items-center justify-center gap-1.5 md:hidden"
             onClick={() => setMenuOpen((v) => !v)}
             aria-label={menuOpen ? 'メニューを閉じる' : 'メニューを開く'}
             aria-expanded={menuOpen}
@@ -147,7 +147,7 @@ export default function Header() {
         aria-modal="true"
         aria-label="ナビゲーションメニュー"
         className={[
-          'fixed inset-0 z-40 bg-white flex flex-col justify-center items-center transition-all duration-300',
+          'fixed inset-0 z-40 flex max-w-full flex-col items-center justify-center overflow-x-clip bg-white transition-all duration-300',
           menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none',
         ].join(' ')}
       >

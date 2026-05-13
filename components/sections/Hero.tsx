@@ -22,10 +22,10 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="grid min-h-[100svh] w-full overflow-x-hidden bg-[#e9e8e2] min-[1440px]:grid-cols-[62%_38%]"
+      className="grid min-h-[100svh] w-full min-w-0 max-w-full overflow-x-clip bg-[#e9e8e2] min-[1440px]:grid-cols-[62%_38%]"
       aria-label="Hero and statement"
     >
-      <div className="relative min-h-[100svh] overflow-hidden bg-[#e9e8e2]" aria-label="Hero">
+      <div className="relative min-h-[100svh] min-w-0 overflow-hidden bg-[#e9e8e2]" aria-label="Hero">
         <div
           className="absolute inset-0 bg-cover bg-[position:64%_center] min-[1440px]:bg-center"
           style={{ backgroundImage: "url('/images/raptova-hero-bg.png')" }}
@@ -61,10 +61,10 @@ export default function Hero() {
 
       <div
         id="statement"
-        className="flex flex-col border-l border-black/10 bg-[#070707] text-white min-[1440px]:min-h-[100svh]"
+        className="min-w-0 flex flex-col border-l border-black/10 bg-[#070707] text-white min-[1440px]:min-h-[100svh]"
         aria-label="ステートメント"
       >
-        <div className="flex flex-col px-7 pb-14 pt-24 md:px-12 min-[1440px]:flex-1 min-[1440px]:px-14 min-[1440px]:pb-12 min-[1440px]:pt-[7.5rem]">
+        <div className="flex min-w-0 flex-col px-7 pb-14 pt-24 md:px-12 min-[1440px]:flex-1 min-[1440px]:px-14 min-[1440px]:pb-12 min-[1440px]:pt-[7.5rem]">
           <p className="mb-8 text-[10px] font-semibold tracking-[0.42em] text-white/52">
             STATEMENT
           </p>

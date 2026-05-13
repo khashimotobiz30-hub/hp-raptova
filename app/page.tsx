@@ -8,7 +8,7 @@ export default function TopPage() {
   return (
     <>
       <Hero />
-      <div className="grid w-full grid-cols-1 min-[1440px]:grid-cols-[62%_38%]">
+      <div className="grid w-full min-w-0 max-w-full grid-cols-1 overflow-x-clip min-[1440px]:grid-cols-[62%_38%]">
         <Business />
         <Projects />
       </div>

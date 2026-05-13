@@ -47,10 +47,10 @@ export default function Business() {
   return (
     <section
       id="business"
-      className="w-full bg-[#f4f3ef] px-7 py-24 md:px-14 lg:px-20"
+      className="w-full min-w-0 max-w-full overflow-x-clip bg-[#f4f3ef] px-7 py-24 md:px-14 lg:px-20"
       aria-labelledby="business-heading"
     >
-      <div className="max-w-[980px]">
+      <div className="min-w-0 max-w-[980px]">
         <RevealAnimation>
           <p className="mb-8 text-[10px] font-semibold tracking-[0.42em] text-zinc-500">
             BUSINESS
@@ -70,10 +70,10 @@ export default function Business() {
           </p>
         </RevealAnimation>
 
-        <div className="mt-14 grid gap-8 min-[1440px]:grid-cols-3">
+        <div className="mt-14 grid min-w-0 gap-8 min-[1440px]:grid-cols-3">
           {BUSINESS_ITEMS.map((item, index) => (
             <RevealAnimation key={item.number} delay={0.08 + index * 0.06}>
-              <article className="group flex h-full flex-col">
+              <article className="group flex h-full min-w-0 flex-col">
                 <div className="relative mb-7 h-40 overflow-hidden bg-zinc-900">
                   <Image
                     src={item.imageSrc}
