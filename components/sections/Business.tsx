@@ -47,7 +47,7 @@ export default function Business() {
   return (
     <section
       id="business"
-      className="bg-[#f4f3ef] px-7 py-24 md:px-14 lg:px-20"
+      className="w-full bg-[#f4f3ef] px-7 py-24 md:px-14 lg:px-20"
       aria-labelledby="business-heading"
     >
       <div className="max-w-[980px]">
@@ -70,7 +70,7 @@ export default function Business() {
           </p>
         </RevealAnimation>
 
-        <div className="mt-14 grid gap-8 xl:grid-cols-3">
+        <div className="mt-14 grid gap-8 min-[1440px]:grid-cols-3">
           {BUSINESS_ITEMS.map((item, index) => (
             <RevealAnimation key={item.number} delay={0.08 + index * 0.06}>
               <article className="group flex h-full flex-col">

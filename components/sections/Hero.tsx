@@ -22,12 +22,12 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="grid min-h-[100svh] w-full overflow-x-hidden bg-[#e9e8e2] xl:grid-cols-[62%_38%]"
+      className="grid min-h-[100svh] w-full overflow-x-hidden bg-[#e9e8e2] min-[1440px]:grid-cols-[62%_38%]"
       aria-label="Hero and statement"
     >
       <div className="relative min-h-[100svh] overflow-hidden bg-[#e9e8e2]" aria-label="Hero">
         <div
-          className="absolute inset-0 bg-cover bg-[position:64%_center] xl:bg-center"
+          className="absolute inset-0 bg-cover bg-[position:64%_center] min-[1440px]:bg-center"
           style={{ backgroundImage: "url('/images/raptova-hero-bg.png')" }}
           aria-hidden="true"
         />
@@ -61,10 +61,10 @@ export default function Hero() {
 
       <div
         id="statement"
-        className="flex flex-col border-l border-black/10 bg-[#070707] text-white xl:min-h-[100svh]"
+        className="flex flex-col border-l border-black/10 bg-[#070707] text-white min-[1440px]:min-h-[100svh]"
         aria-label="ステートメント"
       >
-        <div className="flex flex-col px-7 pb-14 pt-24 md:px-12 xl:flex-1 xl:px-14 xl:pb-12 xl:pt-[7.5rem]">
+        <div className="flex flex-col px-7 pb-14 pt-24 md:px-12 min-[1440px]:flex-1 min-[1440px]:px-14 min-[1440px]:pb-12 min-[1440px]:pt-[7.5rem]">
           <p className="mb-8 text-[10px] font-semibold tracking-[0.42em] text-white/52">
             STATEMENT
           </p>
@@ -73,10 +73,10 @@ export default function Hero() {
               <p
                 key={paragraph.join('')}
                 className={[
-                  index === 0 ? '' : index === 2 ? 'mt-10 xl:mt-8' : 'mt-7 xl:mt-6',
+                  index === 0 ? '' : index === 2 ? 'mt-10 min-[1440px]:mt-8' : 'mt-7 min-[1440px]:mt-6',
                   index < 2
-                    ? 'text-[18px] leading-[1.92] text-white/86 xl:text-[clamp(17px,1.22vw,23px)] xl:leading-[1.82]'
-                    : 'text-[15px] leading-[2.0] tracking-[0.06em] text-white/64 xl:text-[clamp(13px,0.9vw,16px)] xl:leading-[1.9]',
+                    ? 'text-[18px] leading-[1.92] text-white/86 min-[1440px]:text-[clamp(17px,1.22vw,23px)] min-[1440px]:leading-[1.82]'
+                    : 'text-[15px] leading-[2.0] tracking-[0.06em] text-white/64 min-[1440px]:text-[clamp(13px,0.9vw,16px)] min-[1440px]:leading-[1.9]',
                 ].join(' ')}
               >
                 {paragraph.map((line) =>
@@ -97,12 +97,12 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="relative h-[230px] shrink-0 overflow-hidden bg-black xl:h-auto xl:min-h-[145px] xl:flex-[0_1_clamp(180px,31svh,330px)]">
+        <div className="relative h-[230px] shrink-0 overflow-hidden bg-black min-[1440px]:h-auto min-[1440px]:min-h-[145px] min-[1440px]:flex-[0_1_clamp(180px,31svh,330px)]">
           <Image
             src="/images/raptova-statement-visual.png"
             alt=""
             fill
-            sizes="(min-width: 1024px) 38vw, 100vw"
+            sizes="(min-width: 1440px) 38vw, 100vw"
             className="object-cover object-[55%_52%]"
           />
           <div

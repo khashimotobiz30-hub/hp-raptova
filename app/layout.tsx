@@ -96,11 +96,11 @@ export default function RootLayout({
         />
       </head>
       <body
-        className="min-h-screen bg-white text-[#0a0a0a] antialiased"
+        className="min-h-screen w-full bg-white text-[#0a0a0a] antialiased"
         style={{ fontFamily: "var(--font-inter), var(--font-noto-sans-jp), 'Helvetica Neue', Arial, 'Hiragino Sans', sans-serif" }}
       >
         <Header />
-        <main className="flex-1">{children}</main>
+        <main className="w-full min-w-0 flex-1">{children}</main>
         <Footer />
       </body>
     </html>

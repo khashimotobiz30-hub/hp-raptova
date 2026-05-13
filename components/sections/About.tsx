@@ -7,7 +7,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="grid grid-cols-1 bg-[#f4f3ef] xl:grid-cols-[34%_66%]"
+      className="grid w-full grid-cols-1 bg-[#f4f3ef] min-[1440px]:grid-cols-[34%_66%]"
       aria-labelledby="about-heading"
     >
       <div className="px-7 py-20 md:px-14 lg:px-20">

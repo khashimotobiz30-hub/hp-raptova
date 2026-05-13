@@ -55,7 +55,7 @@ export default function Header() {
         ].join(' ')}
         style={{ height: '72px' }}
       >
-        <div className="h-full px-7 md:px-12 lg:px-16 flex items-center justify-between">
+        <div className="h-full px-7 md:px-12 lg:px-20 min-[1440px]:px-24 flex items-center justify-between">
           {/* ロゴ */}
           <Link
             href="/"

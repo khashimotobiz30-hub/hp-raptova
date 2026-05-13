@@ -38,7 +38,7 @@ export default function Projects() {
   return (
     <aside
       id="projects"
-      className="bg-[#080808] px-7 py-24 text-white md:px-14 lg:px-16"
+      className="w-full bg-[#080808] px-7 py-24 text-white md:px-14 lg:px-16"
       aria-labelledby="projects-heading"
     >
       <RevealAnimation>
@@ -74,12 +74,12 @@ export default function Projects() {
             return (
               <article
                 key={project.number}
-                className="py-7 text-white/78 xl:grid xl:grid-cols-[42px_minmax(0,1fr)_auto] xl:gap-5"
+                className="py-7 text-white/78 min-[1440px]:grid min-[1440px]:grid-cols-[42px_minmax(0,1fr)_auto] min-[1440px]:gap-5"
               >
                 <p className="text-sm tracking-[0.14em] text-white/32">
                   {project.number}
                 </p>
-                <div className="mt-4 xl:mt-0">
+                <div className="mt-4 min-[1440px]:mt-0">
                   <h3 className="text-sm font-medium leading-relaxed tracking-[0.08em] text-white/84">
                     {project.title}
                   </h3>
@@ -87,7 +87,7 @@ export default function Projects() {
                     {project.category}
                   </p>
                 </div>
-                <div className="mt-5 text-[10px] font-semibold tracking-[0.24em] xl:mt-1">
+                <div className="mt-5 text-[10px] font-semibold tracking-[0.24em] min-[1440px]:mt-1">
                   {status}
                 </div>
               </article>

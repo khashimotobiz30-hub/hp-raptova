@@ -7,10 +7,10 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="border-t border-white/10 bg-[#080808] px-7 py-16 text-white md:px-14 lg:px-20"
+      className="w-full border-t border-white/10 bg-[#080808] px-7 py-16 text-white md:px-14 lg:px-20"
       aria-labelledby="contact-heading"
     >
-      <div className="mx-auto grid max-w-[1240px] gap-10 xl:grid-cols-[360px_minmax(500px,1fr)_280px] xl:items-center xl:gap-16">
+      <div className="mx-auto grid max-w-[1240px] gap-10 min-[1440px]:grid-cols-[360px_minmax(500px,1fr)_280px] min-[1440px]:items-center min-[1440px]:gap-16">
         <div>
           <RevealAnimation>
             <p className="mb-5 text-[10px] font-semibold tracking-[0.42em] text-white/34">
@@ -18,7 +18,7 @@ export default function Contact() {
             </p>
             <h2
               id="contact-heading"
-              className="copy-ja font-serif text-[26px] leading-relaxed tracking-[0.03em] text-white min-[430px]:text-3xl min-[430px]:tracking-[0.12em] md:tracking-[0.18em] xl:whitespace-nowrap"
+              className="copy-ja font-serif text-[26px] leading-relaxed tracking-[0.03em] text-white min-[430px]:text-3xl min-[430px]:tracking-[0.12em] md:tracking-[0.18em] min-[1440px]:whitespace-nowrap"
             >
               目の前の仕事を、
               <br />
