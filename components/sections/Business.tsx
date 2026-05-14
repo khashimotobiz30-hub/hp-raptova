@@ -10,14 +10,14 @@ const BUSINESS_COPY = [
   '現実に動くアウトプットへ変えていきます。',
 ];
 
-const BUSINESS_ITEMS = [
+const BUSINESS_SECTION_CARDS = [
   {
     number: '01',
     titleEn: 'RECRUITING SUPPORT',
     titleJa: '採用活動支援',
     description:
       '採用戦略の設計から、LP・サイト・説明資料など\n採用活動で必要になる各種ツールの提供を含め\n企業の魅力を最大限発信する支援を行います。',
-    imageSrc: '/images/services/service-recruiting-support.png',
+    imageSrc: '/images/business/business-recruiting-support.png',
     numberTone: 'light',
     status: null,
   },
@@ -27,7 +27,7 @@ const BUSINESS_ITEMS = [
     titleJa: 'Web・資料等制作支援',
     description:
       'WebサイトやLP、会社資料、チラシ、\n営業資料、文章コンテンツなど、\n伝わるクリエイティブを制作します。',
-    imageSrc: '/images/services/service-business-creative.png',
+    imageSrc: '/images/business/business-creative.png',
     numberTone: 'dark',
     status: null,
   },
@@ -37,7 +37,7 @@ const BUSINESS_ITEMS = [
     titleJa: '業務整理・AI活用支援',
     description:
       '日々の業務や情報の流れを整理し、\nAIを活用できる仕組みへ変えていく支援を\n準備しています。',
-    imageSrc: '/images/services/service-workflow-design.png',
+    imageSrc: '/images/business/business-workflow-design.png',
     numberTone: 'light',
     status: 'COMING SOON',
   },
@@ -71,7 +71,7 @@ export default function Business() {
         </RevealAnimation>
 
         <div className="mt-14 grid min-w-0 gap-8 min-[1440px]:grid-cols-3">
-          {BUSINESS_ITEMS.map((item, index) => (
+          {BUSINESS_SECTION_CARDS.map((item, index) => (
             <RevealAnimation key={item.number} delay={0.08 + index * 0.06}>
               <article className="group flex h-full min-w-0 flex-col">
                 <div className="relative mb-7 h-40 overflow-hidden bg-zinc-900">
@@ -117,7 +117,7 @@ export default function Business() {
                     </p>
                   ) : (
                     <Link
-                      href="/services"
+                      href="/business"
                       className="inline-flex items-center gap-4 text-xs tracking-[0.18em] text-zinc-950"
                     >
                       <span className="h-px w-10 bg-zinc-950 transition-all group-hover:w-16" />

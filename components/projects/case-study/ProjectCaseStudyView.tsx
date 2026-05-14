@@ -7,7 +7,7 @@ import type {
   CaseStudyContent,
   CaseStudyDetailItem,
   CaseStudyOverviewRow,
-} from '@/lib/works/case-study-types';
+} from '@/lib/projects/case-study-types';
 function chunkOverviewPairs(rows: readonly CaseStudyOverviewRow[]) {
   const pairs: { left: CaseStudyOverviewRow; right: CaseStudyOverviewRow }[] = [];
   for (let i = 0; i < rows.length; i += 2) {
@@ -161,7 +161,7 @@ function OutputFlowVisual({ flow }: { flow: { src: string; alt: string } }) {
   );
 }
 
-export default function WorkCaseStudyView({ content }: { content: CaseStudyContent }) {
+export default function ProjectCaseStudyView({ content }: { content: CaseStudyContent }) {
   const { hero, overview, background, approach, output, detail, next } = content;
   const detailCount = detail.items.length;
 
@@ -170,7 +170,7 @@ export default function WorkCaseStudyView({ content }: { content: CaseStudyConte
       {/* Hero + プロジェクト情報テーブル（同一ファーストビュー） */}
       <section
         className="overflow-x-clip overflow-y-visible border-b border-[#e4e2dc] bg-[#f2f0e9] pt-[88px] pb-6 md:pb-8 lg:pb-10"
-        aria-labelledby="work-case-hero-title"
+        aria-labelledby="project-case-hero-title"
       >
         <div className="mx-auto max-w-[1440px] px-7 md:px-14 lg:px-20">
           <div className="grid items-start gap-8 md:gap-9 lg:grid-cols-[minmax(0,0.42fr)_minmax(0,0.58fr)] lg:items-stretch lg:gap-10 xl:gap-12">
@@ -178,7 +178,7 @@ export default function WorkCaseStudyView({ content }: { content: CaseStudyConte
               <RevealAnimation>
                 <p className="text-[10px] font-semibold tracking-[0.34em] text-black/70 md:text-[11px]">{hero.label}</p>
                 <h1
-                  id="work-case-hero-title"
+                  id="project-case-hero-title"
                   className="mt-5 font-serif text-[clamp(42px,6.2vw,78px)] font-medium leading-[1.04] tracking-[0.055em] text-black"
                   style={{ fontFamily: "var(--font-noto-serif-jp), 'Yu Mincho', serif" }}
                 >
@@ -234,7 +234,7 @@ export default function WorkCaseStudyView({ content }: { content: CaseStudyConte
             </div>
           </div>
 
-          <h2 id="work-case-overview-title" className="sr-only">
+          <h2 id="project-case-overview-title" className="sr-only">
             プロジェクト概要
           </h2>
           <div className="mt-6 w-full md:mt-5">
@@ -266,12 +266,12 @@ export default function WorkCaseStudyView({ content }: { content: CaseStudyConte
       </section>
 
       {/* Background */}
-      <section className="bg-black text-white" aria-labelledby="work-case-bg-title">
+      <section className="bg-black text-white" aria-labelledby="project-case-bg-title">
         <div className="mx-auto max-w-[1440px] px-7 py-16 md:px-14 md:py-20 lg:px-20 lg:py-24">
           <div className="grid grid-cols-1 items-start gap-8 text-left md:grid-cols-[minmax(0,0.36fr)_minmax(0,1fr)] md:gap-10 lg:gap-12 xl:gap-14">
             <RevealAnimation className="min-w-0 self-start">
               <h2
-                id="work-case-bg-title"
+                id="project-case-bg-title"
                 className="font-serif font-medium leading-[1.05] tracking-[0.03em] text-white/[0.92] break-words"
                 style={{
                   fontFamily: "var(--font-noto-serif-jp), 'Yu Mincho', serif",
@@ -297,13 +297,13 @@ export default function WorkCaseStudyView({ content }: { content: CaseStudyConte
       {/* Approach */}
       <section
         className="border-b border-black/[0.18] bg-[#f2f0e9] pb-8 pt-10 md:pb-9 md:pt-11 lg:pb-10 lg:pt-12"
-        aria-labelledby="work-case-approach-title"
+        aria-labelledby="project-case-approach-title"
       >
         <div className="mx-auto max-w-[1440px] px-7 md:px-14 lg:px-20">
           <div className="flex flex-col gap-8 text-left lg:grid lg:grid-cols-[minmax(13rem,16rem)_repeat(4,minmax(0,1fr))] lg:items-start lg:gap-x-6 lg:gap-y-0 xl:gap-x-8">
             <RevealAnimation className="self-start shrink-0">
               <h2
-                id="work-case-approach-title"
+                id="project-case-approach-title"
                 className="font-serif font-medium whitespace-nowrap leading-[1.05] tracking-[0.03em] text-black/[0.94]"
                 style={{
                   fontFamily: "var(--font-noto-serif-jp), 'Yu Mincho', serif",
@@ -352,13 +352,13 @@ export default function WorkCaseStudyView({ content }: { content: CaseStudyConte
       {/* Output */}
       <section
         className="border-b border-black/[0.18] bg-[#f2f0e9] pb-10 pt-6 md:pb-14 md:pt-8 lg:pb-16 lg:pt-10"
-        aria-labelledby="work-case-output-title"
+        aria-labelledby="project-case-output-title"
       >
         <div className="mx-auto max-w-[1440px] px-7 md:px-14 lg:px-20">
           <div className="flex flex-col gap-8 lg:grid lg:grid-cols-[minmax(13rem,16rem)_minmax(0,1fr)] lg:items-start lg:gap-x-6 xl:gap-x-8">
             <RevealAnimation className="self-start shrink-0">
               <h2
-                id="work-case-output-title"
+                id="project-case-output-title"
                 className="font-serif font-medium whitespace-nowrap leading-[1.05] tracking-[0.03em] text-black/[0.94]"
                 style={{
                   fontFamily: "var(--font-noto-serif-jp), 'Yu Mincho', serif",
@@ -407,12 +407,12 @@ export default function WorkCaseStudyView({ content }: { content: CaseStudyConte
       </section>
 
       {/* Detail */}
-      <section className="bg-[#030303] text-white" aria-labelledby="work-case-detail-title">
+      <section className="bg-[#030303] text-white" aria-labelledby="project-case-detail-title">
         <div className="mx-auto max-w-[1440px] px-7 py-10 md:px-14 md:py-12 lg:px-20 lg:py-14">
           <div className="flex flex-col gap-5 text-left lg:grid lg:grid-cols-[minmax(11rem,15rem)_minmax(0,1fr)] lg:items-start lg:gap-x-6 xl:gap-x-8">
             <RevealAnimation className="self-start shrink-0">
               <h2
-                id="work-case-detail-title"
+                id="project-case-detail-title"
                 className="font-serif font-medium leading-[1.06] tracking-[0.04em] text-white/[0.92]"
                 style={{
                   fontFamily: "var(--font-noto-serif-jp), 'Yu Mincho', serif",
@@ -458,13 +458,13 @@ export default function WorkCaseStudyView({ content }: { content: CaseStudyConte
       {/* Next */}
       <section
         className="border-b border-black/[0.16] border-t border-[#e4e2dc] bg-[#f2f0e9] pt-9 pb-7 md:pt-10 md:pb-8 lg:pt-10 lg:pb-8"
-        aria-labelledby="work-case-next-title"
+        aria-labelledby="project-case-next-title"
       >
         <div className="mx-auto max-w-[1440px] px-7 md:px-14 lg:px-20">
           <div className="flex flex-col gap-5 text-left lg:grid lg:grid-cols-[minmax(11rem,15rem)_minmax(0,1fr)] lg:items-stretch lg:gap-x-6 xl:gap-x-8">
             <RevealAnimation className="flex shrink-0 lg:h-full lg:items-center">
               <h2
-                id="work-case-next-title"
+                id="project-case-next-title"
                 className="font-serif font-medium leading-[1.05] tracking-[0.03em] text-black"
                 style={{
                   fontFamily: "var(--font-noto-serif-jp), 'Yu Mincho', serif",

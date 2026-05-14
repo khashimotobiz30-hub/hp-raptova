@@ -15,7 +15,7 @@ export const SITE_CONFIG = {
 
 export const MAILTO_HREF = `mailto:${SITE_CONFIG.email}?subject=RAPTOVA%E3%81%B8%E3%81%AE%E3%81%8A%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B&body=%E3%81%8A%E5%90%8D%E5%89%8D%EF%BC%9A%0D%0A%0D%0A%E3%81%94%E7%9B%B8%E8%AB%87%E5%86%85%E5%AE%B9%EF%BC%9A%0D%0A`;
 
-export type WorkItem = {
+export type ProjectItem = {
   id: string;
   number: string;
   titleEn: string;
@@ -27,7 +27,7 @@ export type WorkItem = {
   externalHref?: string;
 };
 
-export const WORKS_ITEMS: readonly WorkItem[] = [
+export const PROJECTS_ITEMS: readonly ProjectItem[] = [
   {
     id: 'questoria',
     number: '01',
@@ -36,9 +36,9 @@ export const WORKS_ITEMS: readonly WorkItem[] = [
     description:
       'AI活用力をタイプ別に可視化し、\nユーザーごとに次の行動を提示する診断プロダクト。',
     tags: ['#AI Diagnosis', '#Web App', '#UX Design'],
-    href: '/works/questoria',
+    href: '/projects/questoria',
     externalHref: 'https://questoria-liart.vercel.app/',
-    thumbnail: '/images/works/questoria-thumbnail.svg',
+    thumbnail: '/images/projects/questoria-thumbnail.svg',
   },
   {
     id: 'raptova-website',
@@ -48,8 +48,8 @@ export const WORKS_ITEMS: readonly WorkItem[] = [
     description:
       '粒子によるインタラクション、NOVAによる対話型Contact UIを備えた、\nRAPTOVAの思想と技術力を体現する公式Webサイト。',
     tags: ['#Brand Site', '#Interaction Design', '#Web Experience'],
-    href: '/works/raptova-website',
-    thumbnail: '/images/works/raptova-website-thumbnail.svg',
+    href: '/projects/raptova-website',
+    thumbnail: '/images/projects/raptova-website-thumbnail.svg',
   },
   {
     id: 'ai-sns-operation',
@@ -59,12 +59,13 @@ export const WORKS_ITEMS: readonly WorkItem[] = [
     description:
       '投稿企画、文章生成、改善提案を通じて、\n個人の発信活動を継続可能な仕組みへと整える運用支援システム。',
     tags: ['#AI Writing', '#SNS Operation', '#Workflow'],
-    href: '/works/ai-sns-operation',
-    thumbnail: '/images/works/ai-sns-operation-thumbnail.svg',
+    href: '/projects/ai-sns-operation',
+    thumbnail: '/images/projects/ai-sns-operation-thumbnail.svg',
   },
 ] as const;
 
-export const SERVICES_ITEMS = [
+/** トップ BUSINESS とは別軸の「提供ライン」（AIプロダクト／コンサル／スキル拡張）用データ。現状どの画面からも未参照。 */
+export const BUSINESS_ITEMS = [
   {
     number: '01',
     transformCopy: ['IDEA', 'TO PRODUCT'],
@@ -73,7 +74,7 @@ export const SERVICES_ITEMS = [
     description:
       '診断アプリ、チャットボット、業務支援ツール、Webアプリなど、\nアイデアを実際に使えるプロダクトへと落とし込みます。',
     tags: 'WEB APP / DIAGNOSIS / UX DESIGN / BUILD',
-    iconSrc: '/images/services/service-product-abstract.png',
+    iconSrc: '/images/business/business-product-abstract.png',
   },
   {
     number: '02',
@@ -83,7 +84,7 @@ export const SERVICES_ITEMS = [
     description:
       '事業、業務、発信、サービス設計の中に、\nAIをどのように組み込むべきかを整理し、実行可能な形へ導きます。',
     tags: 'STRATEGY / WORKFLOW / AI DESIGN / PLANNING',
-    iconSrc: '/images/services/service-system-abstract.png',
+    iconSrc: '/images/business/business-system-abstract.png',
   },
   {
     number: '03',
@@ -93,6 +94,6 @@ export const SERVICES_ITEMS = [
     description:
       '個人やチームがAIを使いこなし、\n自分たちの思考やアイデアを形にできる状態をつくります。',
     tags: 'TRAINING / LEARNING / ENABLEMENT / SKILL',
-    iconSrc: '/images/services/service-motion-abstract.png',
+    iconSrc: '/images/business/business-motion-abstract.png',
   },
 ] as const;

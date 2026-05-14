@@ -2,9 +2,9 @@ import ComingSoon from '@/components/ui/ComingSoon';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'WORKS | RAPTOVA',
+  title: 'PROJECTS | RAPTOVA',
 };
 
-export default function WorksPage() {
+export default function ProjectsPage() {
   return <ComingSoon />;
 }

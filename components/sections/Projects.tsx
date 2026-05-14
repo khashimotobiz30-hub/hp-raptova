@@ -9,14 +9,14 @@ const PROJECTS = [
     title: 'RAPTOVA Official Website',
     category: 'Brand Site / Direction / Web Design',
     status: 'VIEW',
-    href: '/works/raptova-website',
+    href: '/projects/raptova-website',
   },
   {
     number: '02',
     title: 'AI SKILL DIAGNOSIS QUESTORIA',
     category: 'Web Browser App / AI Diagnosis',
     status: 'VIEW',
-    href: '/works/questoria',
+    href: '/projects/questoria',
   },
   {
     number: '03',

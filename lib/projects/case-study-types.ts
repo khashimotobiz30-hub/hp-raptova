@@ -1,4 +1,4 @@
-/** Works 詳細（ケーススタディ）横展開用の共通型 */
+/** プロジェクト詳細（ケーススタディ）横展開用の共通型 */
 
 export type CaseStudyOverviewRow = {
   label: string;
@@ -43,7 +43,7 @@ export type CaseStudyContent = {
     body: string;
     /**
      * 右カラム：合成済みヒーロービジュアル（端末レイアウトは画像内で完結させる）
-     * 例: `/images/works/questoria/hero-visual-composite.png`
+     * 例: 静的アセット `/images/projects/questoria/hero-visual-composite.png`（ページ URL の `/projects` とは別）
      */
     singleVisual: {
       src: string;

@@ -1,16 +1,16 @@
-import type { CaseStudyContent } from '@/lib/works/case-study-types';
+import type { CaseStudyContent } from '@/lib/projects/case-study-types';
 
-export const QUESTORIA_CASE_STUDY = {
+export const QUESTORIA_PROJECT = {
   slug: 'questoria',
   hero: {
-    label: 'WORKS / PROJECT',
+    label: 'PROJECTS / PROJECT',
     title: 'QUESTORIA',
     subtitle: 'AI Skill Diagnosis Application',
     leadLines: ['AI活用力という曖昧な概念を、', '診断できる体験へ変える。'],
     body:
       'QUESTORIAは、AIリテラシーを測定するスキル診断体験を提供し、\n個人が自身の現在地を正しく把握できる診断を可能にします。\nゲーム性と診断ロジックの両立により、楽しみながら学び、\n課題と強みを発見するきっかけを創出します。',
     singleVisual: {
-      src: '/images/works/questoria/hero-visual-composite.png',
+      src: '/images/projects/questoria/hero-visual-composite.png',
       alt: 'QUESTORIA hero visual',
     },
   },
@@ -66,7 +66,7 @@ export const QUESTORIA_CASE_STUDY = {
   output: {
     title: 'Output',
     flowImage: {
-      src: '/images/works/questoria/output-diagnosis-flow-light.png',
+      src: '/images/projects/questoria/output-diagnosis-flow-light.png',
       alt: 'QUESTORIA 診断体験フロー（診断開始からLINE特典案内まで）',
     },
     items: [],
@@ -77,37 +77,37 @@ export const QUESTORIA_CASE_STUDY = {
     items: [
       {
         icon: 'layers',
-        iconSrc: '/images/works/questoria/icons/detail-skill-definition.png',
+        iconSrc: '/images/projects/questoria/icons/detail-skill-definition.png',
         title: 'Skill Definition',
         body: 'AI活用力を5つの観点に分解し、診断ロジックの基盤を設計しました。',
       },
       {
         icon: 'chat',
-        iconSrc: '/images/works/questoria/icons/detail-question-design.png',
+        iconSrc: '/images/projects/questoria/icons/detail-question-design.png',
         title: 'Question Design',
         body: '行動ベースの設問設計で、バイアスを抑えつつ実態に近い診断を実現しました。',
       },
       {
         icon: 'split',
-        iconSrc: '/images/works/questoria/icons/detail-two-step-diagnosis.png',
+        iconSrc: '/images/projects/questoria/icons/detail-two-step-diagnosis.png',
         title: 'Two-Step Diagnosis',
         body: 'ライトな入口と本診断の二段構成で、離脱を抑えつつ診断精度を高めました。',
       },
       {
         icon: 'link',
-        iconSrc: '/images/works/questoria/icons/detail-line-cta.png',
+        iconSrc: '/images/projects/questoria/icons/detail-line-cta.png',
         title: 'LINE CTA',
         body: 'LINE連携で結果閲覧や特典提供を最適化。拡散と再訪を促す導線設計を行いました。',
       },
       {
         icon: 'chart',
-        iconSrc: '/images/works/questoria/icons/detail-google-analytics.png',
+        iconSrc: '/images/projects/questoria/icons/detail-google-analytics.png',
         title: 'Google Analytics',
         body: 'ユーザー行動を可視化し、継続的な改善サイクルを回せる計測設計を実施しました。',
       },
       {
         icon: 'compass',
-        iconSrc: '/images/works/questoria/icons/detail-market-insight.png',
+        iconSrc: '/images/projects/questoria/icons/detail-market-insight.png',
         title: 'Market Insight',
         body: '市場・ユーザーニーズを分析し、診断体験の価値と位置づけを明確化しました。',
       },
@@ -120,7 +120,7 @@ export const QUESTORIA_CASE_STUDY = {
       'RAPTOVAは、コンセプト設計から外部デザイン、実装・改善まで伴走します。',
     ],
     backLabel: '← Back to Projects',
-    backHref: '/works',
+    backHref: '/projects',
     ctaLabel: 'CONTACT →',
     ctaHref: '/#contact',
   },
