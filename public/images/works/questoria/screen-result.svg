@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 780" role="img" aria-label="QUESTORIA UI placeholder, result screen">
+  <defs>
+    <radialGradient id="r" cx="50%" cy="42%" r="55%">
+      <stop offset="0%" stop-color="#1a3d4a" stop-opacity="0.9"/>
+      <stop offset="55%" stop-color="#0a121c" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#05080c"/>
+    </radialGradient>
+  </defs>
+  <rect width="360" height="780" fill="#060a10"/>
+  <circle cx="180" cy="320" r="140" fill="url(#r)"/>
+  <path d="M180 240 L200 290 L256 298 L214 334 L226 388 L180 360 L134 388 L146 334 L104 298 L160 290 Z" fill="none" stroke="#c9a962" stroke-width="1.2" opacity="0.55"/>
+  <rect x="72" y="480" width="216" height="6" rx="2" fill="#22d3ee" opacity="0.2"/>
+  <rect x="72" y="500" width="160" height="6" rx="2" fill="#ffffff" opacity="0.06"/>
+  <rect x="72" y="528" width="200" height="6" rx="2" fill="#ffffff" opacity="0.05"/>
+</svg>

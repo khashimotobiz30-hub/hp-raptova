@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 780" role="img" aria-label="QUESTORIA UI placeholder, question screen">
+  <defs>
+    <linearGradient id="gq" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#050c14"/>
+      <stop offset="100%" stop-color="#0c1826"/>
+    </linearGradient>
+  </defs>
+  <rect width="360" height="780" fill="url(#gq)"/>
+  <rect x="48" y="120" width="264" height="8" rx="2" fill="#ffffff" opacity="0.06"/>
+  <rect x="48" y="148" width="200" height="8" rx="2" fill="#ffffff" opacity="0.04"/>
+  <rect x="48" y="220" width="264" height="1" fill="#22d3ee" opacity="0.25"/>
+  <rect x="56" y="248" width="248" height="36" rx="3" fill="#ffffff" opacity="0.04" stroke="#22d3ee" stroke-opacity="0.2" stroke-width="1"/>
+  <rect x="56" y="296" width="248" height="36" rx="3" fill="#ffffff" opacity="0.03"/>
+  <rect x="56" y="344" width="248" height="36" rx="3" fill="#ffffff" opacity="0.03"/>
+  <rect x="56" y="420" width="120" height="36" rx="3" fill="none" stroke="#c9a962" stroke-width="1" opacity="0.5"/>
+  <rect x="192" y="420" width="112" height="36" rx="3" fill="none" stroke="#22d3ee" stroke-width="1" opacity="0.35"/>
+</svg>
