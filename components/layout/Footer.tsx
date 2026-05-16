@@ -4,8 +4,8 @@ import Link from 'next/link';
 import { SITE_CONFIG } from '@/lib/config';
 
 const FOOTER_LINKS = [
-  { label: 'ABOUT', href: '/#about' },
-  { label: 'BUSINESS', href: '/#business' },
+  { label: 'ABOUT', href: '/about' },
+  { label: 'BUSINESS', href: '/business' },
   { label: 'PROJECTS', href: '/#projects' },
 ] as const;
 

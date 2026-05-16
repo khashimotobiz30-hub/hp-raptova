@@ -1,16 +1,20 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useEffect, useState, useCallback } from 'react';
 import { SITE_CONFIG } from '@/lib/config';
 
 const NAV_LINKS = [
-  { label: 'ABOUT', href: '/#about' },
-  { label: 'BUSINESS', href: '/#business' },
+  { label: 'ABOUT', href: '/about' },
+  { label: 'BUSINESS', href: '/business' },
   { label: 'PROJECTS', href: '/#projects' },
 ] as const;
 
 export default function Header() {
+  const pathname = usePathname();
+  const isBusinessHero = pathname === '/business';
+
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -44,14 +48,21 @@ export default function Header() {
 
   const closeMenu = useCallback(() => setMenuOpen(false), []);
 
+  const headerNavContrast = scrolled || (!scrolled && isBusinessHero);
+
   return (
     <>
       <header
+        suppressHydrationWarning
         className={[
           'fixed left-0 right-0 top-0 z-50 w-full max-w-full overflow-x-clip transition-all duration-300',
           scrolled
-            ? 'bg-white/95 backdrop-blur-sm border-b border-[#e5e5e5]'
-            : 'bg-white/0 md:mix-blend-difference',
+            ? 'bg-[#f4f3ef]/80 backdrop-blur-md border-b border-black/10'
+            : [
+                // 画面上部では背景になじませる（/business は明るいHEROなので blend は使わない）
+                'border-b border-transparent bg-transparent backdrop-blur-none',
+                isBusinessHero ? '' : 'md:mix-blend-difference',
+              ].join(' '),
         ].join(' ')}
         style={{ height: '72px' }}
       >
@@ -61,7 +72,7 @@ export default function Header() {
             href="/"
             className={[
               'text-sm font-medium tracking-[0.38em] hover:opacity-60 transition-opacity duration-200',
-              scrolled ? 'text-[#0a0a0a]' : 'text-[#0a0a0a] md:text-white',
+              headerNavContrast ? 'text-[#0a0a0a]' : 'text-[#0a0a0a] md:text-white',
             ].join(' ')}
             aria-label={`${SITE_CONFIG.siteName} ホームへ`}
           >
@@ -76,7 +87,7 @@ export default function Header() {
                 href={href}
                 className={[
                   'text-xs font-normal tracking-[0.18em] transition-colors duration-200 relative group',
-                  scrolled
+                  headerNavContrast
                     ? 'text-[#555555] hover:text-[#0a0a0a]'
                     : 'text-[#555555] hover:text-[#0a0a0a] md:text-white/82 md:hover:text-white',
                 ].join(' ')}
@@ -85,7 +96,7 @@ export default function Header() {
                 <span
                   className={[
                     'absolute -bottom-0.5 left-0 w-0 h-px group-hover:w-full transition-all duration-300',
-                    scrolled ? 'bg-[#0a0a0a]' : 'bg-[#0a0a0a] md:bg-white',
+                    headerNavContrast ? 'bg-[#0a0a0a]' : 'bg-[#0a0a0a] md:bg-white',
                   ].join(' ')}
                 />
               </Link>
@@ -94,7 +105,7 @@ export default function Header() {
               href="/#contact"
               className={[
                 'text-xs font-normal tracking-[0.18em] transition-colors duration-200 relative group cursor-pointer',
-                scrolled
+                headerNavContrast
                   ? 'text-[#555555] hover:text-[#0a0a0a]'
                   : 'text-[#555555] hover:text-[#0a0a0a] md:text-white/82 md:hover:text-white',
               ].join(' ')}
@@ -104,7 +115,7 @@ export default function Header() {
               <span
                 className={[
                   'absolute -bottom-0.5 left-0 w-0 h-px group-hover:w-full transition-all duration-300',
-                  scrolled ? 'bg-[#0a0a0a]' : 'bg-[#0a0a0a] md:bg-white',
+                  headerNavContrast ? 'bg-[#0a0a0a]' : 'bg-[#0a0a0a] md:bg-white',
                 ].join(' ')}
               />
             </Link>

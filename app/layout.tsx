@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from 'next';
+import { Suspense } from 'react';
 import { Inter, Noto_Sans_JP, Noto_Serif_JP } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/layout/Header';
@@ -105,7 +106,9 @@ export default function RootLayout({
         className="min-h-screen w-full max-w-full overflow-x-clip bg-white text-[#0a0a0a] antialiased"
         style={{ fontFamily: "var(--font-inter), var(--font-noto-sans-jp), 'Helvetica Neue', Arial, 'Hiragino Sans', sans-serif" }}
       >
-        <Header />
+        <Suspense fallback={null}>
+          <Header />
+        </Suspense>
         <main className="w-full min-w-0 max-w-full flex-1 overflow-x-clip">{children}</main>
         <Footer />
       </body>
