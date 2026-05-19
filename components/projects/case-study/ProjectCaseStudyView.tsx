@@ -199,38 +199,38 @@ export default function ProjectCaseStudyView({ content }: { content: CaseStudyCo
   const detailGridLgCols = detailCount === 5 ? 'lg:grid-cols-5' : 'lg:grid-cols-6';
   const brandHero = hero.visualStyle === 'brand';
   const heroGridCols = brandHero
-    ? 'lg:grid-cols-[minmax(0,0.38fr)_minmax(0,0.62fr)] xl:grid-cols-[minmax(0,0.36fr)_minmax(0,0.64fr)]'
-    : 'lg:grid-cols-[minmax(0,0.42fr)_minmax(0,0.58fr)]';
+    ? 'xl:grid-cols-[minmax(0,0.38fr)_minmax(0,0.62fr)] min-[1440px]:grid-cols-[minmax(0,0.36fr)_minmax(0,0.64fr)]'
+    : 'xl:grid-cols-[minmax(0,0.42fr)_minmax(0,0.58fr)]';
   const heroGridGap = brandHero
-    ? 'gap-6 md:gap-7 lg:gap-8 xl:gap-9'
-    : 'gap-8 md:gap-9';
-  const heroGridAlign = brandHero ? 'lg:items-center' : 'lg:items-stretch';
+    ? 'gap-6 md:gap-7 xl:gap-8 min-[1440px]:gap-9'
+    : 'gap-8 md:gap-9 lg:gap-10';
+  const heroGridAlign = brandHero ? 'xl:items-center' : 'xl:items-stretch';
   const heroImageWidth = brandHero ? 1176 : 1111;
   const heroImageHeight = brandHero ? 965 : 784;
   const heroImageClass = brandHero
     ? [
         'pointer-events-none block h-auto w-full max-w-full select-none object-contain',
-        'object-[44%_50%] sm:object-[46%_50%] lg:object-[50%_50%]',
-        'max-h-[min(378px,56vh)] sm:max-h-[min(450px,58vh)] md:max-h-[min(486px,60vh)]',
-        'lg:max-h-[min(672px,calc(100vh-11rem))] xl:max-h-[min(720px,calc(100vh-10rem))]',
+        'object-[44%_50%] sm:object-[46%_50%] md:object-[48%_50%] xl:object-[50%_50%]',
+        'max-h-[min(378px,56vh)] sm:max-h-[min(450px,58vh)] md:max-h-[min(420px,54vh)]',
+        'lg:max-h-[min(460px,56vh)] xl:max-h-[min(672px,calc(100vh-11rem))] min-[1440px]:max-h-[min(720px,calc(100vh-10rem))]',
       ].join(' ')
     : [
         'pointer-events-none h-auto w-full max-w-full select-none object-contain',
-        '-translate-y-2 sm:-translate-y-2.5 lg:-translate-y-3',
+        '-translate-y-2 sm:-translate-y-2.5 md:-translate-y-2.5 xl:-translate-y-3',
         'max-h-[min(300px,42vh)] object-center sm:max-h-[min(360px,44vh)]',
-        'lg:max-h-[min(760px,74vh)] lg:object-[54%_center]',
-        'xl:max-h-[min(800px,76vh)] xl:object-[55%_center]',
+        'md:max-h-[min(380px,46vh)] lg:max-h-[min(440px,52vh)] lg:object-[52%_center]',
+        'xl:max-h-[min(760px,74vh)] xl:object-[54%_center] min-[1440px]:max-h-[min(800px,76vh)] min-[1440px]:object-[55%_center]',
       ].join(' ');
 
   return (
     <article className="bg-[#f2f0e9] text-[#0a0a0a]">
       {/* Hero + プロジェクト情報テーブル（同一ファーストビュー） */}
       <section
-        className="overflow-x-clip overflow-y-visible border-b border-[#e4e2dc] bg-[#f2f0e9] pt-[88px] pb-6 md:pb-8 lg:pb-10"
+        className="overflow-x-clip overflow-y-visible border-b border-[#e4e2dc] bg-[#f2f0e9] pt-[88px] pb-6 md:pb-8 lg:pb-9 xl:pb-10"
         aria-labelledby="project-case-hero-title"
       >
         <div className="mx-auto max-w-[1440px] px-7 md:px-14 lg:px-20">
-          <div className={`grid items-start ${heroGridGap} ${heroGridCols} ${heroGridAlign} lg:gap-10 xl:gap-12`}>
+          <div className={`grid items-start ${heroGridGap} ${heroGridCols} ${heroGridAlign} xl:gap-10 min-[1440px]:gap-12`}>
             <div className="min-w-0">
               <RevealAnimation>
                 {hero.label ? (
@@ -240,19 +240,19 @@ export default function ProjectCaseStudyView({ content }: { content: CaseStudyCo
                   <>
                     <h1
                       id="project-case-hero-title"
-                      className="mt-5 font-serif font-medium text-black"
+                      className="mt-5 font-serif font-medium text-black md:mt-6 xl:mt-5"
                       style={{ fontFamily: "var(--font-noto-serif-jp), 'Yu Mincho', serif" }}
                     >
-                      <span className="block text-[clamp(42px,6.2vw,78px)] leading-[1.02] tracking-[0.04em]">
+                      <span className="block text-[clamp(36px,9vw,48px)] leading-[1.02] tracking-[0.04em] md:text-[clamp(38px,5.5vw,56px)] lg:text-[clamp(42px,4.2vw,62px)] xl:text-[clamp(44px,4.8vw,72px)] min-[1440px]:text-[clamp(48px,5.5vw,78px)]">
                         {hero.title}
                       </span>
-                      <span className="mt-1 block max-w-full text-[clamp(40px,5.9vw,74px)] leading-[1.02] tracking-[-0.05em] whitespace-nowrap">
+                      <span className="mt-1 block max-w-full text-[clamp(34px,8.5vw,46px)] leading-[1.02] tracking-[-0.05em] whitespace-nowrap md:text-[clamp(36px,5.2vw,52px)] lg:text-[clamp(38px,3.8vw,58px)] xl:text-[clamp(40px,4.5vw,68px)] min-[1440px]:text-[clamp(40px,5.9vw,74px)]">
                         {hero.subtitle}
                       </span>
                     </h1>
                     {hero.tagline ? (
                       <p
-                        className="mt-3.5 text-[13px] font-normal leading-snug tracking-[0.04em] text-black md:mt-4 md:text-sm"
+                        className="mt-3.5 text-[13px] font-normal leading-snug tracking-[0.04em] text-black md:mt-4 lg:max-w-md lg:text-[13px] xl:max-w-none xl:text-sm"
                         style={{ fontFamily: 'var(--font-inter), var(--font-noto-sans-jp), sans-serif' }}
                       >
                         {hero.tagline}
@@ -263,25 +263,25 @@ export default function ProjectCaseStudyView({ content }: { content: CaseStudyCo
                   <>
                     <h1
                       id="project-case-hero-title"
-                      className="mt-5 font-serif text-[clamp(42px,6.2vw,78px)] font-medium leading-[1.04] tracking-[0.055em] text-black"
+                      className="mt-5 font-serif font-medium leading-[1.04] tracking-[0.055em] text-black text-[clamp(36px,9vw,48px)] md:text-[clamp(38px,5.5vw,56px)] lg:text-[clamp(42px,4.2vw,62px)] xl:text-[clamp(44px,4.8vw,72px)] min-[1440px]:text-[clamp(42px,6.2vw,78px)] md:mt-6 xl:mt-5"
                       style={{ fontFamily: "var(--font-noto-serif-jp), 'Yu Mincho', serif" }}
                     >
                       {hero.title}
                     </h1>
                     <p
-                      className="copy-ja mt-2.5 text-xs font-medium tracking-[0.12em] text-black/[0.78] md:mt-3"
+                      className="copy-ja mt-2.5 text-xs font-medium tracking-[0.12em] text-black/[0.78] md:mt-3 lg:text-[11px] xl:text-xs"
                       style={{ fontFamily: "var(--font-noto-serif-jp), 'Yu Mincho', serif" }}
                     >
                       {hero.subtitle}
                     </p>
-                    <div className="mt-6 mb-8 h-px w-10 bg-black/[0.35] md:w-12" aria-hidden />
+                    <div className="mt-6 mb-6 h-px w-10 bg-black/[0.35] md:mb-7 md:w-12 xl:mb-8" aria-hidden />
                   </>
                 )}
               </RevealAnimation>
 
-              <RevealAnimation delay={0.08} className={brandHero ? 'mt-6 md:mt-7' : 'mt-0'}>
+              <RevealAnimation delay={0.08} className={brandHero ? 'mt-6 md:mt-7 lg:mt-6 xl:mt-7' : 'mt-0'}>
                 <p
-                  className="copy-ja max-w-[520px] text-[clamp(17px,1.75vw,21px)] font-medium leading-[1.78] tracking-[0.06em] text-black/90 md:leading-[1.82]"
+                  className="copy-ja max-w-[520px] text-[17px] font-medium leading-[1.78] tracking-[0.06em] text-black/90 md:text-[18px] md:leading-[1.82] lg:max-w-md lg:text-[17px] lg:leading-[1.8] xl:max-w-[520px] xl:text-[clamp(17px,1.75vw,21px)] min-[1440px]:leading-[1.82]"
                   style={{ fontFamily: "var(--font-noto-serif-jp), serif" }}
                 >
                   {hero.leadLines.map((line) => (
@@ -292,8 +292,8 @@ export default function ProjectCaseStudyView({ content }: { content: CaseStudyCo
                 </p>
               </RevealAnimation>
 
-              <RevealAnimation delay={0.14} className="mt-7 md:mt-8">
-                <p className="copy-ja max-w-[460px] whitespace-pre-line text-[14px] font-medium leading-[1.95] tracking-[0.03em] text-black/[0.75] md:text-[15px] md:leading-[1.98]">
+              <RevealAnimation delay={0.14} className="mt-7 md:mt-8 lg:mt-7 xl:mt-8">
+                <p className="copy-ja max-w-[460px] whitespace-pre-line text-[14px] font-medium leading-[1.95] tracking-[0.03em] text-black/[0.75] md:text-[15px] md:leading-[1.98] lg:max-w-[400px] lg:text-[14px] lg:leading-[1.92] xl:max-w-[460px] xl:text-[15px] xl:leading-[1.98]">
                   {hero.body}
                 </p>
               </RevealAnimation>
@@ -303,16 +303,16 @@ export default function ProjectCaseStudyView({ content }: { content: CaseStudyCo
               className={[
                 'flex w-full min-w-0 flex-col justify-center overflow-visible',
                 brandHero
-                  ? 'items-center py-0 lg:items-end lg:self-center'
-                  : 'min-h-[280px] items-center self-stretch py-3 sm:min-h-[300px] lg:min-h-0 lg:py-1',
+                  ? 'items-center py-0 xl:items-end xl:self-center'
+                  : 'min-h-[280px] items-center self-stretch py-3 sm:min-h-[300px] md:min-h-[320px] xl:min-h-0 xl:py-1',
               ].join(' ')}
             >
               <div
                 className={[
                   'flex w-full flex-col overflow-visible',
                   brandHero
-                    ? 'w-full max-w-full items-center justify-center sm:max-w-[92%] lg:max-w-[min(80%,736px)] lg:items-end lg:justify-end lg:ml-auto lg:mr-14 lg:pr-0 xl:mr-[4.5rem]'
-                    : 'h-full max-w-full items-center justify-center px-0 sm:px-1 lg:px-3 lg:pr-5',
+                    ? 'w-full max-w-full items-center justify-center sm:max-w-[92%] md:max-w-[88%] lg:max-w-[84%] xl:max-w-[min(80%,736px)] xl:items-end xl:justify-end xl:ml-auto xl:mr-14 xl:pr-0 min-[1440px]:mr-[4.5rem]'
+                    : 'h-full max-w-full items-center justify-center px-0 sm:px-1 md:max-w-[92%] lg:max-w-[88%] xl:px-3 xl:pr-5',
                 ].join(' ')}
               >
                 {hero.singleVisual.href ? (
@@ -331,8 +331,8 @@ export default function ProjectCaseStudyView({ content }: { content: CaseStudyCo
                       priority
                       sizes={
                         brandHero
-                          ? '(max-width: 640px) 92vw, (max-width: 1024px) 86vw, (max-width: 1440px) 54vw, 768px'
-                          : '(max-width: 1024px) 100vw, 1200px'
+                          ? '(max-width: 640px) 92vw, (max-width: 1024px) 88vw, (max-width: 1280px) 72vw, (max-width: 1440px) 54vw, 768px'
+                          : '(max-width: 768px) 92vw, (max-width: 1024px) 88vw, (max-width: 1280px) 72vw, 1200px'
                       }
                       className={heroImageClass}
                     />
@@ -346,8 +346,8 @@ export default function ProjectCaseStudyView({ content }: { content: CaseStudyCo
                     priority
                     sizes={
                       brandHero
-                        ? '(max-width: 640px) 92vw, (max-width: 1024px) 86vw, (max-width: 1440px) 54vw, 768px'
-                        : '(max-width: 1024px) 100vw, 1200px'
+                        ? '(max-width: 640px) 92vw, (max-width: 1024px) 88vw, (max-width: 1280px) 72vw, (max-width: 1440px) 54vw, 768px'
+                        : '(max-width: 768px) 92vw, (max-width: 1024px) 88vw, (max-width: 1280px) 72vw, 1200px'
                     }
                     className={heroImageClass}
                   />
