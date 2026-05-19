@@ -74,7 +74,7 @@ export default function AboutProfile() {
           <div className="relative min-h-[min(56vw,360px)] bg-[#f2f0e9] md:min-h-[320px] lg:min-h-full lg:h-full">
             <div className="relative h-full min-h-[min(56vw,360px)] w-full md:min-h-[320px] lg:min-h-full">
               <Image
-                src="/images/about/about-profile-kobe2.png"
+                src="/images/about/about-profile-kobe.png"
                 alt=""
                 fill
                 sizes="(max-width: 1024px) 100vw, 52vw"
