@@ -47,7 +47,7 @@ export default function Business() {
   return (
     <section
       id="business"
-      className="w-full min-w-0 max-w-full overflow-x-clip bg-[#f4f3ef] px-7 py-24 md:px-14 lg:px-20"
+      className="w-full min-w-0 max-w-full overflow-x-clip bg-[#f2f0e9] px-7 py-24 md:px-14 lg:px-20"
       aria-labelledby="business-heading"
     >
       <div className="min-w-0 max-w-[980px]">

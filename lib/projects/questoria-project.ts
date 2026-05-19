@@ -3,39 +3,47 @@ import type { CaseStudyContent } from '@/lib/projects/case-study-types';
 export const QUESTORIA_PROJECT = {
   slug: 'questoria',
   hero: {
-    label: 'PROJECTS / PROJECT',
+    label: '',
     title: 'QUESTORIA',
     subtitle: 'AI Skill Diagnosis Application',
     leadLines: ['AI活用力という曖昧な概念を、', '診断できる体験へ変える。'],
     body:
-      'QUESTORIAは、AIリテラシーを測定するスキル診断体験を提供し、\n個人が自身の現在地を正しく把握できる診断を可能にします。\nゲーム性と診断ロジックの両立により、楽しみながら学び、\n課題と強みを発見するきっかけを創出します。',
+      'QUESTORIAは、\nAI活用に必要なスキルを質問形式で可視化し、\n自分の強みや課題を把握できる診断コンテンツです。\nゲームのように進められる体験設計により、\n楽しみながらAI活用の現在地を理解できる構成にしました。',
     singleVisual: {
       src: '/images/projects/questoria/hero-visual-composite.png',
       alt: 'QUESTORIA hero visual',
+      href: 'https://questoria.raptova.com/',
     },
   },
   overview: {
     rows: [
-      { label: 'Project', value: 'AI Skill Diagnosis QUESTORIA' },
+      { label: 'Project', value: 'AI Skill Diagnosis QUESTORIA', href: 'https://questoria.raptova.com/' },
       { label: 'Type', value: 'Original Project' },
-      { label: 'Category', value: 'AI Diagnosis / Web Application / UX Design' },
+      { label: 'Experience', value: 'AI診断 / Webアプリケーション / UX設計' },
       {
-        label: 'Role',
-        value:
-          'Concept Design / Skill Definition / Question Design / UX Design / UI Direction / Analytics Design',
+        label: 'Design Scope',
+        value: 'コンセプト設計 / 質問設計 / UX/UI設計 / 分析設計',
       },
       { label: 'Status', value: 'Completed' },
-      { label: 'Year', value: '2025' },
+      { label: 'Release', value: '2026.05' },
     ],
   },
   background: {
     title: 'Background',
     paragraphs: [
-      `AIを使えるとはどういうことか。
-人によって、組織によって、その基準は揺らいでいます。
-しかし、その曖昧さを「診断可能な形」にすることは、学びの起点であり、改善の第一歩です。`,
-      `QUESTORIAは、AI活用力を構成するスキルを定義し、診断可能な形式に分解することで、
-誰もが自分の強みや課題を可視化し、次の一歩を踏み出せる体験をつくりました。`,
+      `AIが当たり前に使われる時代において、
+差が生まれるのは、どれだけ知っているかではありません。
+
+目的を定め、情報を整理し、AIに任せる部分と
+自分で判断する部分を見極めながら進められるか。
+
+その違いは、仕事の進め方や学び方に
+大きく影響していくと考えました。`,
+      `QUESTORIAは、AI活用に必要な力を
+「目的定義力」「設計力」「判断力」の3つのスキル軸に整理し、
+自分の現在地を診断できる体験として設計したアプリです。`,
+      `知識問題ではなく、実際の場面でどう考え、どう進めるかを見ることで、
+AIをより深く活用するために、次に何を磨くべきかが見えるきっかけをつくりました。`,
     ],
   },
   approach: {
@@ -79,7 +87,7 @@ export const QUESTORIA_PROJECT = {
         icon: 'layers',
         iconSrc: '/images/projects/questoria/icons/detail-skill-definition.png',
         title: 'Skill Definition',
-        body: 'AI活用力を5つの観点に分解し、診断ロジックの基盤を設計しました。',
+        body: 'AI活用力を3つの観点に分解し、診断ロジックの基盤を設計しました。',
       },
       {
         icon: 'chat',
@@ -116,12 +124,18 @@ export const QUESTORIA_PROJECT = {
   next: {
     title: 'Next',
     paragraphs: [
-      'アイデアを、動く形にしたいときがある。',
-      'RAPTOVAは、コンセプト設計から外部デザイン、実装・改善まで伴走します。',
+      '構想を、伝わる体験へ。',
+      'RAPTOVAは、コンセプト設計からUX設計、実装・改善まで伴走します。',
     ],
     backLabel: '← Back to Projects',
     backHref: '/projects',
+    previousProject: {
+      eyebrow: '← Previous Project',
+      title: 'RAPTOVA Official Website',
+      href: '/projects/raptova-website',
+    },
     ctaLabel: 'CONTACT →',
     ctaHref: '/#contact',
+    ctaVariant: 'outline',
   },
 } as const satisfies CaseStudyContent;

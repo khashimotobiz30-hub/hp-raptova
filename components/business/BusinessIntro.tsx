@@ -1,22 +1,26 @@
 'use client';
 
 import { Users, FileText, TrendingUp } from 'lucide-react';
-import { BusinessLabel, SectionReveal, serifStyle } from '@/components/business/shared';
+import {
+  BusinessLabel,
+  BUSINESS_PAGE_CONTAINER_CLASS,
+  SectionReveal,
+  serifStyle,
+} from '@/components/business/shared';
 
 const BODY_BLOCKS = [
   [
     'RAPTOVAが支援しているのは、',
-    '単にWebサイトや資料を作ることではありません。',
+    'Webサイトや資料を作ることだけではありません。',
   ],
   [
-    'まだ言語化されていない課題、',
+    'まだ言葉になっていない課題、',
     '伝わりきっていない魅力、',
-    '整理されていない業務や情報を、',
-    '実行できる形へ変えていくこと。',
+    '整理されていない情報や業務を見つめ直し、',
   ],
   [
-    '採用、Web・資料制作、業務整理・AI活用は、',
-    'そのための入口であり、手段です。',
+    '採用活動、Web・資料制作、業務整理・AI活用など、',
+    '目的に応じた実行可能な形へ落とし込んでいくことです。',
   ],
 ] as const;
 
@@ -31,7 +35,7 @@ const PILLAR_ITEMS = [
   },
   {
     Icon: TrendingUp,
-    lines: ['仕事の流れを整え', '前に進めやすくする'] as const,
+    lines: ['業務の流れを整え', '前に進めやすくする'] as const,
   },
 ] as const;
 
@@ -50,7 +54,7 @@ export default function BusinessIntro() {
         aria-hidden
       />
       <div className="absolute inset-x-0 top-0 h-px bg-white/10" aria-hidden />
-      <div className="relative mx-auto max-w-[1440px] px-7 py-12 md:px-14 md:py-14 lg:px-20 lg:py-16">
+      <div className={["relative", BUSINESS_PAGE_CONTAINER_CLASS, "py-12 md:py-14 lg:py-16"].join(" ")}>
         <div className="grid gap-14 lg:grid-cols-[minmax(0,7fr)_minmax(0,13fr)] lg:items-stretch lg:gap-14 xl:gap-16">
           <div className="min-w-0">
             <SectionReveal>

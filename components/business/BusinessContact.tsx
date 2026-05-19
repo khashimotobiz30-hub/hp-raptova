@@ -12,7 +12,7 @@ export default function BusinessContact() {
   return (
     <section
       id="contact"
-      className="w-full min-w-0 max-w-full overflow-x-clip border-b border-black/[0.08] bg-[#f4f3ef] px-7 py-16 text-[#0a0a0a] md:px-14 lg:px-20"
+      className="w-full min-w-0 max-w-full overflow-x-clip border-b border-black/[0.08] bg-[#f2f0e9] px-7 py-16 text-[#0a0a0a] md:px-14 lg:px-20"
       aria-labelledby="business-contact-heading"
     >
       <div className="mx-auto grid min-w-0 max-w-[1240px] gap-10 min-[1440px]:grid-cols-[360px_minmax(500px,1fr)_280px] min-[1440px]:items-center min-[1440px]:gap-16">
@@ -45,7 +45,7 @@ export default function BusinessContact() {
           <button
             type="button"
             onClick={handleContactClick}
-            className="flex w-full min-w-0 max-w-full items-center justify-between border border-black/35 bg-[#f4f3ef] px-6 py-5 text-xs font-semibold tracking-[0.18em] text-[#0a0a0a] transition hover:bg-[#0a0a0a] hover:text-white min-[430px]:px-7 min-[430px]:tracking-[0.22em]"
+            className="flex w-full min-w-0 max-w-full items-center justify-between border border-black/35 bg-[#f2f0e9] px-6 py-5 text-xs font-semibold tracking-[0.18em] text-[#0a0a0a] transition hover:bg-[#0a0a0a] hover:text-white min-[430px]:px-7 min-[430px]:tracking-[0.22em]"
             aria-label="メールで問い合わせる"
           >
             <span className="min-w-0">お問い合わせする</span>

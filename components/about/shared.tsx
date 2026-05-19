@@ -15,11 +15,11 @@ export function SectionLabel({
 }) {
   const toneClass =
     tone === 'dark'
-      ? 'text-white/38 [&_span:first-child]:text-white/52'
-      : 'text-black/55 [&_span:first-child]:text-black/42';
+      ? 'text-white/72 [&_span:first-child]:text-white/82'
+      : 'text-black/90 [&_span:first-child]:text-black/75';
 
   return (
-    <p className={`text-[10px] font-semibold tracking-[0.38em] md:text-[11px] ${toneClass}`}>
+    <p className={`text-[18px] font-semibold tracking-[0.32em] md:text-[22px] ${toneClass}`}>
       {number ? (
         <>
           <span>{number}</span>
@@ -28,7 +28,7 @@ export function SectionLabel({
           </span>
         </>
       ) : null}
-      <span className="tracking-[0.42em]">{title}</span>
+      <span className="tracking-[0.36em]">{title}</span>
     </p>
   );
 }

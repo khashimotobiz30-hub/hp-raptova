@@ -11,13 +11,23 @@ import {
   type LucideIcon,
 } from 'lucide-react';
 import { Fragment } from 'react';
-import { BusinessLabel, SectionReveal, serifStyle } from '@/components/business/shared';
+import {
+  BusinessLabel,
+  BUSINESS_PAGE_CONTAINER_CLASS,
+  SectionReveal,
+  serifStyle,
+} from '@/components/business/shared';
 
 const INTRO_LINES = [
-  'RAPTOVAは、最初から完成物だけを作るのではなく、',
-  'まずは課題や情報を整理するところから始めます。',
-  '何を伝えるべきか。誰に届けるべきか。どの形にすれば前に進むのか。',
-  'その前提を整えた上で、Web、資料、文章、AI活用など、必要な形へ落とし込んでいきます。',
+  'RAPTOVAは、最初から完成物を決めて進めるのではなく、',
+  'まずは現状や目的を整理するところから始めます。',
+  '',
+  '何を伝えるべきか。',
+  'どこを整えれば、前に進みやすくなるのか。',
+  '',
+  '対話を通じて優先順位を見極め、',
+  'Web、資料、文章、AI活用など、',
+  '必要な形へ具体化していきます。',
 ] as const;
 
 const STEPS: ReadonlyArray<{
@@ -29,7 +39,7 @@ const STEPS: ReadonlyArray<{
   { index: '01', title: 'HEARING', body: '現状・課題・背景を詳細に聞く', Icon: MessageCircle },
   { index: '02', title: 'ORGANIZE', body: '情報・目的・優先順位を整理する', Icon: ListChecks },
   { index: '03', title: 'DESIGN', body: '構成・導線・表現方法を設計する', Icon: Pencil },
-  { index: '04', title: 'CREATE', body: 'Web・資料・文章として形にする', Icon: Monitor },
+  { index: '04', title: 'CREATE', body: 'Web・資料・\n文章などに形にする', Icon: Monitor },
   { index: '05', title: 'IMPROVE', body: '反応・状況を見ながら改善する', Icon: RefreshCw },
 ] as const;
 
@@ -41,7 +51,7 @@ function ApproachStepDivider() {
   return (
     <div className="relative w-6 shrink-0 self-stretch xl:w-7" aria-hidden>
       <div className="absolute inset-y-0 left-1/2 w-px -translate-x-1/2 bg-black/[0.12]" />
-      <div className="absolute left-1/2 top-1/2 z-[1] flex -translate-x-1/2 -translate-y-1/2 items-center justify-center bg-[#f4f3ef] px-0.5 py-1">
+      <div className="absolute left-1/2 top-1/2 z-[1] flex -translate-x-1/2 -translate-y-1/2 items-center justify-center bg-[#f2f0e9] px-0.5 py-1">
         <ChevronRight strokeWidth={1.5} className="h-6 w-6 text-black/70 xl:h-7 xl:w-7" />
       </div>
     </div>
@@ -73,7 +83,7 @@ function ApproachStepCell({ step }: { step: (typeof STEPS)[number] }) {
         <h3 className="flex items-start justify-center text-[11px] font-semibold leading-none tracking-[0.2em] text-black/[0.82]">
           {step.title}
         </h3>
-        <p className="copy-ja flex min-h-[4.5em] w-full items-start justify-center text-[12px] leading-[1.75] tracking-[0.04em] text-black/[0.58]">
+        <p className="copy-ja flex min-h-[4.5em] w-full items-start justify-center whitespace-pre-line text-[12px] leading-[1.75] tracking-[0.04em] text-black/[0.58]">
           {step.body}
         </p>
       </div>
@@ -84,10 +94,10 @@ function ApproachStepCell({ step }: { step: (typeof STEPS)[number] }) {
 export default function BusinessApproach() {
   return (
     <section
-      className="border-b border-black/[0.08] bg-[#f4f3ef] px-7 pt-16 pb-14 md:px-14 md:pt-18 md:pb-16 lg:px-20 lg:pt-16 lg:pb-14 xl:pt-18 xl:pb-16"
+      className="border-b border-black/[0.08] bg-[#f2f0e9] pt-16 pb-14 md:pt-18 md:pb-16 lg:pt-16 lg:pb-14 xl:pt-18 xl:pb-16"
       aria-labelledby="business-approach-heading"
     >
-      <div className="mx-auto max-w-[1440px]">
+      <div className={BUSINESS_PAGE_CONTAINER_CLASS}>
         <div className="grid gap-12 lg:grid-cols-[minmax(0,0.34fr)_minmax(0,0.66fr)] lg:items-start lg:gap-10 xl:gap-12">
           <div className="min-w-0">
             <SectionReveal>
@@ -102,8 +112,8 @@ export default function BusinessApproach() {
                 設計して、形にする。
               </h2>
               <p className="copy-ja mt-8 text-[13px] leading-[2.05] tracking-[0.08em] text-black/[0.65] md:text-sm">
-                {INTRO_LINES.map((line) => (
-                  <span key={line} className="block">
+                {INTRO_LINES.map((line, index) => (
+                  <span key={index} className="block">
                     {line}
                   </span>
                 ))}

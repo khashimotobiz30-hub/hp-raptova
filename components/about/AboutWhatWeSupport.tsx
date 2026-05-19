@@ -8,9 +8,9 @@ import {
   UserRound,
   type LucideIcon,
 } from 'lucide-react';
-import { SectionLabel, SectionReveal } from '@/components/about/shared';
+import { SectionReveal } from '@/components/about/shared';
 
-const INTRO = 'RAPTOVAは、構想や課題を前へ進めるために、現在は主に3つの領域で支援しています。';
+const INTRO = 'RAPTOVAは、止まっている仕事を前へ進めるために、現在は主に3つの領域から支援しています。';
 
 const ICON_SIZE = 64;
 const ICON_STROKE = 1.25;
@@ -24,19 +24,19 @@ const COLUMNS: ReadonlyArray<{
   {
     number: '01',
     title: 'Recruiting',
-    body: '採用コンセプト、求人原稿、採用LP、説明資料など、採用活動に必要な言葉と導線を整える。',
+    body: '採用コンセプト、求人原稿、採用LP、説明資料などを、採用活動に必要な言葉と導線として整える。',
     Icon: UserRound,
   },
   {
     number: '02',
     title: 'Web / Creative',
-    body: 'コーポレートサイト、LP、会社資料、営業資料など、伝えたい価値を見える形にする。',
+    body: 'コーポレートサイト、LP、会社資料、営業資料などを、伝えたい価値が届く形に整える。',
     Icon: Monitor,
   },
   {
     number: '03',
     title: 'Workflow / AI',
-    body: '業務フロー、情報整理、AI活用の設計など、日々の仕事を進めやすい仕組みに変える。',
+    body: '業務フロー、情報整理、AI活用の設計などを、日々の仕事が進みやすい仕組みに整える。',
     Icon: SlidersHorizontal,
   },
 ] as const;
@@ -44,7 +44,7 @@ const COLUMNS: ReadonlyArray<{
 export default function AboutWhatWeSupport() {
   return (
     <section
-      className="relative overflow-hidden bg-[#080808] text-white"
+      className="relative overflow-hidden bg-[#080808] px-7 pt-12 pb-10 text-white md:px-14 md:pt-14 md:pb-11 lg:px-20 lg:pt-14 lg:pb-12"
       aria-labelledby="about-support-heading"
     >
       <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden" aria-hidden>
@@ -65,13 +65,15 @@ export default function AboutWhatWeSupport() {
       />
       <div className="absolute inset-x-0 top-0 z-[3] h-px bg-white/10" aria-hidden />
 
-      <div className="relative z-10 mx-auto w-full max-w-[1240px] px-7 pt-12 pb-10 md:px-14 md:pt-14 md:pb-11 lg:px-20 lg:pt-14 lg:pb-12">
+      <div className="relative z-10 mx-auto w-full max-w-[1240px]">
         <SectionReveal>
-          <SectionLabel title="WHAT WE SUPPORT" tone="dark" />
+          <p className="text-[18px] font-semibold tracking-[0.28em] text-white/72 md:text-[22px]">
+            <span className="tracking-[0.30em]">WHAT WE SUPPORT</span>
+          </p>
           <h2 id="about-support-heading" className="sr-only">
             What We Support
           </h2>
-          <p className="copy-ja mt-5 max-w-3xl text-[13px] leading-[1.9] tracking-[0.1em] text-white/[0.62] md:mt-6 md:text-sm lg:whitespace-nowrap">
+          <p className="copy-ja mt-7 max-w-3xl text-[13px] font-medium leading-[1.9] tracking-[0.1em] text-white/[0.76] md:mt-8 md:text-sm lg:whitespace-nowrap">
             {INTRO}
           </p>
         </SectionReveal>

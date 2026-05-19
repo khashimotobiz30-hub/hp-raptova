@@ -3,29 +3,75 @@
 import Image from 'next/image';
 import { SectionReveal, serifStyle } from '@/components/about/shared';
 
-const STATEMENT_BLOCKS = [
+type StatementBlock = {
+  lines: string[];
+  large?: boolean;
+  spacingBefore?: 'md' | 'xl';
+};
+
+const SPACING_BEFORE_CLASS: Record<NonNullable<StatementBlock['spacingBefore']>, string> = {
+  md: 'mt-10 md:mt-12',
+  xl: 'mt-16 md:mt-20',
+};
+
+/** 頭の中ある構想。以降のブロック間（10‒20%程減） */
+const SPACING_MD_TIGHT = 'mt-8 md:mt-10';
+
+function spacingBeforeClass(blockIndex: number, spacing?: StatementBlock['spacingBefore']) {
+  if (!spacing) return '';
+  if (spacing === 'xl') return SPACING_BEFORE_CLASS.xl;
+  return blockIndex >= 2 ? SPACING_MD_TIGHT : SPACING_BEFORE_CLASS.md;
+}
+
+const STATEMENT_BLOCKS: StatementBlock[] = [
   {
-    lines: ['AIの力で、', 'すべてが一瞬で変わるわけではない。'],
-    large: true,
-  },
-  {
-    lines: ['けれど、これまで手が届かなかったことに、', '少しずつ手が届く時代になった。'],
+    lines: [
+      'AIの力で、すべてが一瞬で変わるわけではない。',
+      'けれど、これまで手が届かなかったことに、',
+      '少しずつ手が届く時代になった。',
+    ],
     large: true,
   },
   {
     lines: [
-      'RAPTOVAは、構想や課題を置き去りにせず、',
+      '頭の中にある構想。',
+      '整理されないまま残っている課題。',
+      '形にしたいのに、後回しになっている仕事。',
+    ],
+    large: true,
+    spacingBefore: 'xl',
+  },
+  {
+    lines: [
+      'RAPTOVAは、それらを置き去りにしない。',
+    ],
+    large: true,
+    spacingBefore: 'md',
+  },
+  {
+    lines: [
       'AIと人の思考を掛け合わせ、',
+      '情報を整理し、目的を見つめ直し、',
       '実行できる形へ変えていく。',
     ],
     large: false,
+    spacingBefore: 'md',
   },
-] as const;
+  {
+    lines: [
+      '遠い未来の話ではなく、',
+      '目の前の仕事を、今日から前に進めるために。',
+    ],
+    large: false,
+    spacingBefore: 'md',
+  }
+];
+
 
 export default function AboutStatement() {
   return (
     <section
-      className="relative min-h-[80svh] overflow-hidden bg-[#070707] text-white md:min-h-[85svh] lg:min-h-[88svh]"
+      className="relative min-h-[82svh] overflow-x-clip bg-[#070707] text-white md:min-h-[88svh] lg:min-h-[92svh]"
       aria-labelledby="about-statement-heading"
     >
       <div className="absolute inset-0" aria-hidden>
@@ -56,36 +102,55 @@ export default function AboutStatement() {
       />
       <div className="absolute inset-x-0 top-0 h-px bg-white/10" aria-hidden />
 
-      <div className="relative mx-auto flex min-h-[inherit] max-w-[900px] flex-col items-center justify-center px-7 py-24 text-center md:px-14 md:py-28 lg:px-20 lg:py-32">
+      <div className="relative mx-auto flex min-h-[inherit] max-w-[900px] flex-col items-center md:max-w-none justify-center px-3 pt-14 pb-12 text-center md:pt-32 md:pb-28 lg:pt-36 lg:pb-32">
         <h2 id="about-statement-heading" className="sr-only">
           ステートメント
         </h2>
 
-        <div className="w-full max-w-[640px]">
-          {STATEMENT_BLOCKS.map((block, blockIndex) => (
-            <SectionReveal key={block.lines.join('')} delay={0.06 + blockIndex * 0.08}>
+        <div className="w-full">
+          {STATEMENT_BLOCKS.map((block, blockIndex) => {
+            const isLeadBlock = blockIndex === 0;
+            const isRaptovaEmphasis = blockIndex === 2;
+            return (
+            <SectionReveal key={`stmt-${blockIndex}`} delay={0.06 + blockIndex * 0.08}>
               <p
                 className={[
-                  'copy-ja',
-                  block.large
-                    ? 'text-[clamp(18px,2.4vw,26px)] font-light leading-[1.92] tracking-[0.06em] text-white/[0.9]'
-                    : 'mt-10 text-[14px] font-light leading-[2.05] tracking-[0.1em] text-white/[0.58] md:mt-12 md:text-[15px]',
-                  blockIndex > 0 && block.large ? 'mt-8 md:mt-9' : '',
+                  'copy-ja flex w-full flex-col items-center tracking-[0.06em]',
+                  isLeadBlock
+                    ? 'font-light leading-[1.92] text-white/[0.9] text-[clamp(13px,calc((100vw-1.75rem)/24),18px)] md:text-[clamp(16px,calc((100vw-1.75rem)/24),25px)]'
+                    : isRaptovaEmphasis
+                      ? 'font-normal leading-[1.84] text-white/[0.96] text-[clamp(13px,calc((100vw-1.75rem)/26),17px)] md:text-[clamp(15px,calc((100vw-1.75rem)/26),23px)]'
+                      : 'font-light leading-[1.84] text-white/[0.9] text-[clamp(12px,calc((100vw-1.75rem)/26),16px)] md:text-[clamp(14px,calc((100vw-1.75rem)/26),22px)]',
+                  spacingBeforeClass(blockIndex, block.spacingBefore),
                 ]
                   .filter(Boolean)
                   .join(' ')}
                 style={serifStyle}
               >
-                {block.lines.map((line) => (
-                  <span key={line} className="block">
-                    {line}
-                  </span>
-                ))}
+                {block.lines.map((line, lineIndex) =>
+                  line === '' ? (
+                    <span
+                      key={`stmt-${blockIndex}-gap-${lineIndex}`}
+                      className="block h-[1.1em] w-full shrink-0"
+                      aria-hidden
+                    />
+                  ) : (
+                    <span
+                      key={`stmt-${blockIndex}-${lineIndex}-${line}`}
+                      className="block w-max max-w-none whitespace-nowrap"
+                    >
+                      {line}
+                    </span>
+                  ),
+                )}
               </p>
             </SectionReveal>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
   );
 }
+
+

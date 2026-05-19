@@ -1,10 +1,11 @@
-import ComingSoon from '@/components/ui/ComingSoon';
-import type { Metadata } from 'next';
+'use client';
 
-export const metadata: Metadata = {
-  title: 'PROJECTS | RAPTOVA',
-};
+import { useEffect } from 'react';
 
 export default function ProjectsPage() {
-  return <ComingSoon />;
+  useEffect(() => {
+    window.location.replace('/#projects');
+  }, []);
+
+  return null;
 }

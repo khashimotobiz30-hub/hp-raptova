@@ -3,6 +3,8 @@
 export type CaseStudyOverviewRow = {
   label: string;
   value: string;
+  /** External URL for the value (renders value with a trailing arrow). */
+  href?: string;
 };
 
 export type CaseStudyApproachItem = {
@@ -21,6 +23,8 @@ export type CaseStudyOutputItem = {
 export type CaseStudyOutputFlowImage = {
   src: string;
   alt: string;
+  tone?: 'default' | 'flat';
+  scale?: number;
 };
 
 export type CaseStudyDetailItem = {
@@ -29,7 +33,7 @@ export type CaseStudyDetailItem = {
   /** PNG 等。指定時は画像を表示し、未指定時は `icon` の SVG にフォールバック */
   iconSrc?: string;
   /** `iconSrc` 未指定時のアイコン種別 */
-  icon: 'layers' | 'chat' | 'split' | 'link' | 'chart' | 'compass';
+  icon: 'layers' | 'chat' | 'split' | 'link' | 'chart' | 'compass' | 'code';
 };
 
 export type CaseStudyContent = {
@@ -39,6 +43,8 @@ export type CaseStudyContent = {
     label: string;
     title: string;
     subtitle: string;
+    /** brand hero: English meta line under title block (e.g. Brand Site / Direction / Web Design) */
+    tagline?: string;
     leadLines: readonly string[];
     body: string;
     /**
@@ -48,7 +54,11 @@ export type CaseStudyContent = {
     singleVisual: {
       src: string;
       alt: string;
+      /** When set, hero visual links to the live product (external). */
+      href?: string;
     };
+    /** brand = wider hero visual for brand-site atmosphere; default = product mockup style */
+    visualStyle?: 'default' | 'brand';
   };
   overview: {
     rows: readonly CaseStudyOverviewRow[];
@@ -63,10 +73,12 @@ export type CaseStudyContent = {
   };
   output: {
     title: string;
+    lead?: string;
     /** 横長フロー1枚。指定時は `items` よりこちらを表示 */
     flowImage?: CaseStudyOutputFlowImage;
     items: readonly CaseStudyOutputItem[];
     disclaimer: string;
+    showDisclaimerWithFlow?: boolean;
   };
   detail: {
     title: string;
@@ -77,7 +89,21 @@ export type CaseStudyContent = {
     paragraphs: readonly string[];
     backLabel: string;
     backHref: string;
+    /** Optional: two-line link to the previous case study (e.g. QUESTORIA -> RAPTOVA site) */
+    previousProject?: {
+      eyebrow: string;
+      title: string;
+      href: string;
+    };
+    /** Optional: two-line link to the next case study (e.g. RAPTOVA site -> QUESTORIA) */
+    nextProject?: {
+      eyebrow: string;
+      title: string;
+      href: string;
+    };
     ctaLabel: string;
     ctaHref: string;
+    /** CTA button style in Next section (default: solid) */
+    ctaVariant?: 'solid' | 'outline';
   };
 };
