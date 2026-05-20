@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useEffect, useState, useCallback, useRef } from 'react';
 import { SITE_CONFIG } from '@/lib/config';
 import { CASE_STUDY_NAV_LINKS } from '@/lib/projects/top-projects';
@@ -17,7 +18,7 @@ function NavUnderline({ contrast }: { contrast: boolean }) {
     <span
       className={[
         'absolute -bottom-0.5 left-0 h-px w-0 transition-all duration-300 group-hover:w-full',
-        contrast ? 'bg-[#0a0a0a]' : 'bg-[#0a0a0a] md:bg-white',
+        contrast ? 'bg-[#0a0a0a]' : 'bg-[#0a0a0a]',
       ].join(' ')}
     />
   );
@@ -28,7 +29,7 @@ function navLinkClass(contrast: boolean) {
     'text-xs font-normal tracking-[0.18em] transition-colors duration-200 relative group',
     contrast
       ? 'text-[#555555] hover:text-[#0a0a0a]'
-      : 'text-[#555555] hover:text-[#0a0a0a] md:text-white/82 md:hover:text-white',
+      : 'text-[#555555] hover:text-[#0a0a0a]',
   ].join(' ');
 }
 
@@ -147,7 +148,7 @@ export default function Header() {
             ? 'border-b border-transparent bg-white backdrop-blur-none'
             : headerSolidBg
               ? 'border-b border-black/10 bg-[#f2f0e9]/96 backdrop-blur-md'
-              : 'border-b border-transparent bg-transparent backdrop-blur-none md:mix-blend-difference',
+              : 'border-b border-transparent bg-transparent backdrop-blur-none',
         ].join(' ')}
       >
         <div className="top-header-split flex w-full min-w-0 items-center justify-between px-7 md:items-start md:px-12 lg:grid lg:items-center lg:px-0 min-[1440px]:px-0">
@@ -155,12 +156,21 @@ export default function Header() {
             href="/"
             onClick={handleLogoClick}
             className={[
-              'flex h-[72px] items-center text-sm font-medium tracking-[0.38em] transition-opacity duration-200 hover:opacity-60 lg:pl-10 xl:pl-14 min-[1440px]:pl-20',
-              headerNavContrast ? 'text-[#0a0a0a]' : 'text-[#0a0a0a] md:text-white',
+              'flex h-[72px] items-center transition-opacity duration-200 hover:opacity-60 lg:pl-10 xl:pl-14 min-[1440px]:pl-20',
+              'text-[#0a0a0a]',
             ].join(' ')}
             aria-label={`${SITE_CONFIG.siteName} ホームへ`}
           >
-            {SITE_CONFIG.siteName}
+            <span className="relative block h-[18px] w-[137px] md:h-[20px] md:w-[152px]">
+              <Image
+                src="/logos/raptova-logotype-small.svg"
+                alt="RAPTOVA"
+                fill
+                priority
+                sizes="(max-width: 767px) 137px, 152px"
+                className="object-contain object-left"
+              />
+            </span>
           </Link>
 
           <nav className="hidden md:flex items-start gap-10 lg:justify-end lg:pr-9 xl:pr-11 min-[1440px]:pr-14" aria-label="メインナビゲーション">
@@ -195,7 +205,7 @@ export default function Header() {
                     'flex h-6 w-5 items-center justify-center transition-colors duration-200',
                     headerNavContrast
                       ? 'text-[#555555] hover:text-[#0a0a0a]'
-                      : 'text-[#555555] hover:text-[#0a0a0a] md:text-white/82 md:hover:text-white',
+                      : 'text-[#555555] hover:text-[#0a0a0a]',
                   ].join(' ')}
                   aria-expanded={projectsOpen}
                   aria-haspopup="true"

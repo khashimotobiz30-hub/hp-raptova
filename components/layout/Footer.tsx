@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { SITE_CONFIG } from '@/lib/config';
 
 const FOOTER_LINKS = [
@@ -15,10 +16,18 @@ export default function Footer() {
           <div className="min-w-0">
             <Link
               href="/"
-              className="text-sm font-medium tracking-[0.38em] text-white hover:opacity-60 transition-opacity duration-200"
+              className="transition-opacity duration-200 hover:opacity-60"
               aria-label={`${SITE_CONFIG.siteName} ホームへ`}
             >
-              {SITE_CONFIG.siteName}
+              <span className="relative block h-[16px] w-[115px] md:h-[18px] md:w-[140px]">
+                <Image
+                  src="/logos/raptova-logotype-small-white.svg"
+                  alt="RAPTOVA"
+                  fill
+                  sizes="(max-width: 767px) 115px, 140px"
+                  className="object-contain object-left"
+                />
+              </span>
             </Link>
           </div>
 
