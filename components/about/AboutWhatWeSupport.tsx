@@ -73,7 +73,7 @@ export default function AboutWhatWeSupport() {
           <h2 id="about-support-heading" className="sr-only">
             What We Support
           </h2>
-          <p className="copy-ja mt-7 max-w-3xl text-[13px] font-medium leading-[1.9] tracking-[0.1em] text-white/[0.76] md:mt-8 md:text-sm lg:whitespace-nowrap">
+          <p className="copy-ja copy-ja-prose mt-7 max-w-3xl text-[13px] font-medium leading-[1.9] tracking-[0.07em] text-white/[0.76] md:mt-8 md:text-sm md:tracking-[0.1em] lg:whitespace-nowrap">
             {INTRO}
           </p>
         </SectionReveal>

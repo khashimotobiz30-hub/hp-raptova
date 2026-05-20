@@ -49,7 +49,7 @@ export default function AboutHowWeWork() {
             How We Work
           </h2>
           <p
-            className="copy-ja mt-7 text-[15px] font-medium leading-[1.9] md:mt-8 tracking-[0.08em] text-black/[0.86] md:text-base lg:whitespace-nowrap"
+            className="copy-ja copy-ja-prose mt-7 text-[15px] font-medium leading-[1.9] md:mt-8 tracking-[0.06em] text-black/[0.86] md:text-base md:tracking-[0.08em] lg:whitespace-nowrap"
             style={serifStyle}
           >
             {INTRO}
@@ -80,7 +80,7 @@ export default function AboutHowWeWork() {
                         >
                           {col.title}
                         </h3>
-                        <p className="copy-ja mt-2 text-[13px] leading-[1.86] tracking-[0.055em] text-black/[0.74] ![overflow-wrap:normal] ![line-break:strict] md:text-[13px] md:leading-[1.9]">
+                        <p className="copy-ja copy-ja-prose mt-2 text-[13px] leading-[1.86] tracking-[0.04em] text-black/[0.74] md:text-[13px] md:leading-[1.9] md:tracking-[0.055em]">
                           {col.body}
                         </p>
                       </div>

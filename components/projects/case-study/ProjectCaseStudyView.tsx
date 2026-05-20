@@ -297,7 +297,7 @@ export default function ProjectCaseStudyView({ content }: { content: CaseStudyCo
               </RevealAnimation>
 
               <RevealAnimation delay={0.14} className="mt-7 md:mt-8 lg:mt-7 xl:mt-8">
-                <p className="copy-ja max-w-[460px] whitespace-pre-line text-[14px] font-medium leading-[1.95] tracking-[0.03em] text-black/[0.75] md:text-[15px] md:leading-[1.98] lg:max-w-[400px] lg:text-[14px] lg:leading-[1.92] xl:max-w-[460px] xl:text-[15px] xl:leading-[1.98]">
+                <p className="copy-ja copy-ja-prose max-w-[460px] whitespace-pre-line text-[14px] font-medium leading-[1.95] tracking-[0.02em] text-black/[0.75] md:text-[15px] md:leading-[1.98] md:tracking-[0.03em] lg:max-w-[400px] lg:text-[14px] lg:leading-[1.92] xl:max-w-[460px] xl:text-[15px] xl:leading-[1.98]">
                   {hero.body}
                 </p>
               </RevealAnimation>
@@ -414,7 +414,7 @@ export default function ProjectCaseStudyView({ content }: { content: CaseStudyCo
             <div className="min-w-0 max-w-[min(100%,40rem)] space-y-4 md:space-y-[1.125rem]">
               {background.paragraphs.map((p) => (
                 <RevealAnimation key={p.slice(0, 24)}>
-                  <p className="copy-ja whitespace-pre-line text-[14px] font-light leading-7 tracking-[0.035em] text-white/[0.87] md:text-[15px] md:leading-8 md:text-white/88">
+                  <p className="copy-ja copy-ja-prose whitespace-pre-line text-[14px] font-light leading-7 tracking-[0.03em] text-white/[0.87] md:text-[15px] md:leading-8 md:tracking-[0.035em] md:text-white/88">
                     {p}
                   </p>
                 </RevealAnimation>

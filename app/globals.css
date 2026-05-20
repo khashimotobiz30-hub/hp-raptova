@@ -51,6 +51,15 @@ body > * {
   line-break: strict;
 }
 
+/* Long-form Japanese prose: avoid orphan chars / dangling punctuation on mobile */
+.copy-ja-prose {
+  word-break: normal;
+  overflow-wrap: break-word;
+  line-break: auto;
+  text-wrap: pretty;
+  hanging-punctuation: allow-end;
+}
+
 /* フォーカスアウトライン — アクセシビリティ確保 */
 :focus-visible {
   outline: 2px solid #0a0a0a;
