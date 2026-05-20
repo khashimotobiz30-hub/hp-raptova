@@ -11,6 +11,9 @@ const HERO_IMAGE = '/images/about/about-hero-light-space.png';
 const HERO_CONTENT_CLASS = [
   'relative z-[2] mx-auto flex w-full max-w-[1440px] flex-col',
   'min-h-[100svh] justify-start px-7 pb-[10svh] pt-[calc(72px+26vh)]',
+  'se-short:!justify-start',
+  'se-short:!pt-[calc(72px+14vh)]',
+  'se-short:!pb-[6svh]',
   'md:justify-center md:!pt-28 md:pb-16 md:px-14',
   'lg:min-h-[min(92svh,680px)] lg:justify-center lg:px-20 lg:pb-20 lg:pt-24',
   'xl:min-h-[720px] xl:pt-[72px] xl:pb-22',
@@ -60,7 +63,7 @@ export default function AboutHero() {
 
       <div className={HERO_CONTENT_CLASS}>
         <SectionReveal>
-          <div className="max-w-lg max-md:pt-[3.25rem] md:max-w-md md:pt-0 lg:max-w-[26rem] xl:max-w-[28rem] xl:pt-0 xl:translate-y-[clamp(1rem,3vh,2.5rem)] min-[1440px]:max-w-[30rem]">
+          <div className="max-w-lg max-md:pt-[3.25rem] se-short:!pt-0 md:max-w-md md:pt-0 lg:max-w-[26rem] xl:max-w-[28rem] xl:pt-0 xl:translate-y-[clamp(1rem,3vh,2.5rem)] min-[1440px]:max-w-[30rem]">
             <h1
               id="about-hero-title"
               className="font-serif font-medium leading-[1.04] tracking-[0.04em] text-[#0a0a0a] text-[clamp(36px,9vw,48px)] md:text-[clamp(38px,5.5vw,56px)] lg:text-[clamp(42px,4.2vw,62px)] xl:text-[clamp(44px,4.8vw,72px)] min-[1440px]:text-[clamp(48px,5.5vw,79px)]"
@@ -75,9 +78,9 @@ export default function AboutHero() {
             >
               Thoughts Into Motion.
             </p>
-            <div className="mt-7 h-px w-10 bg-black/[0.32] md:mt-8 md:w-12" aria-hidden />
+            <div className="mt-7 h-px w-10 bg-black/[0.32] se-short:mt-5 md:mt-8 md:w-12" aria-hidden />
             <p
-              className="copy-ja mt-6 max-w-md whitespace-normal text-[14px] leading-[2.22] tracking-[0.08em] text-black/[0.74] md:mt-7 md:max-w-lg md:leading-[2.15] lg:max-w-xl lg:text-[15px] lg:leading-[1.9] xl:max-w-none xl:text-[16px] xl:leading-[1.78] xl:tracking-[0.07em] xl:text-black/[0.78] xl:whitespace-nowrap"
+              className="copy-ja mt-6 max-w-md whitespace-normal text-[14px] se-short:mt-5 se-short:leading-[2.0] leading-[2.22] tracking-[0.08em] text-black/[0.74] md:mt-7 md:max-w-lg md:leading-[2.15] lg:max-w-xl lg:text-[15px] lg:leading-[1.9] xl:max-w-none xl:text-[16px] xl:leading-[1.78] xl:tracking-[0.07em] xl:text-black/[0.78] xl:whitespace-nowrap"
               style={serifStyle}
             >
               <span className="xl:hidden">

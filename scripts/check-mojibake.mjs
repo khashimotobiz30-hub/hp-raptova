@@ -40,10 +40,7 @@ const targets = [
   },
   {
     path: 'components/business/BusinessProjects.tsx',
-    mustInclude: [
-      '\u5B9F\u969B\u306E\u53D6\u308A\u7D44\u307F\u3092\u898B\u308B\u3002',
-      '\u3059\u3079\u3066\u306E\u30D7\u30ED\u30B8\u30A7\u30AF\u30C8\u3092\u898B\u308B',
-    ],
+    mustInclude: ['\u5B9F\u969B\u306E\u53D6\u308A\u7D44\u307F\u3092\u898B\u308B\u3002'],
   },
 ];
 

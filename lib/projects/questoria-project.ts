@@ -84,37 +84,31 @@ AIをより深く活用するために、次に何を磨くべきかが見える
     title: 'Detail',
     items: [
       {
-        icon: 'layers',
         iconSrc: '/images/projects/questoria/icons/detail-skill-definition.png',
         title: 'Skill Definition',
         body: 'AI活用力を3つの観点に分解し、診断ロジックの基盤を設計しました。',
       },
       {
-        icon: 'chat',
         iconSrc: '/images/projects/questoria/icons/detail-question-design.png',
         title: 'Question Design',
         body: '行動ベースの設問設計で、バイアスを抑えつつ実態に近い診断を実現しました。',
       },
       {
-        icon: 'split',
         iconSrc: '/images/projects/questoria/icons/detail-two-step-diagnosis.png',
         title: 'Two-Step Diagnosis',
         body: 'ライトな入口と本診断の二段構成で、離脱を抑えつつ診断精度を高めました。',
       },
       {
-        icon: 'link',
         iconSrc: '/images/projects/questoria/icons/detail-line-cta.png',
         title: 'LINE CTA',
         body: 'LINE連携で結果閲覧や特典提供を最適化。拡散と再訪を促す導線設計を行いました。',
       },
       {
-        icon: 'chart',
         iconSrc: '/images/projects/questoria/icons/detail-google-analytics.png',
         title: 'Google Analytics',
         body: 'ユーザー行動を可視化し、継続的な改善サイクルを回せる計測設計を実施しました。',
       },
       {
-        icon: 'compass',
         iconSrc: '/images/projects/questoria/icons/detail-market-insight.png',
         title: 'Market Insight',
         body: '市場・ユーザーニーズを分析し、診断体験の価値と位置づけを明確化しました。',
@@ -134,8 +128,7 @@ AIをより深く活用するために、次に何を磨くべきかが見える
       title: 'RAPTOVA Official Website',
       href: '/projects/raptova-website',
     },
-    ctaLabel: 'CONTACT →',
-    ctaHref: '/#contact',
+    ctaLabel: 'お問い合わせする',
     ctaVariant: 'outline',
   },
 } as const satisfies CaseStudyContent;

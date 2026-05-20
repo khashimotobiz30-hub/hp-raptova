@@ -1,5 +1,3 @@
-'use client';
-
 import BusinessHero from '@/components/business/BusinessHero';
 import BusinessIntro from '@/components/business/BusinessIntro';
 import BusinessAreas from '@/components/business/BusinessAreas';

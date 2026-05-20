@@ -46,7 +46,7 @@ export default function BusinessIntro() {
       aria-labelledby="business-intro-heading"
     >
       <div
-        className="absolute inset-0 bg-[#070707]"
+        className="absolute inset-0"
         style={{
           background:
             'linear-gradient(125deg, #0a0a0a 0%, #121212 48%, #080808 100%)',

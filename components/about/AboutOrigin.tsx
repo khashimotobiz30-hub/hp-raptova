@@ -47,9 +47,8 @@ export default function AboutOrigin() {
 
           <SectionReveal delay={0.06} className="mt-8 md:mt-10 lg:mt-10 xl:mt-12">
             <p className="copy-ja max-w-[40rem] text-[13px] leading-[2.05] tracking-[0.08em] text-black/[0.68] md:text-[14px] md:leading-[2.08] lg:max-w-[38rem] lg:text-[14px] xl:max-w-[44rem] xl:text-[15px] xl:leading-[2.1]">
-              {BODY_LINES.map((line, index) => (
-                <span key={`origin-${index}-${line}`}>
-                  {index > 0 ? <br /> : null}
+              {BODY_LINES.map((line) => (
+                <span key={line} className="block">
                   {line}
                 </span>
               ))}

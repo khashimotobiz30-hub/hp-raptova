@@ -81,22 +81,7 @@ export default function AboutHowWeWork() {
                           {col.title}
                         </h3>
                         <p className="copy-ja mt-2 text-[13px] leading-[1.86] tracking-[0.055em] text-black/[0.74] ![overflow-wrap:normal] ![line-break:strict] md:text-[13px] md:leading-[1.9]">
-                          {index === 0 ? (
-                            <>
-                              <span className="md:hidden">
-                                まだ言葉になっていない違和感や
-                                <br />
-                                課題を聞く。
-                              </span>
-                              <span className="hidden md:block">
-                                まだ言葉になっていない違和感や
-                                <br />
-                                課題を聞く。
-                              </span>
-                            </>
-                          ) : (
-                            col.body
-                          )}
+                          {col.body}
                         </p>
                       </div>
                     </div>

@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useEffect, useState, useCallback, useRef } from 'react';
 import { SITE_CONFIG } from '@/lib/config';
+import { CASE_STUDY_NAV_LINKS } from '@/lib/projects/top-projects';
 
 const NAV_LINKS = [
   { label: 'ABOUT', href: '/about' },
@@ -10,11 +11,6 @@ const NAV_LINKS = [
 ] as const;
 
 const PROJECTS_HREF = '/#projects';
-
-const PROJECTS_DROPDOWN_LINKS = [
-  { label: 'RAPTOVA Official Website', href: '/projects/raptova-website' },
-  { label: 'AI SKILL DIAGNOSIS QUESTORIA', href: '/projects/questoria' },
-] as const;
 
 function NavUnderline({ contrast }: { contrast: boolean }) {
   return (
@@ -41,6 +37,7 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [projectsOpen, setProjectsOpen] = useState(false);
   const projectsRef = useRef<HTMLDivElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 8);
@@ -58,6 +55,53 @@ export default function Header() {
     return () => {
       document.body.style.overflow = '';
     };
+  }, [menuOpen]);
+
+  useEffect(() => {
+    const main = document.getElementById('site-main');
+    if (!main) return;
+    if (menuOpen) {
+      main.setAttribute('inert', '');
+      main.setAttribute('aria-hidden', 'true');
+    } else {
+      main.removeAttribute('inert');
+      main.removeAttribute('aria-hidden');
+    }
+    return () => {
+      main.removeAttribute('inert');
+      main.removeAttribute('aria-hidden');
+    };
+  }, [menuOpen]);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    const menu = menuRef.current;
+    if (!menu) return;
+
+    const focusables = Array.from(
+      menu.querySelectorAll<HTMLElement>('a[href], button:not([disabled])'),
+    );
+    const first = focusables[0];
+    const last = focusables[focusables.length - 1];
+    first?.focus();
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key !== 'Tab' || focusables.length === 0) return;
+      if (event.shiftKey) {
+        if (document.activeElement === first) {
+          event.preventDefault();
+          last?.focus();
+        }
+        return;
+      }
+      if (document.activeElement === last) {
+        event.preventDefault();
+        first?.focus();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
   }, [menuOpen]);
 
   useEffect(() => {
@@ -83,10 +127,13 @@ export default function Header() {
   }, [projectsOpen]);
 
   const closeMenu = useCallback(() => setMenuOpen(false), []);
+  const handleLogoClick = useCallback(() => {
+    if (menuOpen) closeMenu();
+  }, [menuOpen, closeMenu]);
   const closeProjectsMenu = useCallback(() => setProjectsOpen(false), []);
 
-  const headerNavContrast = scrolled || projectsOpen;
-  const headerSolidBg = headerNavContrast;
+  const headerNavContrast = scrolled || projectsOpen || menuOpen;
+  const headerSolidBg = scrolled || projectsOpen;
 
   return (
     <>
@@ -96,16 +143,19 @@ export default function Header() {
         className={[
           'fixed left-0 right-0 top-0 z-50 w-full max-w-full overflow-x-clip transition-all duration-300 ease-out',
           projectsOpen ? 'pb-[5.25rem]' : '',
-          headerSolidBg
-            ? 'border-b border-black/10 bg-[#f2f0e9]/96 backdrop-blur-md'
-            : 'border-b border-transparent bg-transparent backdrop-blur-none md:mix-blend-difference',
+          menuOpen
+            ? 'border-b border-transparent bg-white backdrop-blur-none'
+            : headerSolidBg
+              ? 'border-b border-black/10 bg-[#f2f0e9]/96 backdrop-blur-md'
+              : 'border-b border-transparent bg-transparent backdrop-blur-none md:mix-blend-difference',
         ].join(' ')}
       >
-        <div className="flex w-full min-w-0 items-start justify-between px-7 md:px-12 lg:px-20 min-[1440px]:px-24">
+        <div className="top-header-split flex w-full min-w-0 items-center justify-between px-7 md:items-start md:px-12 lg:grid lg:items-center lg:px-0 min-[1440px]:px-0">
           <Link
             href="/"
+            onClick={handleLogoClick}
             className={[
-              'flex h-[72px] items-center text-sm font-medium tracking-[0.38em] transition-opacity duration-200 hover:opacity-60',
+              'flex h-[72px] items-center text-sm font-medium tracking-[0.38em] transition-opacity duration-200 hover:opacity-60 lg:pl-10 xl:pl-14 min-[1440px]:pl-20',
               headerNavContrast ? 'text-[#0a0a0a]' : 'text-[#0a0a0a] md:text-white',
             ].join(' ')}
             aria-label={`${SITE_CONFIG.siteName} ホームへ`}
@@ -113,7 +163,7 @@ export default function Header() {
             {SITE_CONFIG.siteName}
           </Link>
 
-          <nav className="hidden md:flex items-start gap-10" aria-label="メインナビゲーション">
+          <nav className="hidden md:flex items-start gap-10 lg:justify-end lg:pr-9 xl:pr-11 min-[1440px]:pr-14" aria-label="メインナビゲーション">
             {NAV_LINKS.map(({ label, href }) => (
               <Link
                 key={label}
@@ -186,7 +236,7 @@ export default function Header() {
                 ].join(' ')}
               >
                 <div className="flex flex-col gap-2.5">
-                  {PROJECTS_DROPDOWN_LINKS.map(({ label, href }) => (
+                  {CASE_STUDY_NAV_LINKS.map(({ label, href }) => (
                     <Link
                       key={href}
                       href={href}
@@ -216,7 +266,7 @@ export default function Header() {
           </nav>
 
           <button
-            className="flex h-10 w-10 shrink-0 flex-col items-center justify-center gap-1.5 md:hidden"
+            className="mr-2.5 flex h-[72px] w-10 shrink-0 flex-col items-center justify-center gap-1.5 md:hidden md:mr-0"
             onClick={() => setMenuOpen((v) => !v)}
             aria-label={menuOpen ? 'メニューを閉じる' : 'メニューを開く'}
             aria-expanded={menuOpen}
@@ -246,8 +296,11 @@ export default function Header() {
 
       <div
         id="sp-menu"
+        ref={menuRef}
         role="dialog"
-        aria-modal="true"
+        aria-modal={menuOpen}
+        aria-hidden={!menuOpen}
+        inert={!menuOpen || undefined}
         aria-label="ナビゲーションメニュー"
         className={[
           'fixed inset-0 z-40 flex max-w-full flex-col items-center justify-center overflow-x-clip bg-white transition-all duration-300',
@@ -275,7 +328,7 @@ export default function Header() {
               PROJECTS
             </Link>
             <div className="flex flex-col items-center gap-3 border-l border-black/12 pl-5">
-              {PROJECTS_DROPDOWN_LINKS.map(({ label, href }) => (
+              {CASE_STUDY_NAV_LINKS.map(({ label, href }) => (
                 <Link
                   key={href}
                   href={href}

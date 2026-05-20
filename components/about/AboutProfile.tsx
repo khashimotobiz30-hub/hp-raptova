@@ -33,7 +33,7 @@ export default function AboutProfile() {
       aria-labelledby="about-profile-heading"
     >
       <div className="mx-auto w-full max-w-[1240px] lg:max-w-none">
-        <div className="grid lg:grid-cols-[minmax(0,48%)_minmax(0,1fr)] lg:items-stretch">
+        <div className="grid lg:grid-cols-[minmax(0,45%)_minmax(0,55%)] lg:items-stretch">
           <div className="flex flex-col justify-start border-b border-black/[0.08] px-0 pt-10 pb-10 md:pt-12 md:pb-12 lg:border-b-0 lg:border-r lg:border-black/[0.08] lg:pt-10 lg:pb-10 lg:pl-[max(0px,calc((100vw-10rem-1240px)/2))] lg:pr-12 xl:pr-16">
             <div className="w-full max-w-[540px]">
             <SectionReveal>
@@ -71,14 +71,14 @@ export default function AboutProfile() {
             </div>
           </div>
 
-          <div className="relative min-h-[min(56vw,360px)] bg-[#f2f0e9] md:min-h-[320px] lg:min-h-full lg:h-full">
+          <div className="relative -mx-7 min-h-[min(56vw,360px)] bg-[#f2f0e9] md:-mx-14 md:min-h-[320px] lg:mx-0 lg:min-h-full lg:h-full">
             <div className="relative h-full min-h-[min(56vw,360px)] w-full md:min-h-[320px] lg:min-h-full">
               <Image
                 src="/images/about/about-profile-kobe.png"
                 alt=""
                 fill
-                sizes="(max-width: 1024px) 100vw, 52vw"
-                className="object-cover object-center lg:object-right"
+                sizes="(max-width: 1024px) 100vw, 55vw"
+                className="object-cover object-left"
               />
             </div>
           </div>

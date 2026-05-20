@@ -67,3 +67,93 @@ body > * {
 ::-webkit-scrollbar-thumb {
   background: #e5e5e5;
 }
+
+/* Case study: Output gallery rail — soft edge fade (very subtle) */
+.output-gallery-viewport-fade {
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    #000 4.5%,
+    #000 95.5%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    #000 4.5%,
+    #000 95.5%,
+    transparent 100%
+  );
+}
+
+.output-gallery-track {
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .output-gallery-viewport-fade {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .output-gallery-track {
+    will-change: auto;
+  }
+}
+/* TOP: Hero/Statement + Business/Projects 2-col from 1024px */
+@media (min-width: 1024px) {
+  #hero.top-hero-split,
+  .top-page-split {
+    grid-template-columns: minmax(0, 62%) minmax(0, 38%);
+  }
+
+  header .top-header-split {
+    grid-template-columns: minmax(0, 62%) minmax(0, 38%);
+  }
+}
+/* TOP: short landscape tablets — restore first-viewport presence */
+@media (min-width: 1024px) and (max-width: 1439px) and (max-height: 900px) {
+  #hero.top-hero-split {
+    min-height: 84svh;
+    max-height: 780px;
+  }
+}
+
+/* TOP: tall portrait tablets — top-align hero copy */
+@media (min-width: 1024px) and (max-width: 1439px) and (min-height: 901px) {
+  #hero .top-hero-content {
+    justify-content: flex-start;
+  }
+}
+/* TOP: PC (1440px+) — original full-viewport Hero/Statement */
+@media (min-width: 1440px) {
+  #hero.top-hero-split,
+  #hero .top-hero-column,
+  #hero .top-hero-content,
+  #hero #statement {
+    min-height: 100svh;
+  }
+
+  #hero .top-hero-content {
+    justify-content: center;
+    padding: 7rem 5rem 5rem;
+  }
+
+  #hero .top-hero-content h1 {
+    font-size: 8.7vw;
+    line-height: 0.88;
+  }
+
+  #hero .top-hero-content p.copy-ja {
+    margin-top: 4rem;
+    font-size: 19px;
+    line-height: 2.12;
+  }
+
+  #hero .statement-visual {
+    flex: 0 1 clamp(180px, 31svh, 330px);
+    min-height: 145px;
+    height: clamp(180px, 31svh, 330px);
+  }
+}

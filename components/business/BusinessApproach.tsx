@@ -39,7 +39,7 @@ const STEPS: ReadonlyArray<{
   { index: '01', title: 'HEARING', body: '現状・課題・背景を詳細に聞く', Icon: MessageCircle },
   { index: '02', title: 'ORGANIZE', body: '情報・目的・優先順位を整理する', Icon: ListChecks },
   { index: '03', title: 'DESIGN', body: '構成・導線・表現方法を設計する', Icon: Pencil },
-  { index: '04', title: 'CREATE', body: 'Web・資料・\n文章などに形にする', Icon: Monitor },
+  { index: '04', title: 'CREATE', body: 'Web・資料・文章などに形にする', Icon: Monitor },
   { index: '05', title: 'IMPROVE', body: '反応・状況を見ながら改善する', Icon: RefreshCw },
 ] as const;
 
@@ -80,10 +80,10 @@ function ApproachStepCell({ step }: { step: (typeof STEPS)[number] }) {
         <div className="flex items-center justify-center">
           <Icon aria-hidden strokeWidth={STEP_ICON_STROKE} className={STEP_ICON_CLASS} />
         </div>
-        <h3 className="flex items-start justify-center text-[11px] font-semibold leading-none tracking-[0.2em] text-black/[0.82]">
+        <h3 className="text-center text-[11px] font-semibold leading-none tracking-[0.2em] text-black/[0.82]">
           {step.title}
         </h3>
-        <p className="copy-ja flex min-h-[4.5em] w-full items-start justify-center whitespace-pre-line text-[12px] leading-[1.75] tracking-[0.04em] text-black/[0.58]">
+        <p className="copy-ja min-h-[4.5em] w-full text-center text-[12px] leading-[1.75] tracking-[0.04em] text-black/[0.58]">
           {step.body}
         </p>
       </div>
@@ -128,7 +128,7 @@ export default function BusinessApproach() {
             </SectionReveal>
           </div>
           <div className="min-w-0 border-t border-black/[0.12] pt-8 lg:border-t-0 lg:pl-8 lg:pt-20 xl:pl-10 xl:pt-22">
-            <div className="grid divide-y divide-black/[0.12] sm:grid-cols-2 sm:items-stretch sm:divide-y-0 lg:hidden">
+            <div className="grid divide-y divide-black/[0.12] sm:grid-cols-2 sm:items-stretch sm:divide-y-0 sm:[&>*:last-child]:col-span-2 lg:hidden">
               {STEPS.map((step, i) => (
                 <SectionReveal key={step.index} delay={0.04 * i} className="flex min-w-0">
                   <div

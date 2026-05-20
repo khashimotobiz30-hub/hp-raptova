@@ -109,7 +109,9 @@ export default function RootLayout({
         <Suspense fallback={null}>
           <Header />
         </Suspense>
-        <main className="w-full min-w-0 max-w-full flex-1 overflow-x-clip">{children}</main>
+        <main id="site-main" className="w-full min-w-0 max-w-full flex-1 overflow-x-clip">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>

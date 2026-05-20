@@ -10,31 +10,31 @@ import {
 
 const AREAS = [
   {
+    id: 'recruiting-support',
     number: '01',
     titleEn: 'RECRUITING SUPPORT',
     titleJa: '採用活動支援',
     description:
       '採用で伝えるべき魅力や情報を整理し、求人原稿、採用LP、説明資料など、応募者に届く形へ整えます。',
     tags: ['採用コンセプト整理', '求人原稿', '採用LP', '説明資料'],
-    cta: '採用支援の詳細を見る',
   },
   {
+    id: 'web-creative',
     number: '02',
     titleEn: 'WEB / CREATIVE SUPPORT',
     titleJa: 'Web・資料制作支援',
     description:
       '伝えたい内容や事業の強みを整理し、Webサイト、LP、会社資料、営業資料など、見た人に伝わる形へ落とし込みます。',
     tags: ['コーポレートサイト', 'LP', '会社資料', '営業資料'],
-    cta: '制作支援の詳細を見る',
   },
   {
+    id: 'workflow-ai',
     number: '03',
     titleEn: 'WORKFLOW / AI SUPPORT',
     titleJa: '業務整理・AI活用支援',
     description:
       '日々の業務や情報の流れを整理し、AIやツールを活用しながら、仕事を進めやすい仕組みに整えます。',
     tags: ['業務フロー整理', '情報整理', 'AI活用相談', '仕組み化'],
-    cta: 'AI活用支援の詳細を見る',
   },
 ] as const;
 
@@ -55,7 +55,7 @@ export default function BusinessAreas() {
           <div className="grid divide-y divide-black/[0.12] lg:grid-cols-3 lg:divide-x lg:divide-y-0">
             {AREAS.map((area, index) => (
               <SectionReveal key={area.number} delay={0.06 + index * 0.06} className="min-w-0">
-                <article className="flex h-full flex-col px-0 py-7 md:py-8 lg:px-8 lg:py-9 xl:px-10">
+                <article id={area.id} className="flex h-full scroll-mt-28 flex-col px-0 py-7 md:py-8 lg:px-8 lg:py-9 xl:px-10">
                   <p className="text-sm font-medium tracking-[0.18em] text-black/38">{area.number}</p>
                   <p className="mt-4 text-[10px] font-semibold tracking-[0.28em] text-black/55">
                     {area.titleEn}
@@ -81,7 +81,6 @@ export default function BusinessAreas() {
                   <p className="mt-8 text-[10px] font-semibold tracking-[0.24em] text-black/40">
                     COMING SOON
                   </p>
-                  <p className="mt-1 text-[11px] tracking-[0.12em] text-black/35">{area.cta} →</p>
                 </article>
               </SectionReveal>
             ))}

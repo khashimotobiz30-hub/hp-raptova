@@ -27,14 +27,43 @@ export type CaseStudyOutputFlowImage = {
   scale?: number;
 };
 
-export type CaseStudyDetailItem = {
+export type CaseStudyBrowserShowcaseCard = {
+  label: string;
+  imageSrc: string;
+  imageAlt: string;
+  imageWidth: number;
+  imageHeight: number;
+};
+
+export type CaseStudyBrowserShowcase = {
+  cards: readonly CaseStudyBrowserShowcaseCard[];
+};
+
+export type CaseStudyDetailIcon =
+  | 'layers'
+  | 'chat'
+  | 'split'
+  | 'link'
+  | 'chart'
+  | 'compass'
+  | 'code';
+
+type CaseStudyDetailItemBase = {
   title: string;
   body: string;
-  /** PNG 等。指定時は画像を表示し、未指定時は `icon` の SVG にフォールバック */
-  iconSrc?: string;
-  /** `iconSrc` 未指定時のアイコン種別 */
-  icon: 'layers' | 'chat' | 'split' | 'link' | 'chart' | 'compass' | 'code';
 };
+
+/** PNG 等。指定時は画像を表示 */
+export type CaseStudyDetailItemWithImage = CaseStudyDetailItemBase & {
+  iconSrc: string;
+};
+
+/** `iconSrc` 未指定時は SVG グリフにフォールバック */
+export type CaseStudyDetailItemWithGlyph = CaseStudyDetailItemBase & {
+  icon: CaseStudyDetailIcon;
+};
+
+export type CaseStudyDetailItem = CaseStudyDetailItemWithImage | CaseStudyDetailItemWithGlyph;
 
 export type CaseStudyContent = {
   /** ページメタ（必要なら layout 側で利用） */
@@ -76,6 +105,8 @@ export type CaseStudyContent = {
     lead?: string;
     /** 横長フロー1枚。指定時は `items` よりこちらを表示 */
     flowImage?: CaseStudyOutputFlowImage;
+    /** ブラウザモック＋自動縦スクロール（RAPTOVA公式サイト Output 等） */
+    browserShowcase?: CaseStudyBrowserShowcase;
     items: readonly CaseStudyOutputItem[];
     disclaimer: string;
     showDisclaimerWithFlow?: boolean;
@@ -102,7 +133,6 @@ export type CaseStudyContent = {
       href: string;
     };
     ctaLabel: string;
-    ctaHref: string;
     /** CTA button style in Next section (default: solid) */
     ctaVariant?: 'solid' | 'outline';
   };

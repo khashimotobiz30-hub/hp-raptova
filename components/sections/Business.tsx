@@ -20,6 +20,7 @@ const BUSINESS_SECTION_CARDS = [
     imageSrc: '/images/business/business-recruiting-support.png',
     numberTone: 'light',
     status: null,
+    viewMoreHref: '/business#recruiting-support',
   },
   {
     number: '02',
@@ -30,6 +31,7 @@ const BUSINESS_SECTION_CARDS = [
     imageSrc: '/images/business/business-creative.png',
     numberTone: 'dark',
     status: null,
+    viewMoreHref: '/business#web-creative',
   },
   {
     number: '03',
@@ -47,7 +49,7 @@ export default function Business() {
   return (
     <section
       id="business"
-      className="w-full min-w-0 max-w-full overflow-x-clip bg-[#f2f0e9] px-7 py-24 md:px-14 lg:px-20"
+      className="w-full min-w-0 max-w-full overflow-x-clip bg-[#f2f0e9] px-7 py-24 md:px-14 lg:px-10 lg:py-16 xl:px-14 xl:py-20 min-[1440px]:px-20 min-[1440px]:py-24"
       aria-labelledby="business-heading"
     >
       <div className="min-w-0 max-w-[980px]">
@@ -57,7 +59,7 @@ export default function Business() {
           </p>
           <h2
             id="business-heading"
-            className="copy-ja font-serif text-3xl leading-relaxed tracking-[0.14em] text-zinc-950 md:text-4xl"
+            className="copy-ja font-serif text-3xl leading-relaxed tracking-[0.14em] text-zinc-950 md:text-[1.85rem] lg:text-[1.65rem] xl:text-4xl min-[1440px]:text-4xl"
           >
             構想を、実行できる形へ。
           </h2>
@@ -70,16 +72,16 @@ export default function Business() {
           </p>
         </RevealAnimation>
 
-        <div className="mt-14 grid min-w-0 gap-8 min-[1440px]:grid-cols-3">
+        <div className="mt-10 grid min-w-0 gap-5 sm:grid-cols-2 lg:mt-12 lg:grid-cols-3 lg:gap-5 xl:mt-14 xl:gap-6 min-[1440px]:gap-8">
           {BUSINESS_SECTION_CARDS.map((item, index) => (
             <RevealAnimation key={item.number} delay={0.08 + index * 0.06}>
               <article className="group flex h-full min-w-0 flex-col">
-                <div className="relative mb-7 h-40 overflow-hidden bg-zinc-900">
+                <div className="relative mb-5 h-32 overflow-hidden bg-zinc-900 lg:mb-6 lg:h-[7.25rem] xl:mb-7 xl:h-36 min-[1440px]:mb-7 min-[1440px]:h-40">
                   <Image
                     src={item.imageSrc}
                     alt=""
                     fill
-                    sizes="(max-width: 1024px) 100vw, 260px"
+                    sizes="(max-width: 1023px) 50vw, (max-width: 1439px) 22vw, 260px"
                     className="object-cover opacity-90 grayscale transition duration-500 group-hover:scale-[1.03]"
                   />
                   <div
@@ -104,10 +106,10 @@ export default function Business() {
                 <p className="mb-3 min-h-[12px] text-[10px] font-semibold tracking-[0.28em] text-zinc-500">
                   {item.titleEn}
                 </p>
-                <h3 className="copy-ja min-h-[38px] font-serif text-xl leading-snug tracking-[0.08em] text-zinc-950 lg:text-[22px]">
+                <h3 className="copy-ja min-h-0 font-serif text-lg leading-snug tracking-[0.08em] text-zinc-950 lg:min-h-[34px] lg:text-[1.05rem] xl:text-xl min-[1440px]:min-h-[38px] min-[1440px]:text-[22px]">
                   {item.titleJa}
                 </h3>
-                <p className="copy-ja mt-2 min-h-[96px] whitespace-pre-line text-xs leading-loose tracking-[0.08em] text-zinc-600">
+                <p className="copy-ja mt-2 min-h-0 whitespace-pre-line text-[11px] leading-loose tracking-[0.08em] text-zinc-600 lg:min-h-[84px] lg:text-xs xl:min-h-[96px]">
                   {item.description}
                 </p>
                 <div className="mt-auto pt-2">
@@ -117,7 +119,7 @@ export default function Business() {
                     </p>
                   ) : (
                     <Link
-                      href="/business"
+                      href={item.viewMoreHref}
                       className="inline-flex items-center gap-4 text-xs tracking-[0.18em] text-zinc-950"
                     >
                       <span className="h-px w-10 bg-zinc-950 transition-all group-hover:w-16" />

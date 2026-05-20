@@ -3,17 +3,21 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import RevealAnimation from '@/components/ui/RevealAnimation';
+import RaptovaWebsiteOutputShowcase from '@/components/projects/case-study/RaptovaWebsiteOutputShowcase';
+import { handleContactClick } from '@/lib/contact';
 import type {
   CaseStudyContent,
+  CaseStudyDetailIcon,
   CaseStudyDetailItem,
   CaseStudyOverviewRow,
 } from '@/lib/projects/case-study-types';
 function chunkOverviewPairs(rows: readonly CaseStudyOverviewRow[]) {
-  const pairs: { left: CaseStudyOverviewRow; right: CaseStudyOverviewRow }[] = [];
+  const pairs: { left: CaseStudyOverviewRow; right?: CaseStudyOverviewRow }[] = [];
   for (let i = 0; i < rows.length; i += 2) {
     const left = rows[i];
+    if (!left) continue;
     const right = rows[i + 1];
-    if (left && right) pairs.push({ left, right });
+    pairs.push(right ? { left, right } : { left });
   }
   return pairs;
 }
@@ -48,7 +52,7 @@ function OverviewGridCell({ row }: { row: CaseStudyOverviewRow }) {
   );
 }
 
-function DetailGlyph({ icon }: { icon: CaseStudyDetailItem['icon'] }) {
+function DetailGlyph({ icon }: { icon: CaseStudyDetailIcon }) {
   const stroke = '#c9a962';
   const common = { width: 22, height: 22, viewBox: '0 0 22 22', fill: 'none' as const, 'aria-hidden': true };
   switch (icon) {
@@ -112,7 +116,7 @@ function DetailGlyph({ icon }: { icon: CaseStudyDetailItem['icon'] }) {
 function DetailItemIcon({ item }: { item: CaseStudyDetailItem }) {
   const iconBox =
     'h-16 w-16 shrink-0 object-contain opacity-95 sm:h-20 sm:w-20 lg:h-[84px] lg:w-[84px]';
-  if (item.iconSrc) {
+  if ('iconSrc' in item) {
     return (
       <Image
         src={item.iconSrc}
@@ -363,23 +367,27 @@ export default function ProjectCaseStudyView({ content }: { content: CaseStudyCo
             <div className="w-full border border-black/[0.14]">
               {chunkOverviewPairs(overview.rows).map((pair) => (
                 <div
-                  key={`${pair.left.label}-${pair.right.label}`}
+                  key={`${pair.left.label}-${pair.right?.label ?? 'solo'}`}
                   className={[
                     'grid grid-cols-1 border-b border-black/[0.14] last:border-b-0',
-                    'md:grid-cols-2',
+                    pair.right ? 'md:grid-cols-2' : 'md:grid-cols-1',
                   ].join(' ')}
                 >
                   <div
                     className={[
-                      'min-w-0 border-b border-black/[0.14] md:border-b-0',
-                      'md:border-r md:border-black/[0.14]',
+                      'min-w-0',
+                      pair.right
+                        ? 'border-b border-black/[0.14] md:border-b-0 md:border-r md:border-black/[0.14]'
+                        : '',
                     ].join(' ')}
                   >
                     <OverviewGridCell row={pair.left} />
                   </div>
-                  <div className="min-w-0">
-                    <OverviewGridCell row={pair.right} />
-                  </div>
+                  {pair.right ? (
+                    <div className="min-w-0">
+                      <OverviewGridCell row={pair.right} />
+                    </div>
+                  ) : null}
                 </div>
               ))}
             </div>
@@ -491,8 +499,40 @@ export default function ProjectCaseStudyView({ content }: { content: CaseStudyCo
               </h2>
             </RevealAnimation>
 
-            <div className="min-w-0 flex flex-col gap-6 overflow-visible lg:gap-7">
-              {output.flowImage ? (
+            <div className="min-w-0 flex flex-col gap-6 overflow-x-clip overflow-y-visible lg:gap-7">
+              {output.browserShowcase ? (
+                <>
+                  {output.lead ? (
+                    <RevealAnimation
+                      className={
+                        output.showDisclaimerWithFlow
+                          ? 'min-w-0 mt-5 pt-3 md:mt-7 md:pt-4'
+                          : 'min-w-0'
+                      }
+                    >
+                      <p
+                        className={
+                          output.showDisclaimerWithFlow
+                            ? 'copy-ja max-w-[42rem] text-[14px] font-normal leading-[1.82] tracking-[0.04em] text-black/[0.9] md:text-[15px] md:leading-[1.85]'
+                            : 'copy-ja max-w-[42rem] text-[14px] font-light leading-[1.82] tracking-[0.04em] text-black/[0.78] md:text-[15px] md:leading-[1.85]'
+                        }
+                      >
+                        {output.lead}
+                      </p>
+                    </RevealAnimation>
+                  ) : null}
+                  <div className="min-w-0">
+                    <RaptovaWebsiteOutputShowcase cards={output.browserShowcase.cards} />
+                  </div>
+                  {output.showDisclaimerWithFlow && output.disclaimer ? (
+                    <RevealAnimation delay={0.08} className="min-w-0">
+                      <p className="copy-ja text-left text-[10px] font-light leading-[1.65] tracking-[0.03em] text-black/[0.48] md:text-[11px] md:leading-[1.7]">
+                        {output.disclaimer}
+                      </p>
+                    </RevealAnimation>
+                  ) : null}
+                </>
+              ) : output.flowImage ? (
                 <>
                   {output.lead ? (
                     <RevealAnimation
@@ -641,16 +681,19 @@ export default function ProjectCaseStudyView({ content }: { content: CaseStudyCo
               </RevealAnimation>
 
               <RevealAnimation delay={0.1} className="w-full shrink-0 lg:ml-4 lg:w-auto lg:max-w-[260px]">
-                <Link
-                  href={next.ctaHref}
+                <button
+                  type="button"
+                  onClick={handleContactClick}
+                  aria-label="メールで問い合わせる"
                   className={
                     next.ctaVariant === 'outline'
-                      ? 'flex h-[54px] w-full items-center justify-center border border-black/[0.28] bg-transparent text-[11px] font-semibold tracking-[0.26em] text-[#111] transition-colors duration-200 hover:border-[#111] hover:bg-[#111] hover:text-white lg:h-[56px] lg:w-[240px]'
-                      : 'flex h-[54px] w-full items-center justify-center bg-[#111] text-[11px] font-semibold tracking-[0.26em] text-white transition-opacity hover:opacity-85 lg:h-[56px] lg:w-[240px]'
+                      ? 'flex h-[54px] w-full min-w-0 items-center justify-between border border-black/[0.28] bg-transparent px-6 text-[11px] font-semibold tracking-[0.26em] text-[#111] transition-colors duration-200 hover:border-[#111] hover:bg-[#111] hover:text-white lg:h-[56px] lg:w-[240px]'
+                      : 'flex h-[54px] w-full min-w-0 items-center justify-between bg-[#111] px-6 text-[11px] font-semibold tracking-[0.26em] text-white transition-opacity hover:opacity-85 lg:h-[56px] lg:w-[240px]'
                   }
                 >
-                  {next.ctaLabel}
-                </Link>
+                  <span className="min-w-0">{next.ctaLabel}</span>
+                  <span className="shrink-0">→</span>
+                </button>
               </RevealAnimation>
             </div>
           </div>
