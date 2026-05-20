@@ -9,7 +9,7 @@ const INTRO_LINES = [
   '実行可能な形へ落とし込んでいきます。',
 ] as const;
 
-const HERO_IMAGE = '/images/business/business-hero-structured-space.png';
+const HERO_IMAGE = '/images/business/business-hero-structured-space.webp';
 
 const HERO_CONTENT_CLASS = [
   'relative z-[2] mx-auto flex w-full max-w-[1440px] flex-col',
