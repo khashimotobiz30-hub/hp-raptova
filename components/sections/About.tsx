@@ -22,18 +22,10 @@ export default function About() {
             RAPTOVAとは
           </h2>
           <p className="copy-ja mt-10 text-sm leading-loose tracking-[0.14em] text-zinc-700">
-            RAPTOVAは、AIを活用して、
-            <br />
-            人や組織の中にある構想・課題・情報を整理し、
-            <br />
-            実行できる形へ変えていくパートナーです。
+            RAPTOVAは、AIを活用して、人や組織の中にある構想・課題・情報を整理し、実行できる形へ変えていくパートナーです。
           </p>
           <p className="copy-ja mt-8 text-sm leading-loose tracking-[0.14em] text-zinc-700">
-            最初の重点領域として、採用活動を支援しながら、
-            <br />
-            より広い領域で、仕事を前に進めるブランドを
-            <br />
-            展開していきます。
+            最初の重点領域として、採用活動を支援しながら、より広い領域で、仕事を前に進めるブランドを展開していきます。
           </p>
           <Link
             href="/about"
@@ -45,8 +37,8 @@ export default function About() {
         </RevealAnimation>
       </div>
 
-      <RevealAnimation delay={0.08} className="min-w-0">
-        <div className="relative min-h-[320px] overflow-hidden bg-zinc-300 sm:min-h-[360px] lg:min-h-[380px] xl:min-h-[420px]">
+      <RevealAnimation delay={0.08} className="min-w-0" fill>
+        <div className="relative h-full min-h-[320px] overflow-hidden bg-zinc-300 sm:min-h-[360px] lg:min-h-[380px] xl:min-h-[420px]">
           <div className="absolute inset-0 bg-[linear-gradient(105deg,#9d9d97_0%,#d8d8d2_35%,#363633_36%,#75756d_54%,#c8c8c1_55%,#efeee9_100%)]" />
           <div className="absolute left-[25%] top-0 h-full w-px bg-white/30" />
           <div className="absolute left-[58%] top-0 h-full w-px bg-black/20" />

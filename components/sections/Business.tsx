@@ -16,7 +16,7 @@ const BUSINESS_SECTION_CARDS = [
     titleEn: 'RECRUITING SUPPORT',
     titleJa: '採用活動支援',
     description:
-      '採用戦略の設計から、LP・サイト・説明資料など\n採用活動で必要になる各種ツールの提供を含め\n企業の魅力を最大限発信する支援を行います。',
+      '採用戦略の設計から、LP・サイト・説明資料など採用活動で必要になる各種ツールの提供を含め企業の魅力を最大限発信する支援を行います。',
     imageSrc: '/images/business/business-recruiting-support.png',
     numberTone: 'light',
     status: null,
@@ -27,7 +27,7 @@ const BUSINESS_SECTION_CARDS = [
     titleEn: 'BUSINESS CREATIVE',
     titleJa: 'Web・資料等制作支援',
     description:
-      'WebサイトやLP、会社資料、チラシ、\n営業資料、文章コンテンツなど、\n伝わるクリエイティブを制作します。',
+      'WebサイトやLP、会社資料、チラシ、営業資料、文章コンテンツなど、伝わるクリエイティブを制作します。',
     imageSrc: '/images/business/business-creative.png',
     numberTone: 'dark',
     status: null,
@@ -38,7 +38,7 @@ const BUSINESS_SECTION_CARDS = [
     titleEn: 'WORKFLOW DESIGN',
     titleJa: '業務整理・AI活用支援',
     description:
-      '日々の業務や情報の流れを整理し、\nAIを活用できる仕組みへ変えていく支援を\n準備しています。',
+      '日々の業務や情報の流れを整理し、AIを活用できる仕組みへ変えていく支援を準備しています。',
     imageSrc: '/images/business/business-workflow-design.png',
     numberTone: 'light',
     status: 'COMING SOON',
@@ -109,7 +109,7 @@ export default function Business() {
                 <h3 className="copy-ja min-h-0 font-serif text-lg leading-snug tracking-[0.08em] text-zinc-950 lg:min-h-[34px] lg:text-[1.05rem] xl:text-xl min-[1440px]:min-h-[38px] min-[1440px]:text-[22px]">
                   {item.titleJa}
                 </h3>
-                <p className="copy-ja mt-2 min-h-0 whitespace-pre-line text-[11px] leading-loose tracking-[0.08em] text-zinc-600 lg:min-h-[84px] lg:text-xs xl:min-h-[96px]">
+                <p className="copy-ja mt-2 min-h-0 text-[11px] leading-loose tracking-[0.08em] text-zinc-600 lg:min-h-[84px] lg:text-xs xl:min-h-[96px]">
                   {item.description}
                 </p>
                 <div className="mt-auto pt-2">

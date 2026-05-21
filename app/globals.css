@@ -46,9 +46,9 @@ body > * {
 
 /* 日本語コピー改行制御 */
 .copy-ja {
-  word-break: keep-all;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
   line-break: strict;
+  text-wrap: pretty;
 }
 
 /* Long-form Japanese prose: avoid orphan chars / dangling punctuation on mobile */

@@ -8,6 +8,7 @@ interface RevealAnimationProps {
   delay?: number;
   className?: string;
   once?: boolean;
+  fill?: boolean;
 }
 
 export default function RevealAnimation({
@@ -15,14 +16,16 @@ export default function RevealAnimation({
   delay = 0,
   className,
   once = true,
+  fill = false,
 }: RevealAnimationProps) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once, margin: '-60px 0px' });
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <div ref={ref} className={className}>
+    <div ref={ref} className={[fill ? 'h-full' : '', className].filter(Boolean).join(' ')}>
       <motion.div
+        className={fill ? 'h-full' : undefined}
         initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 24 }}
         animate={
           inView

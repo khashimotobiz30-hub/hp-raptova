@@ -23,7 +23,7 @@ export default function BusinessContact() {
             </div>
             <h2
               id="business-contact-heading"
-              className="copy-ja max-w-full font-serif text-[26px] leading-relaxed tracking-[0.03em] text-[#0a0a0a] min-[430px]:text-3xl min-[430px]:tracking-[0.12em] md:tracking-[0.18em] min-[1440px]:whitespace-nowrap"
+              className="copy-ja max-w-full font-serif text-[26px] leading-relaxed tracking-[0.03em] text-[#0a0a0a] min-[430px]:text-3xl min-[430px]:tracking-[0.12em] md:tracking-[0.18em] min-[1440px]:tracking-[0.05em] min-[1440px]:whitespace-nowrap"
               style={serifStyle}
             >
               目の前の仕事を、

@@ -18,7 +18,7 @@ export default function Contact() {
             </p>
             <h2
               id="contact-heading"
-              className="copy-ja max-w-full font-serif text-[26px] leading-relaxed tracking-[0.03em] text-white min-[430px]:text-[1.65rem] min-[430px]:tracking-[0.1em] lg:text-[1.55rem] lg:tracking-[0.08em] xl:text-3xl xl:tracking-[0.12em] min-[1440px]:whitespace-nowrap"
+              className="copy-ja max-w-full font-serif text-[26px] leading-relaxed tracking-[0.03em] text-white min-[430px]:text-[1.65rem] min-[430px]:tracking-[0.1em] lg:text-[clamp(19px,2vw,29px)] lg:tracking-[0.05em] min-[1440px]:text-3xl min-[1440px]:tracking-[0.08em] min-[1440px]:whitespace-nowrap"
             >
               目の前の仕事を、
               <br />
