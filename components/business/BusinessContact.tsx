@@ -44,7 +44,7 @@ export default function BusinessContact() {
         <SectionReveal delay={0.16} className="min-w-0">
           <button
             type="button"
-            onClick={handleContactClick}
+            onClick={() => handleContactClick('business')}
             className="flex w-full min-w-0 max-w-full items-center justify-between border border-black/35 bg-[#f2f0e9] px-6 py-5 text-xs font-semibold tracking-[0.18em] text-[#0a0a0a] transition hover:bg-[#0a0a0a] hover:text-white min-[430px]:px-7 min-[430px]:tracking-[0.22em]"
             aria-label="メールで問い合わせる"
           >

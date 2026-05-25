@@ -683,7 +683,7 @@ export default function ProjectCaseStudyView({ content }: { content: CaseStudyCo
               <RevealAnimation delay={0.1} className="w-full shrink-0 lg:ml-4 lg:w-auto lg:max-w-[260px]">
                 <button
                   type="button"
-                  onClick={handleContactClick}
+                  onClick={() => handleContactClick('project', { projectSlug: content.slug })}
                   aria-label="メールで問い合わせる"
                   className={
                     next.ctaVariant === 'outline'

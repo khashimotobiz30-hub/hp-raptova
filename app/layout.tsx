@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { Suspense } from 'react';
 import { Inter, Noto_Sans_JP, Noto_Serif_JP } from 'next/font/google';
 import './globals.css';
+import GoogleAnalytics from '@/components/analytics/GoogleAnalytics';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { SITE_CONFIG } from '@/lib/config';
@@ -106,6 +107,7 @@ export default function RootLayout({
         className="min-h-screen w-full max-w-full overflow-x-clip bg-white text-[#0a0a0a] antialiased"
         style={{ fontFamily: "var(--font-inter), var(--font-noto-sans-jp), 'Helvetica Neue', Arial, 'Hiragino Sans', sans-serif" }}
       >
+        <GoogleAnalytics />
         <Suspense fallback={null}>
           <Header />
         </Suspense>
