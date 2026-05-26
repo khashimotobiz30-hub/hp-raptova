@@ -1,17 +1,19 @@
 import type { Metadata } from 'next';
 import ProjectCaseStudyView from '@/components/projects/case-study/ProjectCaseStudyView';
 import { QUESTORIA_PROJECT } from '@/lib/projects/questoria-project';
-
-const description =
-  'AI活用力を診断可能な体験へ。QUESTORIAにおけるコンセプト設計、スキル定義、設問設計、UX/UIディレクション、計測設計までの実績詳細。';
+import { SITE_CONFIG } from '@/lib/config';
 
 export const metadata: Metadata = {
   title: 'QUESTORIA | PROJECTS | RAPTOVA',
-  description,
+  description: SITE_CONFIG.description,
   openGraph: {
     title: 'QUESTORIA | PROJECTS | RAPTOVA',
-    description,
+    description: SITE_CONFIG.description,
     type: 'article',
+  },
+  twitter: {
+    title: 'QUESTORIA | PROJECTS | RAPTOVA',
+    description: SITE_CONFIG.description,
   },
 };
 

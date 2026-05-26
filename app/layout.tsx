@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_CONFIG.url),
   openGraph: {
     title: SITE_CONFIG.title,
-    description: SITE_CONFIG.ogDescription,
+    description: SITE_CONFIG.description,
     type: 'website',
     url: SITE_CONFIG.url,
     siteName: SITE_CONFIG.siteName,
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: SITE_CONFIG.title,
-    description: SITE_CONFIG.ogDescription,
+    description: SITE_CONFIG.description,
     images: ['/images/ogp/ogp-default.png'],
     site: SITE_CONFIG.twitter,
   },
@@ -75,8 +75,7 @@ const jsonLdOrganization = {
   name: SITE_CONFIG.siteName,
   url: SITE_CONFIG.url,
   logo: `${SITE_CONFIG.url}/images/ogp/ogp-default.png`,
-  description:
-    'AIを活用してアイデアの整理、設計、実装、改善までを一貫して支援する。',
+  description: SITE_CONFIG.description,
   sameAs: [SITE_CONFIG.twitterUrl],
 };
 

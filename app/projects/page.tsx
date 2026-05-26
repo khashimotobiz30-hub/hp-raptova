@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
 import { redirect } from 'next/navigation';
+import { SITE_CONFIG } from '@/lib/config';
 
 export const metadata: Metadata = {
   title: 'PROJECTS | RAPTOVA',
-  description:
-    'RAPTOVAの制作実績。ブランドサイト、AI診断アプリ、Web体験設計などのプロジェクト一覧。',
+  description: SITE_CONFIG.description,
   alternates: {
     canonical: '/#projects',
   },
