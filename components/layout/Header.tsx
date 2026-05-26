@@ -263,12 +263,12 @@ export default function Header() {
             </div>
 
             <Link
-              href="/#contact"
+              href="/contact"
               className={[
                 navLinkClass(headerNavContrast),
                 'flex h-[72px] cursor-pointer items-center',
               ].join(' ')}
-              aria-label="CONTACTセクションへ移動"
+              aria-label="お問い合わせページへ"
             >
               CONTACT
               <NavUnderline contrast={headerNavContrast} />
@@ -352,10 +352,10 @@ export default function Header() {
           </div>
 
           <Link
-            href="/#contact"
+            href="/contact"
             onClick={closeMenu}
             className="cursor-pointer text-sm tracking-[0.2em] text-[#0a0a0a] transition-opacity duration-200 hover:opacity-50"
-            aria-label="CONTACT\u30bb\u30af\u30b7\u30e7\u30f3\u3078\u79fb\u52d5"
+            aria-label="\u304A\u554F\u3044\u5408\u308F\u305B\u30DA\u30FC\u30B8\u3078"
           >
             CONTACT
           </Link>

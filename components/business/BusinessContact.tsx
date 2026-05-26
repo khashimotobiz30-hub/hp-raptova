@@ -1,6 +1,6 @@
 'use client';
 
-import { MAILTO_HREF } from '@/lib/config';
+import Link from 'next/link';
 import { trackContactClick } from '@/lib/analytics';
 import { BusinessLabel, SectionReveal, serifStyle } from '@/components/business/shared';
 
@@ -43,15 +43,15 @@ export default function BusinessContact() {
         </SectionReveal>
 
         <SectionReveal delay={0.16} className="min-w-0">
-          <a
-            href={MAILTO_HREF}
+          <Link
+            href="/contact"
             onClick={() => trackContactClick('business')}
             className="flex w-full min-w-0 max-w-full items-center justify-between border border-black/35 bg-[#f2f0e9] px-6 py-5 text-xs font-semibold tracking-[0.18em] text-[#0a0a0a] transition hover:bg-[#0a0a0a] hover:text-white min-[430px]:px-7 min-[430px]:tracking-[0.22em]"
-            aria-label="メールで問い合わせる"
+            aria-label="お問い合わせページへ"
           >
             <span className="min-w-0">お問い合わせする</span>
             <span className="shrink-0">→</span>
-          </a>
+          </Link>
         </SectionReveal>
       </div>
     </section>

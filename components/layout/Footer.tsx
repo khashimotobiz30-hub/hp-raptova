@@ -45,9 +45,9 @@ export default function Footer() {
               </Link>
             ))}
             <Link
-              href="/#contact"
+              href="/contact"
               className="cursor-pointer transition-colors hover:text-white"
-              aria-label="CONTACTセクションへ移動"
+              aria-label="お問い合わせページへ"
             >
               CONTACT
             </Link>

@@ -1,6 +1,6 @@
 import { trackContactClick, type ContactClickLocation } from './analytics';
 
-/** GA only; mailto navigation is handled by <a href={MAILTO_HREF}>. */
+/** GA helper for contact CTAs that navigate to /contact. */
 export function handleContactClick(
   location: ContactClickLocation,
   options?: { projectSlug?: string },
