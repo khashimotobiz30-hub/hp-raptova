@@ -4,7 +4,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import RevealAnimation from '@/components/ui/RevealAnimation';
 import RaptovaWebsiteOutputShowcase from '@/components/projects/case-study/RaptovaWebsiteOutputShowcase';
-import { handleContactClick } from '@/lib/contact';
+import { MAILTO_HREF } from '@/lib/config';
+import { trackContactClick } from '@/lib/analytics';
 import type {
   CaseStudyContent,
   CaseStudyDetailIcon,
@@ -681,9 +682,11 @@ export default function ProjectCaseStudyView({ content }: { content: CaseStudyCo
               </RevealAnimation>
 
               <RevealAnimation delay={0.1} className="w-full shrink-0 lg:ml-4 lg:w-auto lg:max-w-[260px]">
-                <button
-                  type="button"
-                  onClick={() => handleContactClick('project', { projectSlug: content.slug })}
+                <a
+                  href={MAILTO_HREF}
+                  onClick={() =>
+                    trackContactClick('project', { projectSlug: content.slug })
+                  }
                   aria-label="メールで問い合わせる"
                   className={
                     next.ctaVariant === 'outline'
@@ -693,7 +696,7 @@ export default function ProjectCaseStudyView({ content }: { content: CaseStudyCo
                 >
                   <span className="min-w-0">{next.ctaLabel}</span>
                   <span className="shrink-0">→</span>
-                </button>
+                </a>
               </RevealAnimation>
             </div>
           </div>

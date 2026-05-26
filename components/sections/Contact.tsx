@@ -2,8 +2,8 @@
 
 import { usePathname } from 'next/navigation';
 import RevealAnimation from '@/components/ui/RevealAnimation';
-import { handleContactClick } from '@/lib/contact';
-import type { ContactClickLocation } from '@/lib/analytics';
+import { MAILTO_HREF } from '@/lib/config';
+import { trackContactClick, type ContactClickLocation } from '@/lib/analytics';
 
 function contactLocationFromPath(pathname: string): ContactClickLocation {
   return pathname === '/about' ? 'about' : 'home';
@@ -44,15 +44,15 @@ export default function Contact() {
         </RevealAnimation>
 
         <RevealAnimation delay={0.16} className="min-w-0">
-          <button
-            type="button"
-            onClick={() => handleContactClick(contactLocation)}
+          <a
+            href={MAILTO_HREF}
+            onClick={() => trackContactClick(contactLocation)}
             className="flex w-full min-w-0 max-w-full items-center justify-between border border-white/35 px-6 py-5 text-xs font-semibold tracking-[0.18em] text-white transition hover:bg-white hover:text-zinc-950 min-[430px]:px-7 min-[430px]:tracking-[0.22em]"
             aria-label="メールで問い合わせる"
           >
             <span className="min-w-0">お問い合わせする</span>
             <span className="shrink-0">→</span>
-          </button>
+          </a>
         </RevealAnimation>
       </div>
     </section>
