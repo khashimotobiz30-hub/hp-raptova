@@ -61,13 +61,15 @@ export function SectionReveal({
   children,
   delay = 0,
   className,
+  fill = false,
 }: {
   children: React.ReactNode;
   delay?: number;
   className?: string;
+  fill?: boolean;
 }) {
   return (
-    <RevealAnimation delay={delay} className={className}>
+    <RevealAnimation delay={delay} className={className} fill={fill}>
       {children}
     </RevealAnimation>
   );

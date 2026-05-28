@@ -112,7 +112,7 @@ export default function AboutWhatWeSupport() {
         </div>
         <SectionReveal delay={0.16} className="mt-8 flex justify-end md:mt-9">
           <Link
-            href="/business"
+            href="/business/recruiting"
             className="group inline-flex items-center gap-4 text-[11px] font-semibold tracking-[0.28em] text-white/72 transition hover:text-white"
           >
             <span className="h-px w-10 bg-white/50 transition-all group-hover:w-14 group-hover:bg-white" />

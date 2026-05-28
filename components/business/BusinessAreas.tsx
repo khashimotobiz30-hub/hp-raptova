@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import {
   BusinessLabel,
   BUSINESS_AREAS_CARDS_CLASS,
@@ -78,9 +79,19 @@ export default function BusinessAreas() {
                       </li>
                     ))}
                   </ul>
-                  <p className="mt-8 text-[10px] font-semibold tracking-[0.24em] text-black/40">
-                    COMING SOON
-                  </p>
+                  {area.id === 'recruiting-support' ? (
+                    <Link
+                      href="/business/recruiting"
+                      className="group mt-8 inline-flex items-center gap-3 text-[10px] font-semibold tracking-[0.24em] text-black/55 transition hover:text-black/88"
+                    >
+                      <span className="h-px w-8 bg-black/35 transition-all group-hover:w-12" />
+                      詳細を見る
+                    </Link>
+                  ) : (
+                    <p className="mt-8 text-[10px] font-semibold tracking-[0.24em] text-black/40">
+                      COMING SOON
+                    </p>
+                  )}
                 </article>
               </SectionReveal>
             ))}

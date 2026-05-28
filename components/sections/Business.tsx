@@ -20,7 +20,7 @@ const BUSINESS_SECTION_CARDS = [
     imageSrc: '/images/business/business-recruiting-support.png',
     numberTone: 'light',
     status: null,
-    viewMoreHref: '/business#recruiting-support',
+    viewMoreHref: '/business/recruiting',
   },
   {
     number: '02',
@@ -30,8 +30,8 @@ const BUSINESS_SECTION_CARDS = [
       'WebサイトやLP、会社資料、チラシ、営業資料、文章コンテンツなど、伝わるクリエイティブを制作します。',
     imageSrc: '/images/business/business-creative.png',
     numberTone: 'dark',
-    status: null,
-    viewMoreHref: '/business#web-creative',
+    status: 'COMING SOON',
+    statusOnImage: true,
   },
   {
     number: '03',
@@ -42,6 +42,7 @@ const BUSINESS_SECTION_CARDS = [
     imageSrc: '/images/business/business-workflow-design.png',
     numberTone: 'light',
     status: 'COMING SOON',
+    statusOnImage: true,
   },
 ] as const;
 
@@ -73,63 +74,81 @@ export default function Business() {
         </RevealAnimation>
 
         <div className="mt-10 grid min-w-0 gap-5 sm:grid-cols-2 lg:mt-12 lg:grid-cols-3 lg:gap-5 xl:mt-14 xl:gap-6 min-[1440px]:gap-8">
-          {BUSINESS_SECTION_CARDS.map((item, index) => (
-            <RevealAnimation key={item.number} delay={0.08 + index * 0.06}>
-              <article className="group flex h-full min-w-0 flex-col">
-                <div className="relative mb-5 h-32 overflow-hidden bg-zinc-900 lg:mb-6 lg:h-[7.25rem] xl:mb-7 xl:h-36 min-[1440px]:mb-7 min-[1440px]:h-40">
-                  <Image
-                    src={item.imageSrc}
-                    alt=""
-                    fill
-                    sizes="(max-width: 1023px) 50vw, (max-width: 1439px) 22vw, 260px"
-                    className="object-cover opacity-90 grayscale transition duration-500 group-hover:scale-[1.03]"
-                  />
-                  <div
-                    className={[
-                      'absolute inset-0',
-                      item.numberTone === 'dark' ? 'bg-white/8' : 'bg-black/18',
-                    ].join(' ')}
-                    aria-hidden="true"
-                  />
-                  <div
-                    className={[
-                      'absolute left-5 top-5 text-sm font-medium tracking-[0.18em]',
-                      item.numberTone === 'dark'
-                        ? 'text-zinc-950 drop-shadow-[0_1px_8px_rgba(255,255,255,0.42)]'
-                        : 'text-white/90 drop-shadow-[0_1px_8px_rgba(0,0,0,0.35)]',
-                    ].join(' ')}
-                  >
-                    {String(index + 1).padStart(2, '0')}
-                  </div>
-                </div>
+          {BUSINESS_SECTION_CARDS.map((item, index) => {
+            const isComingSoon = Boolean(item.status);
 
-                <p className="mb-3 min-h-[12px] text-[10px] font-semibold tracking-[0.28em] text-zinc-500">
-                  {item.titleEn}
-                </p>
-                <h3 className="copy-ja min-h-0 font-serif text-lg leading-snug tracking-[0.08em] text-zinc-950 lg:min-h-[34px] lg:text-[1.05rem] xl:text-xl min-[1440px]:min-h-[38px] min-[1440px]:text-[22px]">
-                  {item.titleJa}
-                </h3>
-                <p className="copy-ja mt-2 min-h-0 text-[11px] leading-loose tracking-[0.08em] text-zinc-600 lg:min-h-[84px] lg:text-xs xl:min-h-[96px]">
-                  {item.description}
-                </p>
-                <div className="mt-auto pt-2">
-                  {item.status ? (
-                    <p className="text-[10px] font-semibold tracking-[0.28em] text-zinc-500">
-                      {item.status}
-                    </p>
-                  ) : (
-                    <Link
-                      href={item.viewMoreHref}
-                      className="inline-flex items-center gap-4 text-xs tracking-[0.18em] text-zinc-950"
+            return (
+              <RevealAnimation key={item.number} delay={0.08 + index * 0.06}>
+                <article
+                  className={[
+                    'flex h-full min-w-0 flex-col',
+                    isComingSoon ? 'cursor-default' : 'group',
+                  ].join(' ')}
+                  {...(isComingSoon ? { 'aria-disabled': true } : {})}
+                >
+                  <div className="relative mb-5 h-32 overflow-hidden bg-zinc-900 lg:mb-6 lg:h-[7.25rem] xl:mb-7 xl:h-36 min-[1440px]:mb-7 min-[1440px]:h-40">
+                    <Image
+                      src={item.imageSrc}
+                      alt=""
+                      fill
+                      sizes="(max-width: 1023px) 50vw, (max-width: 1439px) 22vw, 260px"
+                      className={[
+                        'object-cover opacity-90 grayscale',
+                        isComingSoon
+                          ? ''
+                          : 'transition duration-500 group-hover:scale-[1.03]',
+                      ].join(' ')}
+                    />
+                    <div
+                      className={[
+                        'absolute inset-0',
+                        item.numberTone === 'dark' ? 'bg-white/8' : 'bg-black/18',
+                      ].join(' ')}
+                      aria-hidden="true"
+                    />
+                    <div
+                      className={[
+                        'absolute left-5 top-5 text-sm font-medium tracking-[0.18em]',
+                        item.numberTone === 'dark'
+                          ? 'text-zinc-950 drop-shadow-[0_1px_8px_rgba(255,255,255,0.42)]'
+                          : 'text-white/90 drop-shadow-[0_1px_8px_rgba(0,0,0,0.35)]',
+                      ].join(' ')}
                     >
-                      <span className="h-px w-10 bg-zinc-950 transition-all group-hover:w-16" />
-                      VIEW MORE
-                    </Link>
-                  )}
-                </div>
-              </article>
-            </RevealAnimation>
-          ))}
+                      {String(index + 1).padStart(2, '0')}
+                    </div>
+                    {'statusOnImage' in item && item.statusOnImage ? (
+                      <p className="pointer-events-none absolute inset-0 z-10 flex cursor-default select-none items-center justify-center px-3 text-center text-[15px] font-semibold leading-none tracking-[0.26em] text-white/95 drop-shadow-[0_1px_10px_rgba(0,0,0,0.55)]">
+                        {item.status}
+                      </p>
+                    ) : null}
+                  </div>
+
+                  <p className="mb-3 min-h-[12px] text-[10px] font-semibold tracking-[0.28em] text-zinc-500">
+                    {item.titleEn}
+                  </p>
+                  <h3 className="copy-ja min-h-0 font-serif text-lg leading-snug tracking-[0.08em] text-zinc-950 lg:min-h-[34px] lg:text-[1.05rem] xl:text-xl min-[1440px]:min-h-[38px] min-[1440px]:text-[22px]">
+                    {item.titleJa}
+                  </h3>
+                  <p className="copy-ja mt-2 min-h-0 text-[11px] leading-loose tracking-[0.08em] text-zinc-600 lg:min-h-[84px] lg:text-xs xl:min-h-[96px]">
+                    {item.description}
+                  </p>
+                  <div className="mt-auto pt-2">
+                    {'viewMoreHref' in item ? (
+                      <Link
+                        href={item.viewMoreHref}
+                        className="copy-ja group flex w-44 items-center justify-between border border-zinc-950 px-6 py-4 text-xs font-semibold tracking-[0.18em] text-zinc-950 transition hover:bg-zinc-950 hover:text-white"
+                      >
+                        VIEW MORE{' '}
+                        <span className="transition-transform group-hover:translate-x-0.5" aria-hidden="true">
+                          →
+                        </span>
+                      </Link>
+                    ) : null}
+                  </div>
+                </article>
+              </RevealAnimation>
+            );
+          })}
         </div>
       </div>
     </section>

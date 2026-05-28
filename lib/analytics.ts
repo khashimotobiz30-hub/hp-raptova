@@ -1,6 +1,6 @@
 export const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
-export type ContactClickLocation = 'home' | 'about' | 'business' | 'project';
+export type ContactClickLocation = 'home' | 'about' | 'business' | 'business-recruiting' | 'project';
 
 type Gtag = (...args: unknown[]) => void;
 

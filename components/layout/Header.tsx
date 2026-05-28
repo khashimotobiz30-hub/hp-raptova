@@ -3,21 +3,23 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useEffect, useState, useCallback, useRef } from 'react';
+import { usePathname } from 'next/navigation';
 import { SITE_CONFIG } from '@/lib/config';
 import { CASE_STUDY_NAV_LINKS } from '@/lib/projects/top-projects';
 
 const NAV_LINKS = [
   { label: 'ABOUT', href: '/about' },
-  { label: 'BUSINESS', href: '/business' },
+  { label: 'BUSINESS', href: '/business/recruiting' },
 ] as const;
 
 const PROJECTS_HREF = '/#projects';
 
-function NavUnderline({ contrast }: { contrast: boolean }) {
+function NavUnderline({ contrast, active = false }: { contrast: boolean; active?: boolean }) {
   return (
     <span
       className={[
-        'absolute -bottom-0.5 left-0 h-px w-0 transition-all duration-300 group-hover:w-full',
+        'absolute -bottom-0.5 left-0 h-px transition-all duration-300',
+        active ? 'w-full' : 'w-0 group-hover:w-full',
         contrast ? 'bg-[#0a0a0a]' : 'bg-[#0a0a0a]',
       ].join(' ')}
     />
@@ -132,6 +134,7 @@ export default function Header() {
     if (menuOpen) closeMenu();
   }, [menuOpen, closeMenu]);
   const closeProjectsMenu = useCallback(() => setProjectsOpen(false), []);
+  const pathname = usePathname();
 
   const headerNavContrast = scrolled || projectsOpen || menuOpen;
   const headerSolidBg = scrolled || projectsOpen;
@@ -174,16 +177,27 @@ export default function Header() {
           </Link>
 
           <nav className="hidden md:flex items-start gap-10 lg:justify-end lg:pr-9 xl:pr-11 min-[1440px]:pr-14" aria-label="メインナビゲーション">
-            {NAV_LINKS.map(({ label, href }) => (
-              <Link
-                key={label}
-                href={href}
-                className={[navLinkClass(headerNavContrast), 'flex h-[72px] items-center'].join(' ')}
-              >
-                {label}
-                <NavUnderline contrast={headerNavContrast} />
-              </Link>
-            ))}
+            {NAV_LINKS.map(({ label, href }) => {
+              const isActive =
+                label === 'BUSINESS'
+                  ? pathname === '/business' || pathname.startsWith('/business/')
+                  : pathname === href;
+              return (
+                <Link
+                  key={label}
+                  href={href}
+                  className={[
+                    navLinkClass(headerNavContrast),
+                    'flex h-[72px] items-center',
+                    isActive ? 'text-[#0a0a0a]' : '',
+                  ].join(' ')}
+                  aria-current={isActive ? 'page' : undefined}
+                >
+                  {label}
+                  <NavUnderline contrast={headerNavContrast} active={isActive} />
+                </Link>
+              );
+            })}
 
             <div
               ref={projectsRef}

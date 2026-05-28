@@ -1,0 +1,104 @@
+{
+  "title": "その他サービス一覧",
+  "defaultId": "scout",
+  "items": [
+    {
+      "id": "scout",
+      "icon": "send",
+      "label": "スカウト文面",
+      "description": "候補者の興味を引き、返信につながるスカウト文面を作成します。ターゲットや職種に合わせて、会社の魅力やポジションの価値が伝わる内容に整えます。",
+      "serviceTags": ["ターゲット設計", "訴求整理", "初回文面", "返信文面"],
+      "concerns": ["スカウトを送っても返信が来ない", "どんな文面が良いか分からない", "自社の魅力がうまく伝わらない"],
+      "effects": ["返信率の向上", "候補者の興味喚起", "面談へのスムーズな導線づくり"],
+      "imageKey": "job-posting"
+    },
+    {
+      "id": "applicant-email",
+      "icon": "mail",
+      "label": "応募者向けメール文面",
+      "description": "応募受付後や面接案内など、応募者とのやり取りに使うメール文面を整えます。伝達漏れを防ぎながら、応募者に安心感を与える内容にします。",
+      "serviceTags": ["応募受付", "面接案内", "日程調整", "リマインド"],
+      "imageKey": "deck"
+    },
+    {
+      "id": "interview-guide",
+      "icon": "calendar",
+      "label": "面談前後の案内文",
+      "description": "面談前の案内や面談後のフォロー文面を整えます。応募者が迷わず次の行動に進めるよう、必要な情報を分かりやすく伝えます。",
+      "serviceTags": ["事前案内", "面談後フォロー", "次回案内", "辞退防止"],
+      "imageKey": "concept"
+    },
+    {
+      "id": "briefing-talk",
+      "icon": "presentation",
+      "label": "説明会で話す内容",
+      "description": "説明会で伝えるべき内容を整理し、会社の魅力や仕事の特徴が伝わる構成にします。話す順番や重点ポイントまで整えます。",
+      "serviceTags": ["構成整理", "会社紹介", "仕事紹介", "質疑応答"],
+      "imageKey": "deck"
+    },
+    {
+      "id": "joint-briefing",
+      "icon": "users",
+      "label": "合同説明会用資料",
+      "description": "合同説明会や採用イベントで使う資料を整えます。短い時間でも会社の特徴が伝わるよう、内容と見せ方を整理します。",
+      "serviceTags": ["スライド構成", "会社紹介", "職種紹介", "デザイン"],
+      "imageKey": "deck"
+    },
+    {
+      "id": "internship",
+      "icon": "graduation-cap",
+      "label": "インターンシップ内容整理",
+      "description": "インターンシップの目的、内容、流れを整理します。学生や参加者にとって魅力が伝わる企画に整えます。",
+      "serviceTags": ["企画整理", "プログラム設計", "告知文", "当日資料"],
+      "imageKey": "lp"
+    },
+    {
+      "id": "media-review",
+      "icon": "file-text",
+      "label": "求人媒体掲載内容の見直し",
+      "description": "求人媒体に掲載している内容を見直し、応募者に伝わりやすい構成へ整えます。条件だけでなく、応募する理由が伝わる内容に改善します。",
+      "serviceTags": ["求人票改善", "訴求整理", "職種紹介", "応募導線"],
+      "imageKey": "job-posting"
+    },
+    {
+      "id": "employee-interview",
+      "icon": "mic",
+      "label": "社員インタビュー設計",
+      "description": "社員インタビューの質問設計や記事構成を整理します。働く人の魅力や職場の雰囲気が伝わる内容に整えます。",
+      "serviceTags": ["質問設計", "記事構成", "魅力整理", "採用広報"],
+      "imageKey": "concept"
+    },
+    {
+      "id": "pr-article",
+      "icon": "newspaper",
+      "label": "採用広報記事の構成",
+      "description": "採用広報に使う記事のテーマや構成を整理します。会社の考え方や働く魅力が伝わる記事づくりを支援します。",
+      "serviceTags": ["テーマ設計", "記事構成", "コピー", "採用広報"],
+      "imageKey": "lp"
+    },
+    {
+      "id": "post-apply-follow",
+      "icon": "refresh-cw",
+      "label": "応募後フォロー文面",
+      "description": "応募後や選考途中のフォロー文面を整えます。応募者との接点を途切れさせず、安心して選考に進める状態を作ります。",
+      "serviceTags": ["フォロー文面", "選考案内", "辞退防止", "リマインド"],
+      "imageKey": "deck"
+    },
+    {
+      "id": "faq",
+      "icon": "circle-help",
+      "label": "FAQ整理",
+      "description": "応募者からよく聞かれる質問を整理し、事前に不安を解消できるFAQを作成します。説明会・採用ページ・メールなどにも活用できます。",
+      "serviceTags": ["質問整理", "回答作成", "採用ページ", "説明資料"],
+      "imageKey": "concept"
+    },
+    {
+      "id": "line-email",
+      "icon": "message-circle",
+      "label": "LINE・メール配信文面",
+      "description": "LINEやメールで送る採用関連の配信文面を整えます。案内、リマインド、フォローなど、応募者との接点を分かりやすく設計します。",
+      "serviceTags": ["配信文面", "リマインド", "フォロー", "導線設計"],
+      "imageKey": "lp"
+    }
+  ]
+}
