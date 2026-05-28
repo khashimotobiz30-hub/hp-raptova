@@ -10,7 +10,7 @@ import sharp from 'sharp';
 const svgPath = 'public/logos/raptova-icon-favicon.svg';
 const outPath = 'public/icon.png';
 const SIZE = 512;
-const BG = { r: 242, g: 240, b: 233 };
+const BG = { r: 255, g: 255, b: 255 };
 const ICON_SIZE = 400;
 
 const svg = readFileSync(svgPath);
@@ -43,5 +43,5 @@ await sharp({
 
 const newSize = statSync(outPath).size;
 console.log(`OK: ${outPath}`);
-console.log(`Dimensions: ${SIZE}x${SIZE}px, icon ${ICON_SIZE}px, background #f2f0e9`);
+console.log(`Dimensions: ${SIZE}x${SIZE}px, icon ${ICON_SIZE}px, background #ffffff`);
 console.log(`File size: ${newSize} bytes${oldSize ? ` (was ${oldSize} bytes)` : ''}`);

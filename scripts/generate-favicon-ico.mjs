@@ -1,6 +1,6 @@
 /**
  * Regenerate app/favicon.ico from public/logos/raptova-icon-favicon.svg
- * Light background (#f2f0e9) — matches apple-touch-icon / site tone.
+ * White background (#ffffff).
  * Requires: npm install --no-save sharp to-ico
  * Usage: node scripts/generate-favicon-ico.mjs
  */
@@ -11,8 +11,8 @@ import toIco from 'to-ico';
 const svgPath = 'public/logos/raptova-icon-favicon.svg';
 const outPath = 'app/favicon.ico';
 const sizes = [16, 32, 48];
-/** Site background tone — same as generate-apple-touch-icon.mjs */
-const BG = { r: 242, g: 240, b: 233 };
+/** White background — same as generate-apple-touch-icon.mjs */
+const BG = { r: 255, g: 255, b: 255 };
 
 const svg = readFileSync(svgPath);
 
@@ -43,4 +43,4 @@ const pngBuffers = await Promise.all(sizes.map((size) => renderFaviconPng(size))
 const ico = await toIco(pngBuffers);
 writeFileSync(outPath, ico);
 
-console.log(`OK: ${outPath} (${ico.length} bytes, sizes: ${sizes.join(', ')}, bg #f2f0e9)`);
+console.log(`OK: ${outPath} (${ico.length} bytes, sizes: ${sizes.join(', ')}, bg #ffffff)`);

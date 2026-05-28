@@ -9,8 +9,8 @@ import sharp from 'sharp';
 const svgPath = 'public/logos/raptova-icon-favicon.svg';
 const outPath = 'public/apple-touch-icon.png';
 const SIZE = 180;
-/** Site background tone (#f2f0e9) — light, matches TOP/About sections */
-const BG = { r: 242, g: 240, b: 233 };
+/** White background (#ffffff) */
+const BG = { r: 255, g: 255, b: 255 };
 /** ~22% inset → icon ~140px; keeps dot + R readable on iOS home screen */
 const ICON_SIZE = 140;
 
@@ -44,5 +44,5 @@ await sharp({
 
 const newSize = statSync(outPath).size;
 console.log(`OK: ${outPath}`);
-console.log(`Dimensions: ${SIZE}x${SIZE}px, icon ${ICON_SIZE}px, background #f2f0e9`);
+console.log(`Dimensions: ${SIZE}x${SIZE}px, icon ${ICON_SIZE}px, background #ffffff`);
 console.log(`File size: ${newSize} bytes${oldSize ? ` (was ${oldSize} bytes)` : ''}`);
