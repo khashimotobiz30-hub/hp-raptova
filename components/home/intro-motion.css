@@ -1,0 +1,204 @@
+/* Opening motion - slower tempo based on sample */
+.intro-motion-root .intro {
+  position: fixed;
+  z-index: 100;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #030303;
+  color: #fff;
+  cursor: pointer;
+  animation: introSampleOut 1s cubic-bezier(0.76, 0, 0.24, 1) 3.85s forwards;
+}
+
+.intro-motion-root .intro::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -140vw;
+  width: 140vw;
+  height: 2px;
+  z-index: 0;
+  pointer-events: none;
+  transform: rotate(-8deg) translateY(-50%);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.1) 20%,
+    rgba(255, 255, 255, 0.72) 44%,
+    rgba(255, 255, 255, 0.95) 50%,
+    rgba(255, 255, 255, 0.72) 56%,
+    rgba(255, 255, 255, 0.1) 80%,
+    transparent 100%
+  );
+  box-shadow:
+    0 0 10px rgba(255, 255, 255, 0.55),
+    0 0 28px rgba(255, 255, 255, 0.28),
+    0 0 56px rgba(255, 255, 255, 0.12);
+  opacity: 0;
+  animation: introSampleLineRun 2.6s cubic-bezier(0.62, 0, 0.22, 1) 1.75s forwards;
+}
+
+.intro-motion-root .intro::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+  background:
+    radial-gradient(circle at 50% 55%, rgba(255, 255, 255, 0.08), transparent 20%),
+    linear-gradient(110deg, transparent 0%, rgba(255, 255, 255, 0.04) 50%, transparent 100%);
+  animation: introSampleAmbient 2.4s ease 0.4s forwards;
+}
+
+.intro-motion-root .intro-inner {
+  position: relative;
+  z-index: 2;
+  width: min(92vw, 720px);
+  text-align: center;
+  transform: translateY(8px);
+  animation: introSampleTextMove 2.6s cubic-bezier(0.22, 1, 0.36, 1) 0.35s forwards;
+}
+
+.intro-motion-root .intro-brand {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 28px;
+  letter-spacing: 0.36em;
+  opacity: 0;
+  animation: introSampleFadeUp 1.05s ease 0.5s forwards;
+}
+
+.intro-motion-root .intro-title {
+  margin-top: 30px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(48px, 8vw, 132px);
+  line-height: 0.9;
+  letter-spacing: -0.06em;
+  opacity: 0;
+  animation: introSampleFadeUp 1.25s ease 1.25s forwards;
+}
+
+.intro-motion-root .intro-sub-group {
+  margin-top: 28px;
+}
+
+.intro-motion-root .intro-sub {
+  font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
+  font-size: 24px;
+  line-height: 2.1;
+  letter-spacing: 0.28em;
+  color: rgba(255, 255, 255, 0.58);
+  opacity: 0;
+}
+
+.intro-motion-root .intro-sub-line1 {
+  animation: introSampleFadeUp 1.15s ease 2s forwards;
+}
+
+.intro-motion-root .intro-sub-line2 {
+  animation: introSampleFadeUp 1.15s ease 2.45s forwards;
+}
+
+.intro-motion-root .intro-pending {
+  position: fixed;
+  z-index: 100;
+  inset: 0;
+  background: #030303;
+}
+
+@keyframes introSampleFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+    filter: blur(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes introSampleTextMove {
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes introSampleLineRun {
+  from {
+    left: -140vw;
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 1;
+  }
+
+  to {
+    left: 110vw;
+    opacity: 0;
+  }
+}
+
+@keyframes introSampleAmbient {
+  from {
+    opacity: 0;
+    transform: scale(1.04);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes introSampleOut {
+  from {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+  }
+
+  to {
+    opacity: 0;
+    visibility: hidden;
+    clip-path: inset(0 0 100% 0);
+  }
+}
+
+/* SP: main copy > RAPTOVA > sub copy */
+@media (max-width: 767px) {
+  .intro-motion-root .intro-title {
+    font-size: 43px;
+    line-height: 0.92;
+  }
+
+  .intro-motion-root .intro-brand {
+    font-size: 15px;
+    letter-spacing: 0.32em;
+  }
+
+  .intro-motion-root .intro-sub {
+    font-size: 15px;
+    line-height: 2;
+    letter-spacing: 0.22em;
+  }
+
+  .intro-motion-root .intro-sub-group {
+    margin-top: 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro-motion-root {
+    display: none !important;
+  }
+}
