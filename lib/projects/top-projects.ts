@@ -1,20 +1,28 @@
-export type TopProjectListItem = {
+export type TopProjectCard = {
   id: string;
   number: string;
   title: string;
   category: string;
-  status: 'VIEW' | 'COMING SOON';
-  href: string | null;
+  description: string;
+  imageSrc: string;
+  imageAlt: string;
+  imageWidth: number;
+  imageHeight: number;
+  href: string;
 };
 
-/** TOP #projects section and nav dropdown — single source of truth */
-export const TOP_PROJECTS: readonly TopProjectListItem[] = [
+/** TOP #projects section and Header case-study dropdown */
+export const TOP_PROJECTS: readonly TopProjectCard[] = [
   {
     id: 'raptova-website',
     number: '01',
     title: 'RAPTOVA Official Website',
     category: 'Brand Site / Direction / Web Design',
-    status: 'VIEW',
+    description: 'RAPTOVAのブランド・事業・制作実績を、一つの体験として整理した公式サイト。',
+    imageSrc: '/images/business/raptova-website.png',
+    imageAlt: 'RAPTOVA Official Website project preview',
+    imageWidth: 1357,
+    imageHeight: 763,
     href: '/projects/raptova-website',
   },
   {
@@ -22,31 +30,16 @@ export const TOP_PROJECTS: readonly TopProjectListItem[] = [
     number: '02',
     title: 'AI SKILL DIAGNOSIS QUESTORIA',
     category: 'Web Browser App / AI Diagnosis',
-    status: 'VIEW',
+    description: 'AI活用力を、目的定義・設計・判断の観点から可視化する診断アプリ。',
+    imageSrc: '/images/business/questoria.png',
+    imageAlt: 'AI Skill Diagnosis QUESTORIA project preview',
+    imageWidth: 1342,
+    imageHeight: 755,
     href: '/projects/questoria',
-  },
-  {
-    id: 'recruiting-support',
-    number: '03',
-    title: 'Recruiting Support Package',
-    category: 'LP / Presentation / Copywriting',
-    status: 'COMING SOON',
-    href: null,
-  },
-  {
-    id: 'workflow-design',
-    number: '04',
-    title: 'Workflow Design Prototype',
-    category: 'AI Workflow / Operation Design',
-    status: 'COMING SOON',
-    href: null,
   },
 ] as const;
 
-export const CASE_STUDY_NAV_LINKS = TOP_PROJECTS.filter(
-  (project): project is TopProjectListItem & { href: string } =>
-    project.status === 'VIEW' && project.href !== null,
-).map((project) => ({
+export const CASE_STUDY_NAV_LINKS = TOP_PROJECTS.map((project) => ({
   label: project.title,
   href: project.href,
 }));

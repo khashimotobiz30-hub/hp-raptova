@@ -17,8 +17,10 @@ const BUSINESS_SECTION_CARDS = [
     titleJa: '採用活動支援',
     description:
       '採用戦略の設計から、LP・サイト・説明資料など採用活動で必要になる各種ツールの提供を含め企業の魅力を最大限発信する支援を行います。',
-    imageSrc: '/images/business/business-recruiting-support.png',
+    imageSrc: '/images/business/business-creative.png',
     numberTone: 'light',
+    numberOnImageTone: 'dark',
+    imageOverlay: 'none',
     status: null,
     viewMoreHref: '/business/recruiting',
   },
@@ -27,10 +29,12 @@ const BUSINESS_SECTION_CARDS = [
     titleEn: 'BUSINESS CREATIVE',
     titleJa: 'Web・資料等制作支援',
     description:
-      'WebサイトやLP、会社資料、チラシ、営業資料、文章コンテンツなど、伝わるクリエイティブを制作します。',
-    imageSrc: '/images/business/business-creative.png',
+      '採用領域で培った情報整理・構成設計を、Webサイトや会社資料、営業資料などへ展開予定です。',
+    imageSrc: '/images/business/business-recruiting-support.png',
     numberTone: 'dark',
-    status: 'COMING SOON',
+    numberOnImageTone: 'light',
+    imageOverlayTone: 'dark',
+    status: 'NEXT AREA',
     statusOnImage: true,
   },
   {
@@ -38,10 +42,10 @@ const BUSINESS_SECTION_CARDS = [
     titleEn: 'WORKFLOW DESIGN',
     titleJa: '業務整理・AI活用支援',
     description:
-      '日々の業務や情報の流れを整理し、AIを活用できる仕組みへ変えていく支援を準備しています。',
+      '日々の業務や情報の流れを整理し、AIを活用できる仕組みづくりへ展開予定です。',
     imageSrc: '/images/business/business-workflow-design.png',
     numberTone: 'light',
-    status: 'COMING SOON',
+    status: 'NEXT AREA',
     statusOnImage: true,
   },
 ] as const;
@@ -53,7 +57,7 @@ export default function Business() {
       className="w-full min-w-0 max-w-full overflow-x-clip bg-[#f2f0e9] px-7 py-24 md:px-14 lg:px-10 lg:py-16 xl:px-14 xl:py-20 min-[1440px]:px-20 min-[1440px]:py-24"
       aria-labelledby="business-heading"
     >
-      <div className="min-w-0 max-w-[980px]">
+      <div className="mx-auto min-w-0 w-full max-w-[1440px]">
         <RevealAnimation>
           <p className="mb-8 text-[10px] font-semibold tracking-[0.42em] text-zinc-500">
             BUSINESS
@@ -75,41 +79,50 @@ export default function Business() {
 
         <div className="mt-10 grid min-w-0 gap-5 sm:grid-cols-2 lg:mt-12 lg:grid-cols-3 lg:gap-5 xl:mt-14 xl:gap-6 min-[1440px]:gap-8">
           {BUSINESS_SECTION_CARDS.map((item, index) => {
-            const isComingSoon = Boolean(item.status);
+            const isNextArea = Boolean(item.status);
+            const numberOnImageTone =
+              'numberOnImageTone' in item ? item.numberOnImageTone : item.numberTone;
+            const imageOverlayTone =
+              'imageOverlayTone' in item ? item.imageOverlayTone : item.numberTone;
 
             return (
               <RevealAnimation key={item.number} delay={0.08 + index * 0.06}>
                 <article
                   className={[
                     'flex h-full min-w-0 flex-col',
-                    isComingSoon ? 'cursor-default' : 'group',
+                    isNextArea ? 'cursor-default' : 'group',
                   ].join(' ')}
-                  {...(isComingSoon ? { 'aria-disabled': true } : {})}
+                  {...(isNextArea ? { 'aria-disabled': true } : {})}
                 >
-                  <div className="relative mb-5 h-32 overflow-hidden bg-zinc-900 lg:mb-6 lg:h-[7.25rem] xl:mb-7 xl:h-36 min-[1440px]:mb-7 min-[1440px]:h-40">
+                  <div className="relative mb-5 h-44 overflow-hidden bg-zinc-900 lg:mb-6 lg:h-[10rem] xl:mb-7 xl:h-[12rem] min-[1440px]:mb-7 min-[1440px]:h-54">
                     <Image
                       src={item.imageSrc}
                       alt=""
                       fill
                       sizes="(max-width: 1023px) 50vw, (max-width: 1439px) 22vw, 260px"
                       className={[
-                        'object-cover opacity-90 grayscale',
-                        isComingSoon
+                        'object-cover',
+                        'imageOverlay' in item && item.imageOverlay === 'none'
+                          ? 'opacity-100 brightness-[1.04]'
+                          : 'opacity-90 grayscale',
+                        isNextArea
                           ? ''
                           : 'transition duration-500 group-hover:scale-[1.03]',
                       ].join(' ')}
                     />
-                    <div
-                      className={[
-                        'absolute inset-0',
-                        item.numberTone === 'dark' ? 'bg-white/8' : 'bg-black/18',
-                      ].join(' ')}
-                      aria-hidden="true"
-                    />
+                    {'imageOverlay' in item && item.imageOverlay === 'none' ? null : (
+                      <div
+                        className={[
+                          'absolute inset-0',
+                          imageOverlayTone === 'dark' ? 'bg-white/8' : 'bg-black/18',
+                        ].join(' ')}
+                        aria-hidden="true"
+                      />
+                    )}
                     <div
                       className={[
                         'absolute left-5 top-5 text-sm font-medium tracking-[0.18em]',
-                        item.numberTone === 'dark'
+                        numberOnImageTone === 'dark'
                           ? 'text-zinc-950 drop-shadow-[0_1px_8px_rgba(255,255,255,0.42)]'
                           : 'text-white/90 drop-shadow-[0_1px_8px_rgba(0,0,0,0.35)]',
                       ].join(' ')}

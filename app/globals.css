@@ -115,6 +115,7 @@ body > * {
   #hero.top-hero-split,
   .top-page-split {
     grid-template-columns: minmax(0, 62%) minmax(0, 38%);
+    align-items: stretch;
   }
 
   header .top-header-split {

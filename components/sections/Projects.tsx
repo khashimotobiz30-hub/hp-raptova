@@ -1,70 +1,76 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
-import RevealAnimation from '@/components/ui/RevealAnimation';
+import { BusinessLabel, SectionReveal } from '@/components/business/shared';
 import { TOP_PROJECTS } from '@/lib/projects/top-projects';
 
 export default function Projects() {
   return (
     <aside
       id="projects"
-      className="w-full min-w-0 max-w-full overflow-x-clip bg-[#080808] px-7 py-24 text-white md:px-14 lg:px-10 lg:py-16 xl:px-12 xl:py-20 min-[1440px]:px-16 min-[1440px]:py-24"
+      className="relative w-full min-w-0 max-w-full overflow-x-clip bg-[#080808] text-white"
       aria-labelledby="projects-heading"
     >
-      <RevealAnimation>
-        <p
-          id="projects-heading"
-          className="text-[10px] font-semibold tracking-[0.42em] text-white/34"
-        >
-          PROJECTS
-        </p>
-      </RevealAnimation>
+      <div className="absolute inset-0 bg-[#070707]" aria-hidden />
+      <div className="absolute inset-x-0 top-0 h-px bg-white/10" aria-hidden />
+      <div className="relative px-7 py-24 md:px-14 lg:px-10 lg:py-16 xl:px-12 xl:py-20 min-[1440px]:px-14 min-[1440px]:py-24">
+        <SectionReveal>
+          <p id="projects-heading" className="sr-only">
+            Selected projects
+          </p>
+          <BusinessLabel tone="dark">SELECTED PROJECTS</BusinessLabel>
+        </SectionReveal>
 
-      <RevealAnimation delay={0.1}>
-        <div className="mt-10 min-w-0 divide-y divide-white/14 border-y border-white/14 lg:mt-11 min-[1440px]:mt-14">
-          {TOP_PROJECTS.map((project) => {
-            const statusClass =
-              project.status === 'VIEW'
-                ? 'group inline-flex items-center gap-2 text-white/82 transition hover:text-white'
-                : 'text-white/34';
-            const status = project.href ? (
-              <Link href={project.href} className={statusClass}>
-                {project.status}
-                <span
-                  className="inline-block transition-transform duration-300 group-hover:translate-x-1"
-                  aria-hidden="true"
-                >
-                  →
-                </span>
-              </Link>
-            ) : (
-              <span className={statusClass}>{project.status}</span>
-            );
-
-            return (
+        <div className="mt-6 flex min-w-0 flex-col lg:mt-7">
+          {TOP_PROJECTS.map((project, index) => (
+            <SectionReveal key={project.id} delay={0.06 + index * 0.06}>
               <article
-                key={project.id}
-                className="min-w-0 py-6 text-white/78 lg:grid lg:grid-cols-[36px_minmax(0,1fr)_auto] lg:items-start lg:gap-4 lg:py-5 xl:gap-5 min-[1440px]:grid-cols-[42px_minmax(0,1fr)_auto] min-[1440px]:gap-5 min-[1440px]:py-7"
+                className={[
+                  'min-w-0',
+                  index === 0 ? 'pb-0' : 'mt-8 border-t border-white/14 pt-8 lg:mt-9 lg:pt-9 min-[1440px]:mt-10 min-[1440px]:pt-10',
+                ].join(' ')}
               >
-                <p className="text-sm tracking-[0.14em] text-white/32">
-                  {project.number}
-                </p>
-                <div className="mt-4 min-w-0 lg:mt-0">
-                  <h3 className="text-[13px] font-medium leading-relaxed tracking-[0.08em] text-white/84 lg:text-sm min-[1440px]:text-sm">
+                <Link
+                  href={project.href}
+                  className="group grid min-w-0 grid-cols-[auto_1fr] gap-x-3 gap-y-2 transition-colors duration-300 hover:bg-white/[0.03]"
+                >
+                  <span className="shrink-0 text-[15px] tracking-[0.14em] text-white/40 transition-colors duration-300 group-hover:text-white/60">
+                    {project.number}
+                  </span>
+                  <h3 className="min-w-0 text-[15px] font-semibold leading-snug tracking-[0.12em] text-white/92 transition-colors duration-300 group-hover:text-white">
                     {project.title}
                   </h3>
-                  <p className="mt-1 text-[11px] leading-loose tracking-[0.12em] text-white/40">
-                    {project.category}
+
+                  <div className="relative col-start-2 w-[60%] max-w-full overflow-hidden bg-[#1a1a1a] ring-0 ring-white/0 transition duration-500 group-hover:ring-1 group-hover:ring-white/25">
+                    <Image
+                      src={project.imageSrc}
+                      alt={project.imageAlt}
+                      width={project.imageWidth}
+                      height={project.imageHeight}
+                      sizes="(max-width: 1023px) 60vw, 23vw"
+                      className="block h-auto w-full brightness-[0.92] transition duration-500 group-hover:brightness-100"
+                    />
+                  </div>
+
+                  <p className="copy-ja col-start-2 mt-1 text-[11px] leading-[1.8] tracking-[0.06em] text-white/58 lg:text-[12px]">
+                    {project.description}
                   </p>
-                </div>
-                <div className="mt-5 text-[10px] font-semibold tracking-[0.22em] lg:mt-1 lg:tracking-[0.24em]">
-                  {status}
-                </div>
+                  <p className="col-start-2 mt-2 text-[9px] font-semibold tracking-[0.22em] text-white/78 transition-colors duration-300 group-hover:text-white lg:text-[10px]">
+                    VIEW MORE{' '}
+                    <span
+                      className="inline-block transition-transform duration-300 group-hover:translate-x-1"
+                      aria-hidden="true"
+                    >
+                      →
+                    </span>
+                  </p>
+                </Link>
               </article>
-            );
-          })}
+            </SectionReveal>
+          ))}
         </div>
-      </RevealAnimation>
+      </div>
     </aside>
   );
 }

@@ -3,27 +3,13 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { BusinessLabel, SectionReveal, serifStyle } from '@/components/business/shared';
+import { TOP_PROJECTS } from '@/lib/projects/top-projects';
 
 const BODY_LINES = [
   'RAPTOVAがどのように情報を整理し、',
   'Webや資料、サービスとして形にしているのか。',
   '具体的な事例をご覧ください。',
 ];
-
-const PREVIEW_PROJECTS = [
-  {
-    src: '/images/business/raptova-website.png',
-    title: 'RAPTOVA Official Website',
-    alt: 'RAPTOVA Official Website project preview',
-    href: '/projects/raptova-website',
-  },
-  {
-    src: '/images/business/questoria.png',
-    title: 'AI Skill Diagnosis QUESTORIA',
-    alt: 'AI Skill Diagnosis QUESTORIA project preview',
-    href: '/projects/questoria',
-  },
-] as const;
 
 export default function BusinessProjects() {
   return (
@@ -67,13 +53,13 @@ export default function BusinessProjects() {
 
           <div className="min-w-0 pt-3 lg:pt-6">
             <div className="grid grid-cols-1 gap-7 lg:grid-cols-2 lg:gap-8">
-              {PREVIEW_PROJECTS.map((project, index) => (
-                <SectionReveal key={project.href} delay={0.06 + index * 0.06}>
+              {TOP_PROJECTS.map((project, index) => (
+                <SectionReveal key={project.id} delay={0.06 + index * 0.06}>
                   <Link href={project.href} className="group block min-w-0">
                     <div className="relative aspect-video overflow-hidden bg-[#1a1a1a]">
                       <Image
-                        src={project.src}
-                        alt={project.alt}
+                        src={project.imageSrc}
+                        alt={project.imageAlt}
                         fill
                         sizes="(max-width: 1024px) 100vw, 28vw"
                         className="object-cover object-center opacity-90 transition duration-500 group-hover:scale-[1.02] group-hover:opacity-100"
