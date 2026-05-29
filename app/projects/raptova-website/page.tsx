@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import ProjectCaseStudyView from '@/components/projects/case-study/ProjectCaseStudyView';
 import { RAPTOVA_WEBSITE_PROJECT } from '@/lib/projects/raptova-website-project';
 import { SITE_CONFIG } from '@/lib/config';
+import { OGP_DEFAULT_IMAGE } from '@/lib/og-images';
 
 export const metadata: Metadata = {
   title: 'RAPTOVA Official Website | PROJECTS | RAPTOVA',

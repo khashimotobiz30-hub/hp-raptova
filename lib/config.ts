@@ -3,8 +3,6 @@ export const SITE_CONFIG = {
   email: 'info@raptova.com',
   twitter: '@hako_freework30',
   twitterUrl: 'https://x.com/hako_freework30',
-  taglineJa: '思考を、次の現実へ。',
-  taglineEn: 'Evolve Your Reality.',
   siteName: 'RAPTOVA',
   title: 'RAPTOVA（ラプトーバ）公式サイト',
   description:

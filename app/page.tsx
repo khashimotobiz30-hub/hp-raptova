@@ -1,19 +1,3 @@
-import type { Metadata } from 'next';
-import { SITE_CONFIG } from '@/lib/config';
-
-export const metadata: Metadata = {
-  title: SITE_CONFIG.title,
-  description: SITE_CONFIG.description,
-  openGraph: {
-    title: SITE_CONFIG.title,
-    description: SITE_CONFIG.description,
-  },
-  twitter: {
-    title: SITE_CONFIG.title,
-    description: SITE_CONFIG.description,
-  },
-};
-
 import IntroMotion from '@/components/home/IntroMotion';
 import Hero from '@/components/sections/Hero';
 import Business from '@/components/sections/Business';

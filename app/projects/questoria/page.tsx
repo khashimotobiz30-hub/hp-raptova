@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import ProjectCaseStudyView from '@/components/projects/case-study/ProjectCaseStudyView';
 import { QUESTORIA_PROJECT } from '@/lib/projects/questoria-project';
 import { SITE_CONFIG } from '@/lib/config';
+import { OGP_DEFAULT_IMAGE } from '@/lib/og-images';
 
 export const metadata: Metadata = {
   title: 'QUESTORIA | PROJECTS | RAPTOVA',

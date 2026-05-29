@@ -6,6 +6,7 @@ import GoogleAnalytics from '@/components/analytics/GoogleAnalytics';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { SITE_CONFIG } from '@/lib/config';
+import { OGP_DEFAULT_IMAGE } from '@/lib/og-images';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -43,9 +44,7 @@ export const metadata: Metadata = {
     locale: 'ja_JP',
     images: [
       {
-        url: '/images/ogp/ogp-default.png',
-        width: 1200,
-        height: 630,
+        ...OGP_DEFAULT_IMAGE,
         alt: SITE_CONFIG.title,
       },
     ],
@@ -54,7 +53,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: SITE_CONFIG.title,
     description: SITE_CONFIG.description,
-    images: ['/images/ogp/ogp-default.png'],
+    images: [OGP_DEFAULT_IMAGE.url],
     site: SITE_CONFIG.twitter,
   },
   icons: {

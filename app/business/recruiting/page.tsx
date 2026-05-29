@@ -2,6 +2,7 @@ import RecruitingPageView from '@/components/business/recruiting/RecruitingPageV
 import { RECRUITING_PAGE_METADATA } from '@/lib/business/recruiting-content';
 import type { Metadata } from 'next';
 import { SITE_CONFIG } from '@/lib/config';
+import { OGP_DEFAULT_IMAGE } from '@/lib/og-images';
 
 export const metadata: Metadata = {
   title: RECRUITING_PAGE_METADATA.title,
