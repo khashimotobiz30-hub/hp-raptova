@@ -68,15 +68,18 @@ export default function RecruitingHero() {
                 ))}
               </p>
               <div className="mt-7 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap sm:gap-4 lg:flex-nowrap lg:gap-3">
-                <button
-                  type="button"
+                <Link
+                  href={ctas.downloadHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="copy-ja flex w-full min-w-0 items-center justify-between rounded-full border border-[#0a0a0a] bg-[#0a0a0a] px-5 py-3.5 text-[11px] font-semibold tracking-[0.12em] text-white transition hover:bg-white hover:text-[#0a0a0a] sm:min-w-[15.5rem] sm:flex-1 sm:max-w-[17.5rem] lg:w-auto lg:flex-none lg:max-w-none lg:shrink-0 lg:whitespace-nowrap lg:px-5 min-[430px]:px-6 min-[430px]:tracking-[0.16em]"
+                  aria-label="サービス資料を受け取るフォームを開く"
                 >
                   <span className="min-w-0 text-left">{ctas.downloadLabel}</span>
                   <span className="shrink-0 pl-3" aria-hidden>
                     →
                   </span>
-                </button>
+                </Link>
                 <Link
                   href={ctas.consultHref}
                   onClick={() => trackContactClick('business-recruiting')}

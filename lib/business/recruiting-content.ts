@@ -15,7 +15,8 @@ export const RECRUITING_HERO = {
     alt: '打ち合わせの様子。PCと資料が写る写真',
   } satisfies RecruitingImage,
   ctas: {
-    downloadLabel: 'サービス資料をダウンロード',
+    downloadLabel: 'サービス資料を受け取る',
+    downloadHref: 'https://forms.gle/4ti3dSFKac4mm1Yv7',
     consultLabel: '無料で相談する',
     consultHref: '/contact',
   } as const,
