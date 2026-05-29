@@ -12,7 +12,7 @@ const NAV_LINKS = [
   { label: 'BUSINESS', href: '/business/recruiting' },
 ] as const;
 
-const PROJECTS_HREF = '/#projects';
+const PROJECTS_HREF = '/projects/raptova-website';
 
 function NavUnderline({ contrast, active = false }: { contrast: boolean; active?: boolean }) {
   return (
@@ -43,7 +43,7 @@ export default function Header() {
   const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 8);
+    const handleScroll = () => setScrolled(window.scrollY > 32);
     handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
@@ -136,8 +136,15 @@ export default function Header() {
   const closeProjectsMenu = useCallback(() => setProjectsOpen(false), []);
   const pathname = usePathname();
 
-  const headerNavContrast = scrolled || projectsOpen || menuOpen;
-  const headerSolidBg = scrolled || projectsOpen;
+  const isScrolled = scrolled;
+  const isElevated = isScrolled || projectsOpen || menuOpen;
+  const headerNavContrast = isElevated;
+  const headerBarHeightClass = 'h-[60px] md:h-[72px]';
+  const headerShellClass = menuOpen
+    ? 'rounded-md border-black/[0.06] bg-white/95 shadow-[0_10px_32px_rgba(0,0,0,0.05)] backdrop-blur-md'
+    : isElevated
+      ? 'rounded-md border-black/[0.06] bg-[#f4f3ef]/96 shadow-[0_14px_40px_rgba(0,0,0,0.06)] backdrop-blur-md'
+      : 'rounded-none border-transparent bg-transparent shadow-none backdrop-blur-none';
 
   return (
     <>
@@ -145,176 +152,201 @@ export default function Header() {
         suppressHydrationWarning
         onMouseLeave={() => setProjectsOpen(false)}
         className={[
-          'fixed left-0 right-0 top-0 z-50 w-full max-w-full overflow-x-clip transition-all duration-300 ease-out',
-          projectsOpen ? 'pb-[5.25rem]' : '',
-          menuOpen
-            ? 'border-b border-transparent bg-white backdrop-blur-none'
-            : headerSolidBg
-              ? 'border-b border-black/10 bg-[#f2f0e9]/96 backdrop-blur-md'
-              : 'border-b border-transparent bg-transparent backdrop-blur-none',
+          'fixed left-1/2 z-50 -translate-x-1/2 overflow-visible transition-all duration-300 ease-out',
+          isElevated
+            ? 'top-3 w-[calc(100%-1.25rem)] max-w-[1760px] md:top-4 lg:top-5 lg:w-[calc(100%-112px)] min-[1440px]:top-6 min-[1440px]:w-[calc(100%-120px)]'
+            : 'top-0 w-full max-w-none',
         ].join(' ')}
       >
-        <div className="top-header-split flex w-full min-w-0 items-center justify-between px-7 md:items-start md:px-12 lg:grid lg:items-center lg:px-0 min-[1440px]:px-0">
-          <Link
-            href="/"
-            onClick={handleLogoClick}
+        <div
+          className={[
+            'overflow-visible border transition-all duration-300 ease-out',
+            headerShellClass,
+          ].join(' ')}
+        >
+          <div
             className={[
-              'flex h-[72px] items-center transition-opacity duration-200 hover:opacity-60 lg:pl-10 xl:pl-14 min-[1440px]:pl-20',
-              'text-[#0a0a0a]',
+              'top-header-split flex w-full min-w-0 items-center justify-between md:items-center lg:grid lg:items-center',
+              isElevated
+                ? 'px-4 md:px-6 lg:px-7 xl:px-8 min-[1440px]:px-9'
+                : 'px-7 md:px-12 lg:px-0',
             ].join(' ')}
-            aria-label={`${SITE_CONFIG.siteName} ホームへ`}
           >
-            <span className="relative block h-[18px] w-[137px] md:h-[20px] md:w-[152px]">
-              <Image
-                src="/logos/raptova-logotype-small.svg"
-                alt="RAPTOVA"
-                fill
-                priority
-                sizes="(max-width: 767px) 137px, 152px"
-                className="object-contain object-left"
-              />
-            </span>
-          </Link>
-
-          <nav className="hidden md:flex items-start gap-10 lg:justify-end lg:pr-9 xl:pr-11 min-[1440px]:pr-14" aria-label="メインナビゲーション">
-            {NAV_LINKS.map(({ label, href }) => {
-              const isActive =
-                label === 'BUSINESS'
-                  ? pathname === '/business' || pathname.startsWith('/business/')
-                  : pathname === href;
-              return (
-                <Link
-                  key={label}
-                  href={href}
-                  className={[
-                    navLinkClass(headerNavContrast),
-                    'flex h-[72px] items-center',
-                    isActive ? 'text-[#0a0a0a]' : '',
-                  ].join(' ')}
-                  aria-current={isActive ? 'page' : undefined}
-                >
-                  {label}
-                  <NavUnderline contrast={headerNavContrast} active={isActive} />
-                </Link>
-              );
-            })}
-
-            <div
-              ref={projectsRef}
-              className="relative w-fit shrink-0"
-              onMouseEnter={() => setProjectsOpen(true)}
+            <Link
+              href="/"
+              onClick={handleLogoClick}
+              className={[
+                'flex items-center transition-opacity duration-200 hover:opacity-60',
+                headerBarHeightClass,
+                'text-[#0a0a0a]',
+                isElevated ? '' : 'lg:pl-10 xl:pl-14 min-[1440px]:pl-20',
+              ].join(' ')}
+              aria-label={`${SITE_CONFIG.siteName} ホームへ`}
             >
-              <div className="flex h-[72px] items-center gap-1">
-                <Link
-                  href={PROJECTS_HREF}
-                  className={[navLinkClass(headerNavContrast), 'flex h-full items-center'].join(' ')}
-                  onClick={closeProjectsMenu}
-                >
-                  PROJECTS
-                  <NavUnderline contrast={headerNavContrast} />
-                </Link>
-                <button
-                  type="button"
-                  className={[
-                    'flex h-6 w-5 items-center justify-center transition-colors duration-200',
-                    headerNavContrast
-                      ? 'text-[#555555] hover:text-[#0a0a0a]'
-                      : 'text-[#555555] hover:text-[#0a0a0a]',
-                  ].join(' ')}
-                  aria-expanded={projectsOpen}
-                  aria-haspopup="true"
-                  aria-controls="projects-subnav"
-                  aria-label="Open projects menu"
-                  onClick={() => setProjectsOpen((v) => !v)}
-                >
-                  <svg
-                    width="10"
-                    height="6"
-                    viewBox="0 0 10 6"
-                    fill="none"
-                    aria-hidden
+              <span className="relative block h-[18px] w-[137px] md:h-[20px] md:w-[152px]">
+                <Image
+                  src="/logos/raptova-logotype-small.svg"
+                  alt="RAPTOVA"
+                  fill
+                  priority
+                  sizes="(max-width: 767px) 137px, 152px"
+                  className="object-contain object-left"
+                />
+              </span>
+            </Link>
+
+            <nav
+              className={[
+                'hidden items-center gap-8 md:flex lg:justify-end lg:gap-10 xl:gap-11',
+                isElevated ? '' : 'lg:pr-9 xl:pr-11 min-[1440px]:pr-14',
+              ].join(' ')}
+              aria-label="メインナビゲーション"
+            >
+              {NAV_LINKS.map(({ label, href }) => {
+                const isActive =
+                  label === 'BUSINESS'
+                    ? pathname === '/business' || pathname.startsWith('/business/')
+                    : pathname === href;
+                return (
+                  <Link
+                    key={label}
+                    href={href}
                     className={[
-                      'transition-transform duration-300',
-                      projectsOpen ? 'rotate-180' : '',
+                      navLinkClass(headerNavContrast),
+                      'flex items-center',
+                      headerBarHeightClass,
+                      isActive ? 'text-[#0a0a0a]' : '',
                     ].join(' ')}
+                    aria-current={isActive ? 'page' : undefined}
                   >
-                    <path
-                      d="M1 1.25L5 4.75L9 1.25"
-                      stroke="currentColor"
-                      strokeWidth="1"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </button>
-              </div>
+                    {label}
+                    <NavUnderline contrast={headerNavContrast} active={isActive} />
+                  </Link>
+                );
+              })}
 
               <div
-                id="projects-subnav"
-                role="menu"
-                className={[
-                  'absolute left-0 top-full z-10 min-w-max overflow-hidden transition-all duration-300 ease-out',
-                  projectsOpen
-                    ? 'max-h-28 opacity-100 pt-3'
-                    : 'pointer-events-none max-h-0 opacity-0 pt-0',
-                ].join(' ')}
+                ref={projectsRef}
+                className="relative w-fit shrink-0"
+                onMouseEnter={() => setProjectsOpen(true)}
               >
-                <div className="flex flex-col gap-2.5">
-                  {CASE_STUDY_NAV_LINKS.map(({ label, href }) => (
-                    <Link
-                      key={href}
-                      href={href}
-                      role="menuitem"
-                      className={[navLinkClass(headerNavContrast), 'block whitespace-nowrap'].join(' ')}
-                      onClick={closeProjectsMenu}
+                <div className={['flex items-center gap-1', headerBarHeightClass].join(' ')}>
+                  <Link
+                    href={PROJECTS_HREF}
+                    className={[navLinkClass(headerNavContrast), 'flex h-full items-center'].join(' ')}
+                    onClick={closeProjectsMenu}
+                  >
+                    PROJECTS
+                    <NavUnderline contrast={headerNavContrast} />
+                  </Link>
+                  <button
+                    type="button"
+                    className={[
+                      'flex h-6 w-5 items-center justify-center transition-colors duration-200',
+                      'text-[#555555] hover:text-[#0a0a0a]',
+                    ].join(' ')}
+                    aria-expanded={projectsOpen}
+                    aria-haspopup="true"
+                    aria-controls="projects-subnav"
+                    aria-label="Open projects menu"
+                    onClick={() => setProjectsOpen((v) => !v)}
+                  >
+                    <svg
+                      width="10"
+                      height="6"
+                      viewBox="0 0 10 6"
+                      fill="none"
+                      aria-hidden
+                      className={[
+                        'transition-transform duration-300',
+                        projectsOpen ? 'rotate-180' : '',
+                      ].join(' ')}
                     >
-                      {label}
-                      <NavUnderline contrast={headerNavContrast} />
-                    </Link>
-                  ))}
+                      <path
+                        d="M1 1.25L5 4.75L9 1.25"
+                        stroke="currentColor"
+                        strokeWidth="1"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </button>
+                </div>
+
+                <div
+                  id="projects-subnav"
+                  role="menu"
+                  className={[
+                    'absolute left-0 top-[calc(100%-0.35rem)] z-20 min-w-max transition-all duration-300 ease-out',
+                    projectsOpen
+                      ? 'pointer-events-auto max-h-40 opacity-100 pt-2'
+                      : 'pointer-events-none max-h-0 opacity-0 pt-0',
+                  ].join(' ')}
+                >
+                  <div className="flex flex-col gap-2.5 rounded-sm border border-black/[0.06] bg-[#f4f3ef]/95 px-4 py-3 shadow-[0_10px_28px_rgba(0,0,0,0.07)] backdrop-blur-sm">
+                    {CASE_STUDY_NAV_LINKS.map(({ label, href }) => (
+                      <Link
+                        key={href}
+                        href={href}
+                        role="menuitem"
+                        className={[navLinkClass(headerNavContrast), 'block whitespace-nowrap'].join(' ')}
+                        onClick={closeProjectsMenu}
+                      >
+                        {label}
+                        <NavUnderline contrast={headerNavContrast} />
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <Link
-              href="/contact"
+              <Link
+                href="/contact"
+                className={[
+                  'inline-flex shrink-0 items-center justify-center self-center',
+                  'rounded-full px-4 py-2 md:px-6 md:py-2.5',
+                  'text-[10px] font-semibold tracking-[0.24em] text-[#0a0a0a] md:text-[11px] md:tracking-[0.26em]',
+                  'transition-all duration-300',
+                  isElevated
+                    ? 'border border-black/10 bg-white/70 shadow-[0_10px_24px_rgba(0,0,0,0.06)] hover:border-[#0a0a0a] hover:bg-[#0a0a0a] hover:text-white'
+                    : 'border border-black/[0.05] bg-white/20 shadow-none hover:border-black/10 hover:bg-white/50',
+                ].join(' ')}
+                aria-label="お問い合わせページへ"
+              >
+                CONTACT
+              </Link>
+            </nav>
+
+            <button
               className={[
-                navLinkClass(headerNavContrast),
-                'flex h-[72px] cursor-pointer items-center',
+                'mr-1 flex w-10 shrink-0 flex-col items-center justify-center gap-1.5 md:hidden',
+                headerBarHeightClass,
               ].join(' ')}
-              aria-label="お問い合わせページへ"
+              onClick={() => setMenuOpen((v) => !v)}
+              aria-label={menuOpen ? 'メニューを閉じる' : 'メニューを開く'}
+              aria-expanded={menuOpen}
+              aria-controls="sp-menu"
             >
-              CONTACT
-              <NavUnderline contrast={headerNavContrast} />
-            </Link>
-          </nav>
-
-          <button
-            className="mr-2.5 flex h-[72px] w-10 shrink-0 flex-col items-center justify-center gap-1.5 md:hidden md:mr-0"
-            onClick={() => setMenuOpen((v) => !v)}
-            aria-label={menuOpen ? 'メニューを閉じる' : 'メニューを開く'}
-            aria-expanded={menuOpen}
-            aria-controls="sp-menu"
-          >
-            <span
-              className={[
-                'block h-px w-6 origin-center bg-[#0a0a0a] transition-all duration-300',
-                menuOpen ? 'translate-y-[5px] rotate-45' : '',
-              ].join(' ')}
-            />
-            <span
-              className={[
-                'block h-px w-6 bg-[#0a0a0a] transition-all duration-300',
-                menuOpen ? 'opacity-0' : '',
-              ].join(' ')}
-            />
-            <span
-              className={[
-                'block h-px w-6 origin-center bg-[#0a0a0a] transition-all duration-300',
-                menuOpen ? '-translate-y-[5px] -rotate-45' : '',
-              ].join(' ')}
-            />
-          </button>
+              <span
+                className={[
+                  'block h-px w-6 origin-center bg-[#0a0a0a] transition-all duration-300',
+                  menuOpen ? 'translate-y-[5px] rotate-45' : '',
+                ].join(' ')}
+              />
+              <span
+                className={[
+                  'block h-px w-6 bg-[#0a0a0a] transition-all duration-300',
+                  menuOpen ? 'opacity-0' : '',
+                ].join(' ')}
+              />
+              <span
+                className={[
+                  'block h-px w-6 origin-center bg-[#0a0a0a] transition-all duration-300',
+                  menuOpen ? '-translate-y-[5px] -rotate-45' : '',
+                ].join(' ')}
+              />
+            </button>
+          </div>
         </div>
       </header>
 
@@ -368,8 +400,13 @@ export default function Header() {
           <Link
             href="/contact"
             onClick={closeMenu}
-            className="cursor-pointer text-sm tracking-[0.2em] text-[#0a0a0a] transition-opacity duration-200 hover:opacity-50"
-            aria-label="\u304A\u554F\u3044\u5408\u308F\u305B\u30DA\u30FC\u30B8\u3078"
+            className={[
+              'inline-flex items-center justify-center rounded-full border border-black/10 bg-white/80',
+              'px-6 py-3 text-sm font-semibold tracking-[0.2em] text-[#0a0a0a]',
+              'shadow-[0_10px_24px_rgba(0,0,0,0.06)] transition-colors duration-200',
+              'hover:border-[#0a0a0a] hover:bg-[#0a0a0a] hover:text-white',
+            ].join(' ')}
+            aria-label="お問い合わせページへ"
           >
             CONTACT
           </Link>

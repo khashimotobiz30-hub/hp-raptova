@@ -5,7 +5,7 @@ import { SITE_CONFIG } from '@/lib/config';
 const FOOTER_LINKS = [
   { label: 'ABOUT', href: '/about' },
   { label: 'BUSINESS', href: '/business/recruiting' },
-  { label: 'PROJECTS', href: '/#projects' },
+  { label: 'PROJECTS', href: '/projects/raptova-website' },
 ] as const;
 
 export default function Footer() {
