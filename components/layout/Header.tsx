@@ -137,7 +137,7 @@ export default function Header() {
   const pathname = usePathname();
 
   const isScrolled = scrolled;
-  const isElevated = isScrolled || projectsOpen || menuOpen;
+  const isElevated = isScrolled || menuOpen;
   const headerNavContrast = isElevated;
   const headerBarHeightClass = 'h-[60px] md:h-[72px]';
   const headerShellClass = menuOpen
