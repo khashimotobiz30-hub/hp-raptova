@@ -8,9 +8,9 @@ const PROFILE_ROWS: ReadonlyArray<{
   value: string;
   displayLines?: readonly string[];
 }> = [
-  { label: '屋号', value: 'RAPTOVA' },
+  { label: '会社名', value: '株式会社RAPTOVA（ラプトーバ）' },
   { label: 'Location', value: 'Kobe, Japan' },
-  { label: 'Founder', value: 'Kohei Hashimoto' },
+  { label: '代表取締役', value: '橋本 康平' },
   {
     label: '事業内容',
     value: 'コンサルティング / Web制作',
@@ -46,7 +46,7 @@ export default function AboutProfile() {
             <div className="mt-7 divide-y divide-black/[0.07] border-t border-black/[0.07] md:mt-8">
               {PROFILE_ROWS.map((row, index) => (
                 <SectionReveal key={row.label} delay={0.04 * index}>
-                  <div className="grid grid-cols-[5.5rem_1fr] gap-4 py-3.5 md:grid-cols-[6.5rem_1fr] md:gap-5 md:py-4">
+                  <div className="grid grid-cols-[6.5rem_1fr] gap-4 py-3.5 md:grid-cols-[7.5rem_1fr] md:gap-5 md:py-4">
                     <p className="copy-ja text-[12px] tracking-[0.05em] text-black/[0.48] md:text-[13px]">
                       {row.label}
                     </p>

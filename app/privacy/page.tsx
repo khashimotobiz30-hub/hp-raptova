@@ -4,7 +4,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: "PRIVACY POLICY | RAPTOVA",
-  description: "RAPTOVA（ラプトーバ）のプライバシーポリシーです。お問い合わせ、営業、商談、受託業務における個人情報の取扱いについて定めています。",
+  description: "株式会社RAPTOVA（ラプトーバ）のプライバシーポリシーです。お問い合わせ、営業、商談、受託業務における個人情報の取扱いについて定めています。",
 };
 
 export default function PrivacyPage() {

@@ -33,7 +33,7 @@ export default function AboutHero() {
         <div className="relative h-full min-h-[1px] w-full">
           <Image
             src={HERO_IMAGE}
-            alt="RAPTOVA about visual"
+            alt="RAPTOVA（ラプトーバ） about visual"
             fill
             priority
             sizes="100vw"
@@ -72,6 +72,9 @@ export default function AboutHero() {
               <span className="block">ABOUT</span>
               <span className="block">RAPTOVA</span>
             </h1>
+            <p className="copy-ja mt-2 text-[11px] tracking-[0.28em] text-black/[0.45] md:mt-2.5 md:text-[12px]">
+              ラプトーバ
+            </p>
             <p
               className="mt-4 text-xs font-medium tracking-[0.2em] text-black/[0.58] md:mt-5 md:text-[13px]"
               style={serifStyle}

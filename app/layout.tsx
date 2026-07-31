@@ -72,6 +72,8 @@ const jsonLdOrganization = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: SITE_CONFIG.siteName,
+  legalName: SITE_CONFIG.legalName,
+  alternateName: [...SITE_CONFIG.alternateNames],
   url: SITE_CONFIG.url,
   logo: `${SITE_CONFIG.url}/images/ogp/ogp-default.png`,
   description: SITE_CONFIG.description,

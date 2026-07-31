@@ -4,10 +4,15 @@ export const SITE_CONFIG = {
   twitter: '@hako_freework30',
   twitterUrl: 'https://x.com/hako_freework30',
   siteName: 'RAPTOVA',
-  title: 'RAPTOVA（ラプトーバ）公式サイト',
+  siteNameWithReading: 'RAPTOVA（ラプトーバ）',
+  legalName: '株式会社RAPTOVA',
+  legalNameWithReading: '株式会社RAPTOVA（ラプトーバ）',
+  alternateNames: ['ラプトーバ', '株式会社RAPTOVA'] as const,
+  title: '株式会社RAPTOVA（ラプトーバ）公式サイト',
   description:
-    'RAPTOVA（ラプトーバ）は、採用・クリエイティブ・業務設計の領域で、構想や課題を整理し、必要な制作物や仕組みに落とし込みます。',
-  ogDescription: 'RAPTOVA（ラプトーバ）は、採用・クリエイティブ・業務設計の領域で、構想や課題を整理し、必要な制作物や仕組みに落とし込みます。',
+    '株式会社RAPTOVA（ラプトーバ）は、採用・クリエイティブ・業務設計の領域で、構想や課題を整理し、必要な制作物や仕組みに落とし込みます。',
+  ogDescription:
+    '株式会社RAPTOVA（ラプトーバ）は、採用・クリエイティブ・業務設計の領域で、構想や課題を整理し、必要な制作物や仕組みに落とし込みます。',
   contactFormUrl: 'https://forms.gle/DnSHpbNyGFAHxbUq7',
 } as const;
 

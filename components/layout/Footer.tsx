@@ -27,22 +27,25 @@ export default function Footer() {
     <footer id="footer" className="w-full min-w-0 max-w-full overflow-x-clip border-t border-white/10 bg-[#080808] text-white">
       <div className="min-w-0 px-7 py-9 md:px-14 lg:px-20">
         <div className="flex min-w-0 flex-col gap-8 md:grid md:grid-cols-[auto_1fr_auto] md:items-center md:gap-x-8 lg:gap-x-10">
-          <div className="flex min-w-0 shrink-0 items-center">
+          <div className="flex min-w-0 shrink-0 flex-col items-center gap-1.5 md:items-start">
             <Link
               href="/"
               className="transition-opacity duration-200 hover:opacity-60"
-              aria-label={`${SITE_CONFIG.siteName} ホームへ`}
+              aria-label={`${SITE_CONFIG.siteNameWithReading} ホームへ`}
             >
               <span className="relative block h-[16px] w-[115px] md:h-[18px] md:w-[140px]">
                 <Image
                   src="/logos/raptova-logotype-small-white.svg"
-                  alt="RAPTOVA"
+                  alt={SITE_CONFIG.siteNameWithReading}
                   fill
                   sizes="(max-width: 767px) 115px, 140px"
                   className="object-contain object-left"
                 />
               </span>
             </Link>
+            <p className="copy-ja text-[9px] tracking-[0.16em] text-white/40">
+              {SITE_CONFIG.legalNameWithReading}
+            </p>
           </div>
 
           <nav
@@ -71,7 +74,7 @@ export default function Footer() {
           </nav>
 
           <p className="flex min-w-0 shrink-0 items-center justify-center text-[10px] tracking-[0.18em] text-white/45 md:justify-end">
-            © {new Date().getFullYear()} {SITE_CONFIG.siteName}
+            © {new Date().getFullYear()} {SITE_CONFIG.legalName}
           </p>
         </div>
       </div>

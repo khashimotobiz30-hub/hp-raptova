@@ -19,10 +19,10 @@ export default function About() {
             id="about-heading"
             className="copy-ja font-serif text-[1.65rem] tracking-[0.16em] text-zinc-950 lg:text-[1.75rem] xl:text-3xl min-[1440px]:tracking-[0.18em]"
           >
-            RAPTOVAとは
+            RAPTOVA（ラプトーバ）とは
           </h2>
           <p className="copy-ja mt-10 text-sm leading-loose tracking-[0.14em] text-zinc-700">
-            RAPTOVA（ラプトーバ）は、AIを活用して、人や組織の中にある構想・課題・情報を整理し、実行できる形へ変えていくパートナーです。
+            株式会社RAPTOVA（ラプトーバ）は、AIを活用して、人や組織の中にある構想・課題・情報を整理し、実行できる形へ変えていくパートナーです。
           </p>
           <p className="copy-ja mt-8 text-sm leading-loose tracking-[0.14em] text-zinc-700">
             最初の重点領域として、採用活動を支援しながら、より広い領域で、仕事を前に進めるブランドを展開していきます。

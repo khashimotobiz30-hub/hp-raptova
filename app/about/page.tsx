@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { SITE_CONFIG } from '@/lib/config';
 
 export const metadata: Metadata = {
-  title: 'ABOUT | RAPTOVA',
+  title: 'ABOUT | RAPTOVA（ラプトーバ）',
   description: SITE_CONFIG.description,
 };
 
